@@ -1,4 +1,5 @@
 import math
+import csv
 
 #Modelo PV caso sin resistencia en serie 
 Lambda=0.5  #Teoricamente deberia ser Ig+Is, pero como Is<<Ig suponemos que es Ig   
@@ -23,6 +24,8 @@ ipv=[]# arreglo para los valores de Ipv en el tiempo
     
 z=[]#entrada z para el estimador
 y=[]#entrada y para el estimador
+yreal = []
+ynorm = [] #entrada y normalizada para el estimador
 
 
 
@@ -42,7 +45,7 @@ def ModelPV():
     return ipv
 
 
-def Cordic(T): #algoritmo de cordic para resolver un Ln 
+def CordicLn(T): #algoritmo de cordic para resolver un Ln 
 
     #condiciones iniciales 
     Z_ant=0
@@ -58,7 +61,7 @@ def Cordic(T): #algoritmo de cordic para resolver un Ln
     while cont<23:
 
         
-        Z_act= Z_ant - Dm*Bm[i]
+        Z_act= Z_ant + Dm*-2*Bm[i]
         
         
         C_act= C_ant + Em[i]*Dm*S_ant
@@ -70,7 +73,7 @@ def Cordic(T): #algoritmo de cordic para resolver un Ln
         i = i + 1
         cont=cont + 1
         
-        ln=2*Z_act
+        ln=Z_act
         
 
     #return (C_ant, S_ant,Z_ant,Bm[i],Dm,ln)
@@ -85,10 +88,17 @@ def parametros():
     
     j=0
     while j< numpoints: #agrega los valores para cada tiempo de Vpv e Ipv en los parametros y,z  
-            y.append(Cordic(Lambda - Vpv[j]/Rp - ipv[j] )) 
+            yesc = CordicLn(16*(Lambda - Vpv[j]/Rp - ipv[j] ))
+            y.append(yesc - math.log(16))
+            ynorm.append(y[j]/2.23639972) #para normalizar se divide entre el valor maximo del calculo del Ln(0.106843) (2.23639972)
+            yreal.append(math.log(Lambda - Vpv[j]/Rp - ipv[j] ))
             z.append(Vpv[j])
+            # print(yreal[j], y[j], ynorm[j], t[j])
             j=j+1
-        
-    return y, z
+    
+    
+    
+    
+    return ynorm , z
 
     
