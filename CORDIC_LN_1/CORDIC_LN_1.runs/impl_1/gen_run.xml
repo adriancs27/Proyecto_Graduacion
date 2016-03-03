@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xa7a15tcpg236-2I" LaunchTime="1456973443">
+  <File Type="OPT-DCP" Name="FF_D_opt.dcp"/>
+  <File Type="RUN-CONSTRS" Name="$PDATADIR/runs/impl_1/constrs_in.xml"/>
+  <File Type="RUN-SRCS" Name="$PDATADIR/runs/impl_1/sources.xml"/>
+  <File Type="ROUTE-DCP" Name="FF_D_routed.dcp"/>
+  <File Type="PA-TCL" Name="FF_D.tcl"/>
+  <File Type="RUN-STRAT" Name="$PDATADIR/runs/impl_1/impl_1.psg"/>
+  <File Type="OPT-DRC" Name="FF_D_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="FF_D_timing_summary_init.rpt"/>
+  <File Type="OPT-TIMING" Name="FF_D_timing_summary_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="FF_D.hwdef"/>
+  <File Type="PWROPT-DCP" Name="FF_D_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="FF_D_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="FF_D_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="FF_D_placed.dcp"/>
+  <File Type="PLACE-IO" Name="FF_D_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="FF_D_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="FF_D_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="FF_D_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="FF_D_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="FF_D_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="FF_D_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-TIMING" Name="FF_D_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="FF_D_postplace_pwropt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="FF_D_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="FF_D_physopt.dcp"/>
+  <File Type="RDI-RDI" Name="FF_D.vdi"/>
+  <File Type="PHYSOPT-DRC" Name="FF_D_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-TIMING" Name="FF_D_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-DRC" Name="FF_D_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="FF_D_drc_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="FF_D_power_routed.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="FF_D_power_summary_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="FF_D_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="FF_D_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="FF_D_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="FF_D_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="FF_D_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="FF_D_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="FF_D_clock_utilization_routed.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="FF_D_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="FF_D_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="FF_D_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="FF_D_timing_summary_postroute_physopted.rpx"/>
+  <File Type="BG-BIT" Name="FF_D.bit"/>
+  <File Type="BG-BIN" Name="FF_D.bin"/>
+  <File Type="BITSTR-MSK" Name="FF_D.msk"/>
+  <File Type="BITSTR-RBT" Name="FF_D.rbt"/>
+  <File Type="BITSTR-NKY" Name="FF_D.nky"/>
+  <File Type="BITSTR-BMM" Name="FF_D_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="FF_D.mmi"/>
+  <File Type="BITSTR-SYSDEF" Name="FF_D.sysdef"/>
+  <File Type="BG-BGN" Name="FF_D.bgn"/>
+  <File Type="BG-DRC" Name="FF_D.drc"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../proyecto/Proyecto_De_Graduacion-master/Coprocesador_CORDIC_RTL/d_ff_en.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../proyecto/Proyecto_De_Graduacion-master/Coprocesador_CORDIC_RTL/Mux_2x1.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../proyecto/Proyecto_De_Graduacion-master/Coprocesador_CORDIC_RTL/CORDIC_FSM.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../proyecto/Proyecto_De_Graduacion-master/Coprocesador_CORDIC_RTL/Op_Select.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../proyecto/Proyecto_De_Graduacion-master/Coprocesador_CORDIC_RTL/sign_inverter.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../proyecto/Proyecto_De_Graduacion-master/Coprocesador_CORDIC_RTL/Simple_Subt.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../proyecto/Proyecto_De_Graduacion-master/Coprocesador_CORDIC_RTL/univ_bin_counter.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../proyecto/Proyecto_De_Graduacion-master/Coprocesador_CORDIC_RTL/Mux_3x1.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/S_ADD.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/SIGN.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/LUT_SHIFT.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="FF_D"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2015"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>
