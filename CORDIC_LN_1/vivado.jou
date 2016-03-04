@@ -1,0 +1,137 @@
+#-----------------------------------------------------------
+# Vivado v2015.4 (64-bit)
+# SW Build 1412921 on Wed Nov 18 09:43:45 MST 2015
+# IP Build 1412160 on Tue Nov 17 13:47:24 MST 2015
+# Start of session at: Fri Mar 04 10:02:38 2016
+# Process ID: 5488
+# Current directory: C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent652 C:\Users\Adrián\Desktop\Proyecto_Graduacion\CORDIC_LN_1\CORDIC_LN_1.xpr
+# Log file: C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/vivado.log
+# Journal file: C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.xpr
+add_files -norecurse {C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sources_1/new/S_SUBT.v C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sources_1/new/LUT_SHIFT.v C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sources_1/new/Mux_2x1.v C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sources_1/new/SIGN.v C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sources_1/new/Mux_3x1.v C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sources_1/new/FF_D.v C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sources_1/new/S_ADD.v}
+update_compile_order -fileset sources_1
+remove_files {C:/Users/Adrián/Desktop/Proyecto_Graduacion/proyecto/Proyecto_De_Graduacion-master/Coprocesador_CORDIC_RTL/CORDIC_FSM.v C:/Users/Adrián/Desktop/Proyecto_Graduacion/proyecto/Proyecto_De_Graduacion-master/Coprocesador_CORDIC_RTL/Mux_2x1.v C:/Users/Adrián/Desktop/Proyecto_Graduacion/proyecto/Proyecto_De_Graduacion-master/Coprocesador_CORDIC_RTL/Mux_3x1.v C:/Users/Adrián/Desktop/Proyecto_Graduacion/proyecto/Proyecto_De_Graduacion-master/Coprocesador_CORDIC_RTL/Op_Select.v C:/Users/Adrián/Desktop/Proyecto_Graduacion/proyecto/Proyecto_De_Graduacion-master/Coprocesador_CORDIC_RTL/Simple_Subt.v C:/Users/Adrián/Desktop/Proyecto_Graduacion/proyecto/Proyecto_De_Graduacion-master/Coprocesador_CORDIC_RTL/d_ff_en.v C:/Users/Adrián/Desktop/Proyecto_Graduacion/proyecto/Proyecto_De_Graduacion-master/Coprocesador_CORDIC_RTL/sign_inverter.v C:/Users/Adrián/Desktop/Proyecto_Graduacion/proyecto/Proyecto_De_Graduacion-master/Coprocesador_CORDIC_RTL/univ_bin_counter.v}
+remove_files -fileset sim_1 C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sim_1/new/FF_D_TEST.v
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse {C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sim_1/new/TB_SIGN.v C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sim_1/new/TB_Mux_2x1.v C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sim_1/new/TB_LUT_SHIFT.v}
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sim_1/new/TB_Mux_3x1.v w ]
+add_files -fileset sim_1 C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sim_1/new/TB_Mux_3x1.v
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top TB_Mux_2x1 [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+source TB_Mux_2x1.tcl
+close_sim
+launch_simulation
+source TB_Mux_2x1.tcl
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top TB_Mux_3x1 [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+launch_simulation
+source TB_Mux_3x1.tcl
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sim_1/new/TB_FF_D.v w ]
+add_files -fileset sim_1 C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sim_1/new/TB_FF_D.v
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top TB_FF_D [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+source TB_FF_D.tcl
+close_sim
+launch_simulation
+source TB_FF_D.tcl
+close_sim
+launch_simulation
+source TB_FF_D.tcl
+close_sim
+launch_simulation
+source TB_FF_D.tcl
+close_sim
+launch_simulation
+source TB_FF_D.tcl
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sim_1/new/TB_S_ADD.v w ]
+add_files -fileset sim_1 C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sim_1/new/TB_S_ADD.v
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top TB_S_ADD [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+launch_simulation
+source TB_S_ADD.tcl
+close_sim
+launch_simulation
+source TB_S_ADD.tcl
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sim_1/new/TB_S_SUBT.v w ]
+add_files -fileset sim_1 C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sim_1/new/TB_S_SUBT.v
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top TB_S_SUBT [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+source TB_S_SUBT.tcl
+close_sim
+launch_simulation
+source TB_S_SUBT.tcl
+close_sim
+launch_simulation
+source TB_S_SUBT.tcl
+close [ open C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sources_1/new/COUNTER_5B.v w ]
+add_files C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sources_1/new/COUNTER_5B.v
+update_compile_order -fileset sources_1
+current_sim simulation_8
+close_sim
+current_sim simulation_2
+close_sim
+close_sim
+close_sim
+close_sim
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sim_1/new/TB_COUNTER_5B.v w ]
+add_files -fileset sim_1 C:/Users/Adrián/Desktop/Proyecto_Graduacion/CORDIC_LN_1/CORDIC_LN_1.srcs/sim_1/new/TB_COUNTER_5B.v
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top TB_COUNTER_5B [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+source TB_COUNTER_5B.tcl
+close_sim
+save_project_as project_1 C:/project_1 -force
+close_project
+create_project project_2 D:/proyecto/Proyecto_De_Graduacion-master/Proyecto_version_inicial_Diego/project_2
+import_xise D:/proyecto/Proyecto_De_Graduacion-master/Proyecto_version_inicial_Diego/Proyecto_version_inicial_Diego.xise

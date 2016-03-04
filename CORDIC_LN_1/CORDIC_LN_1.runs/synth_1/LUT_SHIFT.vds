@@ -1,0 +1,23 @@
+#-----------------------------------------------------------
+# Vivado v2015.4 (64-bit)
+# SW Build 1412921 on Wed Nov 18 09:43:45 MST 2015
+# IP Build 1412160 on Tue Nov 17 13:47:24 MST 2015
+# Start of session at: Thu Mar 03 14:26:16 2016
+# Process ID: 2792
+# Current directory: C:/Users/Adrián/Desktop/CORDIC_LN_1/CORDIC_LN_1.runs/synth_1
+# Command line: vivado.exe -log LUT_SHIFT.vds -mode batch -messageDb vivado.pb -notrace -source LUT_SHIFT.tcl
+# Log file: C:/Users/Adrián/Desktop/CORDIC_LN_1/CORDIC_LN_1.runs/synth_1/LUT_SHIFT.vds
+# Journal file: C:/Users/Adrián/Desktop/CORDIC_LN_1/CORDIC_LN_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source LUT_SHIFT.tcl -notrace
+Command: synth_design -top LUT_SHIFT -part xa7a15tcpg236-2I
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xa7a15t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xa7a15t'
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:33 ; elapsed = 00:01:18 . Memory (MB): peak = 264.016 ; gain = 93.082
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'LUT_SHIFT' [C:/Users/Adrián/Desktop/CORDIC_LN_1/CORDIC_LN_1.srcs/sources_1/new/LUT_SHIFT.v:23]
+	Parameter ROM_WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-226] default block is never used [C:/Users/Adrián/Desktop/CORDIC_LN_1/CORDIC_LN_1.srcs/sources_1/new/LUT_SHIFT.v:33]
+INFO: [Synth 8-256] done synthesizing module 'LUT_SHIFT' (1#1) [C:/Users/Adrián/Desktop/CORDIC_LN_1/CORDIC_LN_1.srcs/sources_1/new/LUT_SHIFT.v:23]
