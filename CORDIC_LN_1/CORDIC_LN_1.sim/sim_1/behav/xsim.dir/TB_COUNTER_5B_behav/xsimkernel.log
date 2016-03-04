@@ -1,7 +1,0 @@
-Running: xsim.dir/TB_COUNTER_5B_behav/xsimk.exe -simmode gui -wdb TB_COUNTER_5B_behav.wdb -simrunnum 0 -socket 58988
-Design successfully loaded
-Design Loading Memory Usage: 17052 KB (Peak: 17052 KB)
-Design Loading CPU Usage: 390 ms
-Simulation completed
-Simulation Memory Usage: 17456 KB (Peak: 17456 KB)
-Simulation CPU Usage: 421 ms
