@@ -265,7 +265,7 @@ donde:
   y = \omega - 1
 \end{equation}
 
-\subsubsection{Logaritmo natural utilizando el algoritmo hiperbólico de CORDIC}
+\subsection{Logaritmo natural utilizando el algoritmo hiperbólico de CORDIC}
 Para un $\ Ln \left(\omega\right) $  con el algoritmo de CORDIC, se debe calcular primeramente la $\ \tanh^{-1} \left( \frac{y}{x} \right)$ con las siguientes ecuaciones:
 
  
@@ -295,7 +295,7 @@ donde $\ \omega $ es el valor del argumento del logaritmo natural.
 
 El resultado final de $\ Z_i $ contiene el valor de $\ \tanh^{-1} \left( \frac{y}{x} \right)$, sin embargo se debe multiplicar por un factor de 2 para completar el calculo del logaritmo natural, segun la identidad de la ecuación \ref{eq:ej20} 
 
-\subsubsection{Exponencial utilizando el algoritmo hiperbólico de CORDIC }
+\subsection{Exponencial utilizando el algoritmo hiperbólico de CORDIC }
 
 
 Para una función  $\ e^{\left(\omega\right)} $  con el algoritmo de CORDIC, se debe utilizar las ecuaciones \ref{eq:ej23}, \ref{eq:ej24} y \ref{eq:ej25} de manera iterativa, donde el valor final de $\ X $ y $\ Y$, son el resultado para  $\\cosh\left(\omega\right)$ y $\ \sinh\left(\omega\right)$ respectivamente. se debe tomar en cuenta la repeticion de las iteraciones $\ \left(i\right) $ 4, 13, 40,… k, 3k+1 para garantizar la convergencia dando una mejor precision en el calculo.
@@ -310,10 +310,44 @@ Cabe destacar que el rango de convergencia para este algoritmo se puede definir 
 
 El valor final del calculo se obtiene mediante una suma con la identidad de la ecuación \ref{eq:ej19}. 
 
+\section{Punto flotante}
+La codificación para el formato punto flotante se realiza mediante el estándar \nt{IEEE 754}, este requiere de tres campos en la palabra: 
+
+\begin{compactitem}
+\item Signo 
+\item Exponente
+\item Mantisa 
+\end{compactitem}
+
+para el formato \nt{IEEE 754} de 32-bits [8] se asigna: 
+
+\begin{compactitem}
+\item 1 Bit para signo 
+\item 8 Bits para exponente
+\item 23 Bits para mantisa 
+\end{compactitem}
+
+Donde el bit de signo representa un numero positivo si este es 0, de manera contraria si es 1 representa un numero negativo. 
+
+El exponente puede representar 256 (8-bits) valores sin embargo se tiene:
+
+\begin{compactitem}
+\item $\ \left[0-127\right]$ exponentes negativos  
+\item $\ \left[128-255\right]$ exponentes positivos
+\end{compactitem}
+
+De esta manera para convertir el un exponente positivo en el valor correspondiente en punto flotante se debe sumar el valor del exponente como sigue $\ exp_{float}=127+exp $ , por otro lado si se desea pasar de un valor decimal a punto flotante se deben realizar los siguientes pasos: 
+\begin{compactitem}
+\item Representar el signo con su debido bit
+\item Conversión decimal a binario punto fijo   
+\item Conversión binario a notación científica
+\item Agrupar en signo, exponente y mantisa 
+\end{compactitem}
 
 
 
-\subsection{Referencias bibliográficas}
+ 
+\section{Referencias bibliográficas}
 
 [1] Suskis, Pavels, and Ilya Galkin. "Enhanced photovoltaic panel model for MATLAB-simulink environment considering solar cell junction capacitance." Industrial Electronics Society, IECON 2013-39th Annual Conference of the IEEE. IEEE, 2013.
 
@@ -329,105 +363,7 @@ El valor final del calculo se obtiene mediante una suma con la identidad de la e
 
 [7] Llamocca-Obregón, Daniel R., and Carla P. Agurto-Ríos. "A fixed-point implementation of the expanded hyperbolic CORDIC algorithm." Latin American applied research 37.1 (2007): 83-91.
 
+[8] Whitehead, Nathan, and Alex Fit-Florea. "Precision and performance: Floating point and IEEE 754 compliance for NVIDIA GPUs." rn (A+ B) 21 (2011): 1-1874919424.
 
 
 
-
-
-
-
-
-
-\index{referencias}\index{BibTeX}
-Todo concepto o idea tomado de otros autores contar con la respectiva
-referencia. En redacción técnica de ingeniería rara vez se utiliza la cita
-textual, así que es necesario reformular las ideas y conceptos con palabras
-propias. En ingeniería electrónica se utilizan los formatos de referencia de la
-IEEE o la ACM, que son numéricos, encerrados entre paréntesis cuadrados (por
-ejemplo, ``En \cite{Davis1963} se propuso un nuevo algoritmo'', o ``En
-\cite{ProakisManolakis1998} los autores proponen tomar las ventajas de los
-algorimos presentados en \cite{Oppenheim1998,Roberts2005,Haykin2001} por medio
-del método de Newton \cite{Burrus1998} conocido en el área de optimización
-lineal.''). La referencia es parte de las frases, así que si la frase termina
-con la referencia para indicar la idea, ésta debe estar antes del punto final o
-demás signos de puntuación: ``La capacidad de memoria también sigue una Ley
-similar a la de Moore \cite{Octave}. Los siguientes son los aspectos a tomar en
-cuenta en el diseño del sistema \cite{Lindner2002}:''
-
-Se recomienda utilizar BibTeX para administrar las referencias bibliográficas.
-
-\subsection{Extensión}
-
-\index{extensión}
-Una tesis de licenciatura no debe sobrepasar las 120 páginas incluyendo
-apéndices y los formalismos desde portada hasta índices.
-
-El cuerpo de la tesis (desde introducción hasta conclusiones) usualmente se
-extiende desde 45 páginas hasta no más de 80, dependiendo de la problemática
-tratada.
-
-No es necesario reproducir contenidos de otras fuentes: agregue las referencias
-a dichas fuentes, y limítese a enunciar lo estrictamente necesario para
-comprender sus propuestas de solución.
-
-\section{Sobre esta plantilla \LaTeX}
-
-Esta plantilla \LaTeX pretende simplificar varios pasos en la creación del
-documento de tesis.
-
-\subsection{Marcar asuntos pendientes}
-
-La plantilla tiene dos ``\emph{modos}'' de operación: normal y borrador
-(\emph{draft}).  En el archivo \texttt{main.tex} a partir de la línea 41 usted
-encuentra el código
-
-\begin{verbatim}
-%
-% DRAFT MODE
-%
-\newboolean{draftmode}                  % boolean used to control draft-mode
-% Ensure that only one of the next two lines is active:
-\setboolean{draftmode}{true}            % turn draft mode on
-%\setboolean{draftmode}{false}           % turn draft mode off
-\end{verbatim}
-
-Con el modo borrador, se activan ciertos comandos y funcionalidades útiles en
-el proceso de elaboración de la tesis, pero que deben ser desactivados al
-final, antes de entregar la tesis.  Por ejemplo, se activa el pie de página que
-dice ``\emph{Borrador: fecha}'', y se activa el índice titulado ``Revisar''.  En dicho índice aparecen las páginas en donde se hayan utilizado alguno de los siguientes comandos:
-\begin{compactitem}
-\item \verb+\boxcomment{comentario}+ Crea una caja en el margen de página con
-  el comentario indicado.
-\item \verb+\explain{comentario}+ Crea una caja en el margen de página con
-  el comentario indicado, con una flecha hacia la derecha para indicar qué en
-  concreto debe ser revisado.
-\item \verb+\chk{comentario}+ Crea una caja en el margen con símbolo de
-  ``chequeado'' y el comentario indicado.
-\item \verb+\TODO{comentario}+ Crea una caja grande de fondo sombreado con el
-  comentario indicado.
-\end{compactitem}
-
-En este párrafo se\chk{resultado de chk} utilizan algunos de estos comandos
-para ilustrar su efecto.  El \verb+\chk+ como puede observar tiene sentido
-usarlo para marcar que algo está casi listo.  Por otro lado \explain{explain}
-el comando \verb+\explain+ permite marcar algo que requiere ser revisado en
-redacción, valores, etc.  El \verb+\boxcomment+\boxcomment{La caja simple}
-solo pone una marca al margen.
-
-\TODO{Finalmente el comando \texttt{TODO} coloca esta caja gris.}
-
-Si usted desativa el modo draft, desaparecen todas las páginas, y desaparece el
-índice ``Revisar''.  En éste índice aparecen todas las páginas en donde se
-utilizaron estos comandos con los respectivos comentarios, lo que permite
-encontrar rápidamente detalles que usted indicó que debe revisar.
-
-\subsection{Índices}
-
-Como índice se conoce la lista de términos claves con su respectiva página, al
-final del documento.  La plantilla ofrece varios comandos para simplificar el
-uso estandar del comando de \LaTeX\ \verb+\index{termino}+ que coloca al término
-indicado en el índice.  Con \verb+\nt[indice]{termino}+ (\emph{new term}) usted
-indica la entrada principal del término, que aparece en el texto en el índice,
-es decir, en el índice aparece lo que indique en vez de ``indice'' y en el
-texto aparece lo que indique ``termino''; \verb+\ot{termino}+ agrega una
-entrada secundaria al término.

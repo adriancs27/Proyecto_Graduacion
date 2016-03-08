@@ -30,8 +30,8 @@ module SIGN(
     );
     
     
-    assign SIGN_X = ~SIGN_Y0 ^ SIGN_Y0; //SUMA DE ENTRADAS
-    assign SIGN_Y = ~SIGN_Y0 ^ SIGN_X0; //SUMA DE ENTRADAS
+    assign SIGN_X = ~SIGN_Y0 ^ SIGN_X0; //SUMA DE ENTRADAS
+    assign SIGN_Y = ~SIGN_Y0 ^ SIGN_Y0; //SUMA DE ENTRADAS
     assign SIGN_Z = ~SIGN_Y0 ^ SIGN_Z0; //SUMA DE ENTRADAS
     
 endmodule

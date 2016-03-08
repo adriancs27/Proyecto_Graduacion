@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module COUNTER_5B #(P=5)(
+module COUNTER_5B #(parameter P=5)(
 
     input wire CLK,
     input wire EN, 

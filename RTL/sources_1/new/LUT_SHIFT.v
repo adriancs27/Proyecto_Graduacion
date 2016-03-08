@@ -20,12 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module LUT_SHIFT #(parameter ROM_WIDTH = 5) ( 
+module LUT_SHIFT #(parameter P = 5) ( 
 
 input wire CLK, 
 input wire EN_ROM1,
 input wire [4:0] ADRS,
-output reg [ROM_WIDTH-1:0] O_D
+output reg [P-1:0] O_D
 );
    
 always @(posedge CLK)

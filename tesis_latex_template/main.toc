@@ -8,10 +8,7 @@
 \contentsline {subsection}{\numberline {1.2.2}Modelos del panel fotovoltaico}{2}{subsection.1.2.2}
 \contentsline {section}{\numberline {1.3}Algoritmo de CORDIC}{5}{section.1.3}
 \contentsline {subsection}{\numberline {1.3.1}Sistema de coordenadas hiperb\IeC {\'o}lico}{6}{subsection.1.3.1}
-\contentsline {subsubsection}{Logaritmo natural utilizando el algoritmo hiperb\IeC {\'o}lico de CORDIC}{6}{section*.7}
-\contentsline {subsubsection}{Exponencial utilizando el algoritmo hiperb\IeC {\'o}lico de CORDIC }{7}{section*.8}
-\contentsline {subsection}{\numberline {1.3.2}Referencias bibliogr\IeC {\'a}ficas}{7}{subsection.1.3.2}
-\contentsline {subsection}{\numberline {1.3.3}Extensi\IeC {\'o}n}{8}{subsection.1.3.3}
-\contentsline {section}{\numberline {1.4}Sobre esta plantilla \LaTeX }{9}{section.1.4}
-\contentsline {subsection}{\numberline {1.4.1}Marcar asuntos pendientes}{9}{subsection.1.4.1}
-\contentsline {subsection}{\numberline {1.4.2}\IeC {\'I}ndices}{10}{subsection.1.4.2}
+\contentsline {subsection}{\numberline {1.3.2}Logaritmo natural utilizando el algoritmo hiperb\IeC {\'o}lico de CORDIC}{6}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Exponencial utilizando el algoritmo hiperb\IeC {\'o}lico de CORDIC }{7}{subsection.1.3.3}
+\contentsline {section}{\numberline {1.4}Punto flotante}{8}{section.1.4}
+\contentsline {section}{\numberline {1.5}Referencias bibliogr\IeC {\'a}ficas}{8}{section.1.5}
