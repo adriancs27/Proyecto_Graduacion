@@ -162,9 +162,9 @@ FF_D #(.P(P)) REG2_XYZ (
             );
             
 COUNTER_5B #(.P(D)) CONT_ITER ( 
-                        .CLK(CLK_CDIR), 
+                        .CLK(CLK), 
                         .RST(RST),
-                        .EN(1'b1),  
+                        .EN(CLK_CDIR),  
                         .Y(DIR_LUT)
                         );
                         
@@ -272,7 +272,7 @@ FF_D #(.P(P)) REG_3 (
             
 Mux_3x1 #(.P(P)) MUX3x1_4_1 ( 
             .MS(MS_4), 
-            .D_0(P_RESULT), 
+            .D_0(Z_ant), //P_RESULT
             .D_1(REG2XYZ),
             .D_2(REG3),
             .D_out(A)
