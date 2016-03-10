@@ -24,26 +24,26 @@ module Coprocesador_CORDIC # (parameter P = 32, parameter S=8, parameter D=5, pa
 		parameter S_Exp = 9) (
     input wire [31:0] T,
     input wire CLK, //RELOJ DEL SISTEMA
-    input wire RST,
-    input wire MS_1,
-    input wire EN_REG3,
-    input wire EN_REG4,
-    input wire [1:0] MS_4,
-    input wire ADD_SUBT,
-    input wire Begin_SUM,
-    input wire EN_REG1X,
-    input wire EN_REG1Z,
-    input wire EN_REG1Y,
-    input wire [1:0] MS_2,
-    input wire [1:0] MS_3,
-    input wire EN_REG2,
-    input wire CLK_CDIR,
-    input wire EN_REG2XYZ,
-    output wire ACK_SUM,
-    output wire O_F,
-    output wire U_F,
-    output wire [P-1:0] RESULT,
-    output wire [D-1:0] CONT_ITERA
+    input wire RST, // RESET PARA LOS REGISTROS 
+    input wire MS_1,// SELECCION DEL MUX 1 VALOR INICIAL DE Z 
+    input wire EN_REG3, // ENABLE REG 3 VALOR INIICIAL ESCALADO POR 16
+    input wire EN_REG4, //ENABLE REG 4 RESULTADO FINAL 
+    input wire [1:0] MS_4, // SELECCION MUX 4
+    input wire ADD_SUBT, // SELECCION DE OPERACION PARA EL ADD/SUBT FLOTANTE 
+    input wire Begin_SUM, // INICIA LA OPERACION EN ADD/SUBT FLOTANTE 
+    input wire EN_REG1X, // ENABLE PARA EL REGISTRO X DE LA PRIMERA ETAPA 
+    input wire EN_REG1Z, // ENABLE PARA EL REGISTRO Z DE LA PRIMERA ETAPA
+    input wire EN_REG1Y, // ENABLE PARA EL REGISTRO Y DE LA PRIMERA ETAPA
+    input wire [1:0] MS_2,// SELECCION MUX 2
+    input wire [1:0] MS_3, // SELECCION MUX 3
+    input wire EN_REG2, // ENABLE PARA EL REGISTRO QUE GUARDA LOS VALORES DESPLAZADOS EN LA SEGUNDA ETAPA
+    input wire CLK_CDIR, // CLK PARA EL CONTADOR DE ITERACIONES 
+    input wire EN_REG2XYZ, // ENABLE PARA EL REGISTRO QUE GUARDA EL VALOR ANTERIOR DE XYZ 
+    output wire ACK_SUM,  // ACK PARA DETERMINAR CUANDO LA SUMA FLOTANTE SE COMPLETO 
+    output wire O_F, //BANDERA DE OVERFLOW
+    output wire U_F, //BANDERA DE UNDERFLOW 
+    output wire [P-1:0] RESULT, // RESULTADO FINAL 
+    output wire [D-1:0] CONT_ITERA // NUMERO DE LA ITERACION 
     );
 
 
@@ -112,6 +112,7 @@ wire [P-1:0] B;
 
 wire [P-1:0] P_RESULT;
 
+// ASIGNA VALOR DE LA ITERACION A LA DIRECCION DE LAS LUT 
 assign CONT_ITERA = DIR_LUT;
 
 Mux_2x1 #(.P(P)) MUX2x1_1 ( 
@@ -280,9 +281,9 @@ Mux_3x1 #(.P(P)) MUX3x1_4_1 (
 
 Mux_3x1 #(.P(P)) MUX3x1_4_2 ( 
             .MS(MS_4), 
-            .D_0(32'b01000000001100010111001000011000), 
+            .D_0(32'b01000000001100010111001000011000), //LN(16)
             .D_1(MUX3),
-            .D_2(32'b00111111100000000000000000000000),
+            .D_2(32'b00111111100000000000000000000000),//1
             .D_out(B)
             );                               
 

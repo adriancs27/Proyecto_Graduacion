@@ -24,28 +24,28 @@ module FSM_C_CORDIC(
 		//INPUTS
 		input wire CLK, //system clock
 		input wire RST_LN, //system reset
-		input wire RST_FSM_LN,
-		input wire ACK_ADD_SUBT,
+		input wire RST_FSM_LN,// RESET PARA FSM 
+		input wire ACK_ADD_SUBT, // RECIBE SI LA SUMA EN FLOTANTE SE EJECUTO 
 		input wire Begin_FSM_LN, //inicia la maquina de estados 
-		input wire [4:0] CONT_ITER,
+		input wire [4:0] CONT_ITER, //LLEVA LA CUENTA DE LA ITERACIONES 
 		
 		//OUTPUT SIGNALS
-		output reg RST,
-        output reg MS_1,
-        output reg EN_REG3,
-        output reg EN_REG4,
-        output reg [1:0] MS_4,
-        output reg ADD_SUBT,
-        output reg Begin_SUM,
-        output reg EN_REG1X,
-        output reg EN_REG1Z,
-        output reg EN_REG1Y,
-        output reg [1:0] MS_2,
-        output reg [1:0] MS_3,
-        output reg EN_REG2,
-        output reg CLK_CDIR,
-        output reg EN_REG2XYZ,
-        output reg ACK_LN
+		output reg RST, //REALIZA EL RESET DE LOS REGISTROS 
+        output reg MS_1,// SELECCION DEL MUX 1 
+        output reg EN_REG3,  // ENABLE PARA EL REGISTRO 3 CON EL VALOR INICIAL DE T ESCALADO POR 16
+        output reg EN_REG4, // ENABLE PARA EL REG 4 DEL RESULTADO FINAL 
+        output reg [1:0] MS_4, //SELECCION PARA LOS MUX 4
+        output reg ADD_SUBT, // SELECCION DE OPERACION PARA EL ADD/SUBT FLOTANTE 
+        output reg Begin_SUM, //INICIA ADD/SUM FLOTANTE 
+        output reg EN_REG1X, // ENABLE PARA EL REGISTRO X DE LA PRIMERA ETAPA 
+        output reg EN_REG1Z, //ENABLE PARA EL REGISTRO Z DE LA PRIMERA ETAPA
+        output reg EN_REG1Y, // ENABLE PARA EL REGISTRO Y DE LA PRIMERA ETAPA 
+        output reg [1:0] MS_2, // SELECCION DEL MUX 2
+        output reg [1:0] MS_3, // SELECCION DEL MUX 3
+        output reg EN_REG2, // ENABLE PARA EL REGISTRO CON LOS VALORES DESPLAZADOS DE LA SEGUNDA ETAPA 
+        output reg CLK_CDIR, //CLK PARA EL CONTADOR DE ITERACIONES 
+        output reg EN_REG2XYZ,// ENABLE PARA EL VALOR ANTERIOR DE XYZ DE SEGUNDA ETAPA 
+        output reg ACK_LN //ACK PARA SABER SI LA OPERACION LN YA SE REALIZO 
 
 	 );
 
@@ -106,22 +106,16 @@ always @*
     Begin_SUM = 0;
     ACK_LN = 0;
     CLK_CDIR = 0;
-   // MS_1 = 1'b0;
-   // MS_2 = 2'b00;
-   // MS_3 = 2'b00;
-   // MS_4 = 2'b00;
-    //ADD_SUBT = 0;
-   // RST = 0;
     
     
 	case(state_reg)
-//First phase transitions 
 		a: 
 		begin
 			
 			if(Begin_FSM_LN) 
 			    begin
-			    RST = 1;    
+			    RST = 1; 
+			    ACK_LN = 0;   
 				state_next = b;
 				end
 			else
@@ -352,7 +346,6 @@ always @*
             if(RST_FSM_LN)
                 state_next = a;
         end
-	//**REVISADO
 	endcase
 end
 
