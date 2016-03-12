@@ -38,7 +38,6 @@ wire EN_REG3;
 wire [1:0] S;
 wire MS_1;
 wire MS_2;
-wire ACK_FF;
     
     FSM_FF FSM_FLOAT_FIXED(
 		.CLK(CLK), //system clock
@@ -57,7 +56,7 @@ wire ACK_FF;
 
 	 );
 	 
-	 Float_to_fixed COPROCESADOR_FLOAT_FIXED(
+	 Float_to_fixed_I COPROCESADOR_FLOAT_FIXED(
         .CLK(CLK),
         .FLOAT(F),
         .EN_REG1(EN_REG1),

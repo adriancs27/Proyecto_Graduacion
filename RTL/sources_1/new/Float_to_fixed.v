@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Float_to_fixed(
+module Float_to_fixed_I(
 input wire CLK, //CLOCK 
 input wire [31:0] FLOAT, //VALOR DEL NUMERO EN PUNTO FLOTANTE 
 input wire EN_REG1, // ENABLE PARA EL REGISTRO 1 QUE GUARDA EL NUMERO EN PUNTO FLOTANTE 
@@ -119,7 +119,7 @@ REG_8Bits REG_3(
             .Q(REG3) //SALIDA
             );
 
-NORMALIZADOR NORMA(
+NORMALIZADOR NORMA_I(
             .A(P_RESULT), //entrada al normalizador 
             .Y(NORM)//salida de la normalizacion en coma fija, coma entre el bit 30 y 29
                 );
