@@ -31,11 +31,14 @@ yreal = []
 ynorm = [] #entrada y normalizada para el estimador
 
 
+P= []
+PV = []
+FIX = []
+FIXV = []
 
-    
 def InputVoltage(t):
     "This functions defines the time evolution of v"
-    V_cte=16
+    V_cte=12
     return V_cte+0.3*V_cte*math.sin(2*math.pi*100*t)
 
 def ModelPV():
@@ -45,9 +48,10 @@ def ModelPV():
             ipv.append((Lambda-(Vpv[j]/Rp)-Psi*(e**(Vpv[j]*alpha)))/2)
             j=j+1
         
-    return ipv
+    
 
 
+    
 def binary(num):
     return ''.join(bin(ord(c)).replace('0b', '').rjust(8, '0') for c in struct.pack('!f', num))
 
@@ -72,13 +76,13 @@ def grabartxt():
     V=open('NORMALIZACION_V.txt','a')
     Vpv_d=open('Valores_Vpv_decimal.txt','a')
     V_LI_NOR=open('Tension_lineal_y_normalizada.txt','a')
-    I_LI_NOR=open('Tension_lineal_y_normalizada.txt','a')
+    I_LI_NOR=open('Corriente_lineal_y_normalizada.txt','a')
     
     while j< numpoints: #convierte los valores de Vpv e Ipv a punto flotante y guarda cada uno en un TXT
             ipv_f = binary(ipv[j])
             Vpv_f = binary(Vpv[j])
             ILN = math.log(ipv[j])*0.19964110454
-            VLN = math.log(Vpv[j])*0.05524861878
+            VLN = Vpv[j]*0.05524861878
             I.write(ipv_f)
             I.write(" ")
             ipv_d.write(str(ipv[j]))
@@ -102,24 +106,83 @@ def grabartxt():
 
 def fixed_to_dec(FLOAT):
     cont = 0
-    Iter = 1
     dec = 0
     #str(y) 
     if FLOAT[0] == '1':
+        Iter = 1
         y = FLOAT.replace("1", "2")
         z = y.replace("0", "1")
         F = z.replace("2", "0")
         resultado = int(F, 2) + 1
-        #F=0-int(FLOAT)
-        #F=int(F)
+        resultadoP = bin(resultado)
+        FF=resultadoP.replace("0b", "000")
+        #print(F)
+        #print (resultadoP)
+        #print(FF)
+        while cont < 32:
+            dec = dec + int(FF[cont])*(2**Iter)
+            Iter = Iter - 1
+            cont = cont + 1
+        dec = -dec
     else:
+        Iter = 1
         while cont < 32:
             dec = dec + int(FLOAT[cont])*(2**Iter)
             Iter = Iter - 1
             cont = cont + 1
 
 
-    return dec , resultado
-            
+    return dec
+
+def leertxtI():
+    I_fixed=open('I_LINEAL_NORM.txt','r')
+       
+    lineaI=I_fixed.readline()
+    
+    while lineaI!="":
+        #print lineaI
+        P.append(lineaI)
+        lineaI=I_fixed.readline()
+
+    I_fixed.close()
+
+def leertxtV():
+    V_fixed=open('V_NORM.txt','r')
+       
+    lineaV=V_fixed.readline()
+    
+    while lineaV!="":
+        #print lineaI
+        PV.append(lineaV)
+        lineaV=V_fixed.readline()
+
+    V_fixed.close()
+    
+def FixedI():
+    leertxtI()
+    contador=0
+    y=P[0]
+    contador2=0
+    while contador < 1000:
         
+        FIX.append(y[contador2:contador2+32])
+        contador2 = contador2 + 33;
+        print(fixed_to_dec(FIX[contador]))
+        contador = contador +1    
+        
+
+def FixedV():
+    leertxtV()
+    contador=0
+    y=PV[0]
+    contador2=0
+    while contador < 999:
+        
+        FIXV.append(y[contador2:contador2+32])
+        contador2 = contador2 + 33;
+        print(fixed_to_dec(FIXV[contador]))
+        contador = contador +1    
+
+    
+    
     

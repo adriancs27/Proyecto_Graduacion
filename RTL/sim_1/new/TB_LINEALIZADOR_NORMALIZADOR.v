@@ -59,8 +59,8 @@ module TB_LINEALIZADOR_NORMALIZADOR;
         .RESULT_V(RESULT_V)
         );
     
-    reg [31:0] Array_IN_I [0:((2**width)-1)];
-    reg [31:0] Array_IN_V [0:((2**width)-1)];
+    reg [31:0] Array_IN_I [0:999]; //((2**width)-1)];
+    reg [31:0] Array_IN_V [0:999]; //((2**width)-1)];
     
     integer contador;
     integer FileSaveData_I;
@@ -140,7 +140,7 @@ always @(posedge CLK)
 					       Cont_CLK = Cont_CLK +1 ;
 				        end 
                 else 
-                    if(Cont_CLK ==2000) 
+                    if(Cont_CLK ==2500) 
                         begin
                             contador = contador + 1;
                             RST_FSM_LN_FF = 1;
