@@ -53,7 +53,7 @@ wire [31:0] LINEAL;
         );
         
         
-    PFLOAT_TO_PFIXED NORM_I_PFLOAT_PFIXED(
+    I_NORM_FLOAT_TO_FIXED NORM_I_FLOAT_FIXED(
             .CLK(CLK), //system clock
             .F(LINEAL), //VALOR BINARIO EN COMA FLOTANTE 
             .RST_FF(RST_LN_FF), //system reset
@@ -63,7 +63,7 @@ wire [31:0] LINEAL;
             .RESULT(RESULT_I) // RESULTADO FINAL 
             );
             
-    PFLOAT_TO_PFIXED_V NORM_V_PFLOAT_PFIXED(
+    V_NORM_FLOAT_TO_FIXED V_NORM_FLOAT_FIXED(
                         .CLK(CLK), //system clock
                         .F(V), //VALOR BINARIO EN COMA FLOTANTE 
                         .RST_FF(RST_LN_FF), //system reset

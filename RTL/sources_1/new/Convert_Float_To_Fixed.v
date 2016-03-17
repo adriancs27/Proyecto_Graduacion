@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 11.03.2016 10:00:56
+// Create Date: 15.03.2016 13:45:03
 // Design Name: 
-// Module Name: FLOAT_TO_FIXED_V
+// Module Name: Convert_Float_To_Fixed
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,19 +20,16 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module FLOAT_TO_FIXED_V(
+module Convert_Float_To_Fixed(
 input wire CLK, //CLOCK 
 input wire [31:0] FLOAT, //VALOR DEL NUMERO EN PUNTO FLOTANTE 
 input wire EN_REG1, // ENABLE PARA EL REGISTRO 1 QUE GUARDA EL NUMERO EN PUNTO FLOTANTE 
-input wire EN_REG3,  // GUARDA EL EXPONENTE MODIFICADO 
-input wire [1:0] S, // SELECCION PARA EL REGISTRO DE DESPLAZAMIENTOS  
-input wire MS_1, //SELECCIONA EL VALOR DEL EXPONENTE O EL EXPONENTE MODIFICADO 
-input wire MS_2, //SELECCIONA LA SUMA O RESTA DEL EXPONENTE 
+input wire LOAD, // SELECCION CARGA REGISTRO DE DESPLZAMIENTOS  
+input wire MS_1, //SELECCIONA EL MUX PARA UN VALOR DIFERENTE O IGUAL A 127 SEGUN SEA EL CASO 
 
 
 output wire Exp_out, //INIDICA SI EL EXPONENTE ES MAYOR QUE 127 
 output wire [31:0] FIXED, //CONTIENE EL RESULTADO EN COMA FIJA  
-output wire [7:0] REG3, // CONTIENE EL VALOR DEL EXPONENTE MODIFICADO 
 output wire [7:0] Exp //CONTIENE EL VALOR INICIAL DEL EXPONENTE 
 
     );
@@ -56,70 +53,62 @@ Comparador_Mayor EXP127(
         .Out(Exp_out)
         );
 
-wire [31:0] O_SR;
+wire [31:0] IN_BS;
 wire [31:0] P_RESULT;
 wire [31:0] MUX32;
 wire [31:0] NORM;
 //wire [7:0] REG3;
 wire [7:0] MUX1;
 wire [7:0] MUX2;
-wire [7:0] ADD;
-wire [7:0] SUBT;
+wire [7:0] SUBT_1;
+wire [7:0] SUBT_2;
 
-assign O_SR [31:27] = 5'b00000;
-assign O_SR [26] = 1'b1;  
-assign O_SR [25:3] = float[22:0];
-assign O_SR [2:0] = 3'b000;
+assign IN_BS [31:27] = 5'b00000;
+assign IN_BS [26] = 1'b1;  
+assign IN_BS [25:3] = float[22:0];
+assign IN_BS [2:0] = 3'b000;
 
 assign Exp = float[30:23];
 
 
-SHIFT_REG_32Bits S_REG(
-       .RST(1'b0),
-       .CLK(CLK),
-       .SL(1'b0),
-       .SR(1'b0),
-       .S(S),
-       .D(O_SR),
-       .Q(P_RESULT)
-);
+Barrel_Shifter #(.SW(32),.EW(8)) S_REG(
+        .clk(CLK),
+        .rst(1'b0),
+        .ctrl_a_i(LOAD),
+        .Shift_Value_0_i(MUX2),
+        .Shift_Data_0_i(IN_BS),
+        .FSM_left_right_i(Exp_out),
+        .N_mant_o(P_RESULT)
+        );
+        
+S_SUBT #(.P(8),.W(8)) SUBT_EXP_1 ( 
+            .A(Exp), 
+            .B(8'b01111111), 
+            .Y(SUBT_1)
+             );
 
+S_SUBT #(.P(8),.W(8)) SUBT_EXP_2 ( 
+            .A(8'b01111111), 
+            .B(Exp), 
+            .Y(SUBT_2)
+             );
+             
 Mux_2x1_8Bits  MUX2x1_1 ( 
-            .MS(MS_1), 
-            .D_0(float[30:23]), 
-            .D_1(REG3), 
+            .MS(Exp_out), 
+            .D_0(SUBT_2), 
+            .D_1(SUBT_1), 
             .D_out(MUX1)
             );
 
-S_ADD  ADD_EXP ( 
-            .A(MUX1), 
-            .B(5'b00001), 
-            .Y(ADD)
-             );
-
-S_SUBT  SUBT_EXP ( 
-            .A(MUX1), 
-            .B(5'b00001), 
-            .Y(SUBT)
-             );
-
 
 Mux_2x1_8Bits  MUX2x1_2 ( 
-            .MS(MS_2), 
-            .D_0(SUBT), 
-            .D_1(ADD), 
+            .MS(MS_1), 
+            .D_0(8'b00000000), 
+            .D_1(MUX1), 
             .D_out(MUX2)
             );
 
-REG_8Bits REG_3(
-            .CLK(EN_REG3), //RELOJ DEL SISTEMA
-            .RST(1'b0), //RESET
-            .EN(1'b1), //ENABLE
-            .D(MUX2), //ENTRADA
-            .Q(REG3) //SALIDA
-            );
-
-NORMALIZADOR_2 NORMA_V(
+NORMALIZADOR NORMA_I(
             .A(P_RESULT), //entrada al normalizador 
             .Y(NORM)//salida de la normalizacion en coma fija, coma entre el bit 30 y 29
                 );
@@ -150,4 +139,3 @@ Mux_2x1 #(.P(P)) MUX2x1_32Bits (
 //            .D_out(MUX1)
 //            );
 endmodule
-

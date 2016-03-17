@@ -185,13 +185,13 @@ LUT_Z #(.P(P),.D(D)) LUT_ARCTAN (
                         .O_D(LUT_arctan)
                         );    
 
-S_SUBT #(.P(S)) SUB_EXP_X ( 
+S_SUBT #(.P(S),.W(5)) SUB_EXP_X ( 
                         .A(X_ant[30:23]), 
                         .B(DESP), 
                         .Y(EXP_X)
                         );
                         
-S_SUBT #(.P(S)) SUB_EXP_Y ( 
+S_SUBT #(.P(S),.W(5)) SUB_EXP_Y ( 
                         .A(Y_ant[30:23]), 
                         .B(DESP), 
                         .Y(EXP_Y)

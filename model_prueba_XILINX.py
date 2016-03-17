@@ -113,14 +113,14 @@ def fixed_to_dec(FLOAT):
         y = FLOAT.replace("1", "2")
         z = y.replace("0", "1")
         F = z.replace("2", "0")
-        resultado = int(F, 2) + 1
-        resultadoP = bin(resultado)
-        FF=resultadoP.replace("0b", "000")
+        #resultado = int(F, 2) + 1
+        #resultadoP = bin(resultado)
+        #FF=resultadoP.replace("0b", "000")
         #print(F)
         #print (resultadoP)
         #print(FF)
         while cont < 32:
-            dec = dec + int(FF[cont])*(2**Iter)
+            dec = dec + int(F[cont])*(2**Iter)
             Iter = Iter - 1
             cont = cont + 1
         dec = -dec

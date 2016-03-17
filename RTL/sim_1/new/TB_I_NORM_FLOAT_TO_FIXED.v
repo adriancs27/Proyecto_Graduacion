@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 09.03.2016 16:32:47
+// Create Date: 15.03.2016 14:44:37
 // Design Name: 
-// Module Name: TB_PFLOAT_TO_PFIXED
+// Module Name: TB_I_NORM_FLOAT_TO_FIXED
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module TB_PFLOAT_TO_PFIXEDRESULT;
+module TB_I_NORM_FLOAT_TO_FIXED;
         
          reg [31:0] F;
          reg CLK; //system clock
@@ -35,7 +35,7 @@ module TB_PFLOAT_TO_PFIXEDRESULT;
     
     
 	// Instantiate the Unit Under Test (UUT)
-	PFLOAT_TO_PFIXED uut (
+	I_NORM_FLOAT_TO_FIXED uut (
         .CLK(CLK), //RELOJ DEL SISTEMA
         .F(F),
         .RST_FF(RST_FF), //system reset
@@ -61,9 +61,9 @@ module TB_PFLOAT_TO_PFIXEDRESULT;
         //F = 32'b00111100100100110111010010111100; //0.018 float 
         //F = 32'b01000000100001001100110011001101; //4.15 float
         //F = 32'b00111111100000000000000000000000; //1 float
-        //F = 32'b10111111100000000000000000000000; //-1 float 
+        F = 32'b10111111100000000000000000000000; //-1 float 
         //F = 32'b10111111100100110011001100110011; //-1.15 float 
-         F = 32'b11000001011101000000000000000000; //-15.25
+        //F = 32'b11000001011101000000000000000000; //-15.25
         //F = 32'b01000001011101000000000000000000; //15.25
         #10 RST_FF=0;
         RST_FSM_FF=0;
@@ -84,3 +84,4 @@ module TB_PFLOAT_TO_PFIXEDRESULT;
    initial forever #5 CLK = ~CLK;
 
 endmodule
+

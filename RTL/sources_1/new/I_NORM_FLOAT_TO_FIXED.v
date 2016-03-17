@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 11.03.2016 10:04:33
+// Create Date: 15.03.2016 14:21:56
 // Design Name: 
-// Module Name: PFLOAT_TO_PFIXED_V
+// Module Name: I_NORM_FLOAT_TO_FIXED
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module PFLOAT_TO_PFIXED_V(
+module I_NORM_FLOAT_TO_FIXED(
     input wire CLK, //system clock
     input wire [31:0] F, //VALOR BINARIO EN COMA FLOTANTE 
     input wire RST_FF, //system reset
@@ -30,43 +30,34 @@ module PFLOAT_TO_PFIXED_V(
     output wire [31:0] RESULT // RESULTADO FINAL 
     );
     
-wire Exp_out; 
-wire [7:0] REG3;  
+wire Exp_out;  
 wire [7:0] Exp;      
-wire EN_REG1;
-wire EN_REG3;  
-wire [1:0] S;
+wire EN_REG1; 
+wire LOAD;
 wire MS_1;
-wire MS_2;
     
-    FSM_FF FSM_FLOAT_FIXED(
+    FSM_Convert_Float_To_Fixed FSM_CONVERT_FLOAT_FIXED(
 		.CLK(CLK), //system clock
 		.RST_FF(RST_FF), //system reset
 		.RST_FSM_FF(RST_FSM_FF),
 		.Exp_out(Exp_out),
 		.Begin_FSM_FF(Begin_FSM_FF), //inicia la maquina de estados 
-		.REG3(REG3),
 		.Exp(Exp),	
-        .EN_REG1(EN_REG1),
-        .EN_REG3(EN_REG3),  
-        .S(S),
+        .EN_REG1(EN_REG1),  
+        .LOAD(LOAD),
         .MS_1(MS_1),
-        .MS_2(MS_2),
         .ACK_FF(ACK_FF)
 
 	 );
 	 
-	 FLOAT_TO_FIXED_V COPROCESADOR_FLOAT_FIXED_V(
+	 Convert_Float_To_Fixed CONVERT_FLOAT_FIXED(
         .CLK(CLK),
         .FLOAT(F),
         .EN_REG1(EN_REG1),
-        .EN_REG3(EN_REG3),  
-        .S(S),
+        .LOAD(LOAD),
         .MS_1(MS_1),
-        .MS_2(MS_2),
         .Exp_out(Exp_out),
         .FIXED(RESULT), 
-        .REG3(REG3),
         .Exp(Exp)
      
       );

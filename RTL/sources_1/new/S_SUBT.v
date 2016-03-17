@@ -19,10 +19,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module S_SUBT #(P=8) //RESTADOR EXPONENTE FORMATO PUNTO FLOTANTE EN 32 BITS
+module S_SUBT #(P=8, W=5) //RESTADOR EXPONENTE FORMATO PUNTO FLOTANTE EN 32 BITS
 (
 input wire [P-1:0] A, //ENTRADA A
-input wire [4:0] B,  //ENTRADA B
+input wire [W-1:0] B,  //ENTRADA B
 
 output wire [P-1:0] Y //SALIDA Y
 );
