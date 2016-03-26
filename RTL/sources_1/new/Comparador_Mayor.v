@@ -30,8 +30,8 @@ module Comparador_Mayor(
     
        always @(posedge CLK)
           if (A > B)
-             assign Out = 1'b1;
+              Out <= 1'b1;
           else
-             assign Out = 1'b0;
+              Out <= 1'b0;
     
 endmodule

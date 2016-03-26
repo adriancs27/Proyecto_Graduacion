@@ -19,7 +19,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module FF_D	# (parameter P = 32) //REGISTRO DE 32 BITS
+module FF_D	#(parameter P = 32) //REGISTRO DE 32 BITS
 (
 input wire CLK, //RELOJ DEL SISTEMA
 input wire RST, //RESET
@@ -28,7 +28,7 @@ input wire [P-1:0] D, //ENTRADA
 output reg [P-1:0] Q //SALIDA
 );
 
-always @(CLK, RST)
+always @(posedge CLK)
 begin
     if(RST)
         Q <= 0;

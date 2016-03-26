@@ -1,6 +1,7 @@
 import struct
 import math
 import csv
+import binascii
 
 #getBin = lambda x: x > 0 and str(bin(x))[2:] or "-" + str(bin(x))[3:]
 
@@ -35,6 +36,9 @@ P= []
 PV = []
 FIX = []
 FIXV = []
+F=[]
+FX=[]
+
 
 def InputVoltage(t):
     "This functions defines the time evolution of v"
@@ -183,6 +187,33 @@ def FixedV():
         print(fixed_to_dec(FIXV[contador]))
         contador = contador +1    
 
+
+def float_dec():
     
+    I_fixed=open('I_LINEAL.txt','r')
+       
+    lineaI=I_fixed.readline()
     
+    while lineaI!="":
+        #print lineaI
+        F.append(lineaI)
+        lineaI=I_fixed.readline()
+
+    I_fixed.close()
+
+    contador=0
+    y=F[0]
+    contador2=0
+    while contador < 1000:
+        
+        FX.append(y[contador2:contador2+32])
+        contador2 = contador2 + 33;
+        x=FX[contador]
+        FF= '001'+ str(x[10:40]) +'0000000'; 
+        if x[0] == 0:
+            print((2**(int(x[1:9],2)-127))*(fixed_to_dec(FF)+1))
+        else:
+            print(-1*(2**(int(x[1:9],2)-127))*(fixed_to_dec(FF)+1))
+        contador = contador +1   
+
     

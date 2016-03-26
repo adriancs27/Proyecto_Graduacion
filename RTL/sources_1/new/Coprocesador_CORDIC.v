@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Coprocesador_CORDIC # (parameter P = 32, parameter S=8, parameter D=5, parameter W_Exp = 8, parameter W_Sgf = 23,
+module Coprocesador_CORDIC #(parameter P = 32, parameter S=8, parameter D=5, parameter W_Exp = 8, parameter W_Sgf = 23,
 		parameter S_Exp = 9) (
     input wire [31:0] T,
     input wire CLK, //RELOJ DEL SISTEMA

@@ -9,56 +9,30 @@
 \chapter{Introducción}
 \label{chp:intro}
 
-En la \nt{introducción} deben quedar completamente claros los siguientes
-aspectos, cuyo significado depende del tipo concreto de tesis:
+Hoy en día es cada vez más común el tema de las energías limpias, dentro de estas: eólica y solar. La instalación de suministros con paneles fotovoltaicos ha llegado a ser una tendencia en Costa Rica, estos son sistemas de autoconsumo de energía, y a su vez se utilizan para vender energía a otras empresas. 
 
-\begin{compactitem}
-\item Contexto
-\item Problema
-\item Esbozo de solución
-\item Objetivos y estructura
-\end{compactitem}
+Un sistema de abastecimiento de energía solar, requiere de paneles solares, acumuladores de energía, inversores (conversión de corriente continua en corriente alterna) y reguladores, sin embargo actualmente las redes de suministros no cuentan con un sistema que les regule la tensión que se necesita para ubicarse en el punto de operación de potencia máxima, esto debido a que la corriente y la tensión del panel están variando constantemente respecto a la temperatura e irradiancia del medio en el que se encuentra, de manera que si la tensión varia, la potencia asociada a esa tensión también varía, lo que se busca es un punto de tensión donde se obtenga la máxima potencia.
+ 
+Debido a la importancia de la eficiencia energética en el campo de la electrónica, se desarrolló parte de un sistema en donde se puede aprovechar de una mejor manera la energía, este tema es de suma importancia en la producción de energía, principalmente en los paneles fotovoltaicos, se debe aprovechar las mejores condiciones ambientales y poder acoplar el sistema para una máxima producción de energía, el desarrollo de este proyecto se basa en aumentar la eficiencia del sistema completo para un panel previamente escogido, se utilizará un panel modelo KS10T de la empresa KYOCERA SOLAR, para esto se realiza una realimentación con un dispositivo que regula la tensión máxima que debe tener el panel. Anteriormente se realizó un estimador de parámetros por parte de Clevis Lozano estudiante del Instituto Tecnológico de Costa Rica, sin embargo este recibe en la entrada cuantificaciones lineales para calcular los parámetros requeridos, la curva característica de una celda solar no tiene un comportamiento lineal, si se requiere estimar parámetros a partir de la corriente y tensión de este, se deben linealizar-normalizar las entradas y desnormalizar-deslinealizar las salidas, para el modelo del panel se analizaron cuatro tipos de configuraciones desde la más simple a la más compleja, para este proceso se desarrolló un sistema de verificación en un programa de alto nivel (utilizando Python) para poder comparar y tener una referencia para la descripción en hardware de bajo nivel (verilog). 
 
-El contexto corresponde al entorno donde se desarrolla el proyecto, que puede
-ser el área general de aplicación, un dominio de problemas, etc. El problema
-concreto se sintetiza usualmente en una frase o pregunta. Esta pregunta debería
-ser una consecuencia a la que se llega después de realizar el desarrollo del
-contexto. Del planteamiento del problema se deriva cuál es el objetivo del
-trabajo en particular, que a su vez debe conducir al lector de forma natural al
-esbozo de la solución del problema a tratar en la tesis. Generalmente para
-aclarar la solución se hace uso de un diagrama de bloques o diagrama de flujo
-general, es decir, desde un nivel de abstracción alto, donde no sea necesario
-entrar en detalles técnicos. Usualmente este diagrama y su breve explicación
-dictan cuál debe ser la estructura del resto del tesis, que es mencionada
-siempre al final de la introducción.
+El proyecto Linealizador-Normalizador se realizó en el Instituto Tecnológico de Costa Rica, Escuela de Ingeniería Electrónica, con el coordinador del SESLab Dr. Carlos Meza, y el coordinador del DCILab Dr. Alfonso Chacón estos laboratorios se encargan de presentar propuestas de sistemas electrónicos de gran utilidad para  para el desarrollo tecnológico y sostenibilidad, de manera que los recursos sean aprovechados de la mejor forma, brindan soluciones innovadoras con energías limpias, enfatizándose en el uso de paneles solares, motores eléctricos, circuitos integrados, diseño digital, entre otros. 
 
-Una buena introducción debe lograr que el lector tenga interés de leer el resto
-del tesis.
-
-Es recomendable dividir la tesis en secciones, nombradas cada una de acuerdo a
-su contenido. \textbf{Jamás} utilice los nombres de la guía como
-``\emph{Problema existente e importancia de su solución}'', sino algo como ``La
-deforestación en Costa Rica'' o lo que se adecúe a su problema en particular.
-
-Recuerde que en español solo la primera letra del título va en mayúscula
-(exceptuando nombres propios, por supuesto).
 
 \section{Objetivos y estructura del documento}
 
 \index{objetivos}
-Esta plantilla LaTeX tiene como objetivo simplificar la construcción del
-documento de tesis, presentando ejemplo de figuras y tablas, así como otorgar
-una plataforma de compilación en GNU/Linux que simplifique la administración de
-todo el documento.
 
-La última sección de la introducción usualmente sí tiene un título estandar que
-es ``Objetivos y estructura del documento'', donde se presentan \emph{en prosa}
-los objetivos general y específicos que ha tenido el proyecto de graduación,
-así como la estructura de la tesis (por ejemplo, ``en el siguiente capítulo se
-esbozan los fundamentos teóricos necesarios para explicar en el
-capítulo~\ref{ch:solucion} la propuesta realizada$\ldots$''
+El objetivo general para este proyecto se basa en desarrollar una unidad de linealización y normalización para un estimador de parámetros Corriente-Tensión de un panel fotovoltaico, para esto se creo un circuito que linealice el modelo del panel fotovoltaico por medio de una operación logarítmica con parámetros de entrada Tensión-Corriente, generando parámetros lineales de salida ‘y’ y ’z’, estos parámetros de salida poseen formato IEEE 754 (punto flotante), por lo que se implemento un circuito que convierte estos parámetros de punto flotante a punto fijo. Estos parámetros se requieren en las entradas del estimador por que se debió realizar una unidad de normalización para crear una interface entre ambos circuitos y poder acoplar las salidas del linealizador con las entradas del estimador.
 
-%%% Local Variables: 
-%%% mode: latex
-%%% TeX-master: "main"
-%%% End: 
+ \begin{figure}[H]
+  \centering
+    \includegraphics[scale=0.6]{./DiagramaSOL.png}
+    \rule{35em}{0.5pt}
+  \caption[Diagrama de solución]{Diagrama de solución}
+  \label{fig:DSOL}
+\end{figure}
+
+
+
+
+
