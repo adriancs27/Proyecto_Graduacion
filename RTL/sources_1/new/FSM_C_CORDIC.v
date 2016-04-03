@@ -23,8 +23,7 @@
 module FSM_C_CORDIC(
 		//INPUTS
 		input wire CLK, //system clock
-		input wire RST_LN, //system reset
-		input wire RST_FSM_LN,// RESET PARA FSM 
+		input wire RST_LN, //system reset 
 		input wire ACK_ADD_SUBT, // RECIBE SI LA SUMA EN FLOTANTE SE EJECUTO 
 		input wire Begin_FSM_LN, //inicia la maquina de estados 
 		input wire [4:0] CONT_ITER, //LLEVA LA CUENTA DE LA ITERACIONES 
@@ -45,8 +44,13 @@ module FSM_C_CORDIC(
         output reg EN_REG2, // ENABLE PARA EL REGISTRO CON LOS VALORES DESPLAZADOS DE LA SEGUNDA ETAPA 
         output reg CLK_CDIR, //CLK PARA EL CONTADOR DE ITERACIONES 
         output reg EN_REG2XYZ,// ENABLE PARA EL VALOR ANTERIOR DE XYZ DE SEGUNDA ETAPA 
-        output reg ACK_LN //ACK PARA SABER SI LA OPERACION LN YA SE REALIZO 
-
+        output reg ACK_LN, //ACK PARA SABER SI LA OPERACION LN YA SE REALIZO 
+        //registros de selectores
+        output reg EN_ADDSUBT,
+        output reg EN_MS1,
+        output reg EN_MS2,
+        output reg EN_MS3,
+        output reg EN_MS4
 	 );
 
 
@@ -106,247 +110,249 @@ always @*
     Begin_SUM = 0;
     ACK_LN = 0;
     CLK_CDIR = 0;
+    RST = 0;
+    MS_1 = 0;
+    MS_2 = 2'b00;
+    MS_3 = 2'b00;
+    MS_4 = 2'b00;
+    
+    ADD_SUBT = 0;
+    EN_ADDSUBT = 0;
+    EN_MS1 = 0;
+    EN_MS2 = 0;
+    EN_MS3 = 0;
+    EN_MS4 = 0;
+    //nuevos estados 
     
     
-	case(state_reg)
-		a: 
-		begin
-			
-			if(Begin_FSM_LN) 
-			    begin
-			    RST = 1; 
-			    ACK_LN = 0;   
-				state_next = b;
-				end
-			else
-                state_next = a;
-		end
-		
-		b:
-		begin
-			RST = 0;
-			MS_1 = 1;
-			state_next = c;
-		end
-		
-		
-		c:
-		begin
-			EN_REG3 = 1;
-			MS_4 = 2'b10;
-			ADD_SUBT = 0;
-			state_next = d;
-		end
-	
-		d:
-		begin
-			Begin_SUM = 1;
-			state_next = e;
-		end
-		
-		e:
-        begin
-            Begin_SUM = 0;
-            state_next = f;
-        end
-        
-        
-		f:
-		begin
-			
-			if(ACK_ADD_SUBT)
-			    begin 
-			    EN_REG1X = 1;
-                EN_REG1Z = 1;
-				state_next = g;
-				end
-			else
-				state_next = f;
-		end
-		
-		g:
-		begin
-		    EN_REG1X = 0;
-            EN_REG1Z = 0;
-			ADD_SUBT = 1;
-			state_next = h;
-		end
-		
-		h:
-        begin
-            Begin_SUM = 1;
-            state_next = i;
-        end
+    
+case(state_reg)
+            a: 
+            begin
                 
-        i:
-        begin
-            Begin_SUM = 0;
-            state_next = j;
-        end
-		
-		j:
-        begin
-                        
-            if(ACK_ADD_SUBT)
-                begin 
-                EN_REG1Y = 1;
-                MS_1 = 0;
-                MS_4 = 2'b01;
+                if(Begin_FSM_LN) 
+                    begin
+                    RST = 1; 
+                    state_next = b;
+                    end
+                else
+                    state_next = a;
+            end
+            
+            b:
+            begin
+                MS_1 = 1;
+                EN_MS1 = 1;
+                MS_4 = 2'b10;
+                EN_MS4 = 1;
                 ADD_SUBT = 0;
-                state_next = k;
-                end
-            else
-               state_next = j;
-        end
-        
-        k:
-        begin
-            MS_2 = 2'b10;
-            EN_REG1Y = 0;
-            EN_REG1Z = 0;
-            EN_REG2 = 1;
-            MS_3 = 2'b10;
-            state_next = l;
-        end
-
-        l:
-        begin
-            EN_REG2XYZ = 1;
-            EN_REG2 = 0;
-            state_next = m;
-        end
-        
-        m:
-        begin
-            Begin_SUM = 1;
-            EN_REG2XYZ = 0;
-            CLK_CDIR = 1;
-            MS_2 = 2'b01;
-            state_next = n;
-        end
-
-        n:
-        begin
-            Begin_SUM = 0;
-            CLK_CDIR = 0;
-            state_next = o;
-        end 
-        
-		o:
-        begin
-                        
-            if(ACK_ADD_SUBT)
-               begin 
-               EN_REG1X = 1;
-               EN_REG2XYZ = 1;
-               MS_3 = 2'b01;
-               state_next = p;
-               end
-            else
-               state_next = o;
-        end 
-        
-        p:
-        begin
-            Begin_SUM = 1;
-            EN_REG1X = 0;
-            EN_REG2XYZ = 0;
-            MS_2 = 2'b00;
-            state_next = q;
-        end          
-        
-        q:
-        begin
-            Begin_SUM = 0;
-            state_next = r;
-        end
-        
-		r:
-        begin
-                       
-            if(ACK_ADD_SUBT)
-                begin 
-                EN_REG1Y = 1;
-                EN_REG2XYZ = 1;
-                MS_3 = 2'b00;
-                state_next = s;
-                end
-            else
-               state_next = r;
-        end  
-
-        s:
-        begin
-            Begin_SUM = 1;
-            EN_REG1Y = 0;
-            EN_REG2XYZ = 0;
-            state_next = t;
-        end          
-        
-        t:
-        begin
-            Begin_SUM = 0;
-            state_next = u;
-        end  
-        
-		u:
-        begin
+                EN_ADDSUBT = 1;//
+                state_next = c;
+            end
             
-            if(ACK_ADD_SUBT)
-                begin 
+            
+            c:
+            begin
+                EN_REG3 = 1;
+                state_next = d;
+            end
+        
+            d:
+            begin
+                Begin_SUM = 1;
+                state_next = e;
+            end
+            
+            e:
+            begin
+                
+                if(ACK_ADD_SUBT)
+                    begin 
+                    EN_REG1X = 1;
+                    ADD_SUBT = 1;
+                    EN_ADDSUBT = 1;
+                    state_next = f;
+                    end
+                else
+                    state_next = e;
+            end
+            
+            f:
+            begin
                 EN_REG1Z = 1;
-                state_next = v;
-                end
-            else
-               state_next = u;
-        end        
-
-		v:
-        begin
-                       
-            if(CONT_ITER == 5'b01111 ) //15 iteraciones
-                begin 
-                MS_4 = 2'b00;
-                ADD_SUBT = 1;
-                EN_REG1Z = 0; 
-                state_next = w;
-                end
-            else
-               state_next = k;
-        end  	
-        
-        w:
-        begin
-            Begin_SUM = 1;
-            state_next = x;
-        end          
-        
-        x:
-        begin
-            Begin_SUM = 0;
-            state_next = y;
-        end 
- 
-		y:
-        begin
+                state_next = g;
+            end
             
-            if(ACK_ADD_SUBT)
-               begin 
-               EN_REG4 = 1;
-               state_next = z;
-               end
-            else
-               state_next = y;
-        end 
+            g:
+            begin
+                Begin_SUM = 1;
+                state_next = h;
+            end
+                             
+            h:
+            begin
+                            
+                if(ACK_ADD_SUBT)
+                    begin 
+                    EN_REG1Y = 1;
+                    MS_1 = 0;
+                    EN_MS1 = 1;
+                    MS_4 = 2'b01;
+                    EN_MS4 = 1;
+                    ADD_SUBT = 0;
+                    EN_ADDSUBT = 1;//
+                    state_next = i;
+                    end
+                else
+                   state_next = h;
+            end
+            
+            i:
+            begin
+                MS_2 = 2'b10;
+                EN_MS2 = 1;
+                MS_3 = 2'b10;
+                EN_MS3 = 1;
 
-        z:
-        begin
-            EN_REG4 = 0;
-            ACK_LN = 1;
-            if(RST_FSM_LN)
-                state_next = a;
-        end
-	endcase
+                state_next = j;
+            end
+            
+                        
+            j:
+            begin
+                EN_REG2 = 1;
+                state_next = k;
+            end
+    
+            k:
+            begin
+                EN_REG2XYZ = 1;
+                state_next = l;
+            end
+            
+            l:
+            begin
+                Begin_SUM = 1;
+                EN_MS2 = 1;
+                CLK_CDIR = 1;
+                MS_2 = 2'b01;
+                state_next = m;
+            end
+
+            m:
+            begin
+                            
+                if(ACK_ADD_SUBT)
+                   begin 
+                   EN_REG1X = 1;
+                   MS_3 = 2'b01;
+                   EN_MS3 = 1;
+                   state_next = n;
+                   end
+                else
+                   state_next = m;
+            end 
+            ///////////////////////////////////////
+            n:
+            begin
+                EN_REG2XYZ = 1;
+                state_next = o;
+            end          
+            
+            o:
+            begin
+                Begin_SUM = 1;
+                EN_MS2 = 1;
+                MS_2 = 2'b00;
+                state_next = p;
+            end
+            
+            p:
+            begin
+                           
+                if(ACK_ADD_SUBT)
+                    begin 
+                    EN_REG1Y = 1;
+                    MS_3 = 2'b00;
+                    EN_MS3 = 1;
+                    state_next = q;
+                    end
+                else
+                   state_next = p;
+            end  
+    
+            q:
+            begin
+                EN_REG2XYZ = 1;
+                state_next = r;
+            end          
+            
+            r:
+            begin
+                Begin_SUM = 1;
+                state_next = s;
+            end  
+            
+            s:
+            begin
+                
+                if(ACK_ADD_SUBT)
+                    begin 
+                    EN_REG1Z = 1;
+                    state_next = t;
+                    end
+                else
+                   state_next = s;
+            end        
+    
+            t:
+            begin
+                           
+                if(CONT_ITER == 5'b01111 ) //15 iteraciones
+                    begin 
+                    MS_4 = 2'b00;
+                    EN_MS4 = 1;
+                    ADD_SUBT = 1;
+                    EN_ADDSUBT = 1;  
+                    state_next = u;
+                    end
+                else
+                   state_next = i;
+            end      
+            
+            u:
+            begin
+               state_next = v;
+            end          
+            
+            v:
+            begin
+                Begin_SUM = 1;
+                state_next = w;
+            end 
+     
+            w:
+            begin
+                
+                if(ACK_ADD_SUBT)
+                   begin 
+                   EN_REG4 = 1;
+                   state_next = x;
+                   end
+                else
+                   state_next = w;
+            end 
+    
+            x:
+            begin
+                ACK_LN = 1;
+                if(RST_LN)
+                    begin 
+                    RST = 1; 
+                    state_next = a;
+                    end
+            end
+        endcase
 end
 
 	

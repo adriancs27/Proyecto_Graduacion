@@ -47,20 +47,20 @@ parameter ROM_WIDTH = 32;
 		// Initialize Inputs
 		CLK = 0;
 		EN_ROM1 = 0;
-		ADRS = 5'b00000;
+		ADRS = 5'b00110;
 		
-		#10 EN_ROM1 = 1;
+		#100 EN_ROM1 = 1;
 		
 //		// Wait 100 ns for global reset to finish
         
-		#10 ADRS = 5'b00110;
+		#50 ADRS = 5'b00000;
         
         
-        #10 ADRS = 5'b00111;
+        #50 ADRS = 5'b00111;
         
-        #10 ADRS = 5'b01000;
+        #50 ADRS = 5'b01000;
         
-        #10 ADRS = 5'b11110;
+        #50 ADRS = 5'b11110;
     end
 
 

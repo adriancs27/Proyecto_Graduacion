@@ -115,6 +115,8 @@ wire [P-1:0] P_RESULT;
 // ASIGNA VALOR DE LA ITERACION A LA DIRECCION DE LAS LUT 
 assign CONT_ITERA = DIR_LUT;
 
+//ENABLE ROMS 
+
 Mux_2x1 #(.P(P)) MUX2x1_1 ( 
     .MS(MS_1), 
     .D_0(P_RESULT), 
@@ -123,25 +125,25 @@ Mux_2x1 #(.P(P)) MUX2x1_1 (
     );
 
 FF_D #(.P(P)) REG1_X ( 
-    .CLK(EN_REG1X), 
+    .CLK(CLK), 
     .RST(RST),
-    .EN(1'b1), 
+    .EN(EN_REG1X), 
     .D(P_RESULT), 
     .Q(X_ant)
     );
 
 FF_D #(.P(P)) REG1_Y ( 
-    .CLK(EN_REG1Y), 
+    .CLK(CLK), 
     .RST(RST),
-    .EN(1'b1), 
+    .EN(EN_REG1Y), 
     .D(P_RESULT), 
     .Q(Y_ant)
     );
     
 FF_D #(.P(P)) REG1_Z ( 
-        .CLK(EN_REG1Z), 
+        .CLK(CLK), 
         .RST(RST),
-        .EN(1'b1), 
+        .EN(EN_REG1Z), 
         .D(MUX1), 
         .Q(Z_ant)
         );
@@ -155,9 +157,9 @@ Mux_3x1 #(.P(P)) MUX3x1_2 (
     );
     
 FF_D #(.P(P)) REG2_XYZ ( 
-            .CLK(EN_REG2XYZ), 
+            .CLK(CLK), 
             .RST(RST),
-            .EN(1'b1), 
+            .EN(EN_REG2XYZ), 
             .D(MUX2), 
             .Q(REG2XYZ)
             );
@@ -221,25 +223,25 @@ assign Z_act[30:0] = LUT_arctan[30:0];
 
 
 FF_D #(.P(P)) REG2_X ( 
-            .CLK(EN_REG2), 
+            .CLK(CLK), 
             .RST(RST),
-            .EN(1'b1), 
+            .EN(EN_REG2), 
             .D(X_act), 
             .Q(REG2X)
             ); 
             
 FF_D #(.P(P)) REG2_Y ( 
-            .CLK(EN_REG2), 
+            .CLK(CLK), 
             .RST(RST),
-            .EN(1'b1), 
+            .EN(EN_REG2), 
             .D(Y_act), 
             .Q(REG2Y)
             ); 
 
 FF_D #(.P(P)) REG2_Z ( 
-            .CLK(EN_REG2), 
+            .CLK(CLK), 
             .RST(RST),
-            .EN(1'b1), 
+            .EN(EN_REG2), 
             .D(Z_act), 
             .Q(REG2Z)
             );   
@@ -264,9 +266,9 @@ assign T_SUM[30:23] = EXP_T;
 assign T_SUM[22:0] = T[22:0];
 
 FF_D #(.P(P)) REG_3 ( 
-            .CLK(EN_REG3), 
+            .CLK(CLK), 
             .RST(RST),
-            .EN(1'b1), 
+            .EN(EN_REG3), 
             .D(T_SUM), 
             .Q(REG3)
             ); 
@@ -303,9 +305,9 @@ FPU_Add_Subtract_Function #(.W(P),.W_Exp(W_Exp),.W_Sgf(W_Sgf),.S_Exp(S_Exp)) SUM
 		);
 		
 FF_D #(.P(P)) REG_4 ( 
-                    .CLK(EN_REG4), 
+                    .CLK(CLK), 
                     .RST(RST),
-                    .EN(1'b1), 
+                    .EN(EN_REG4), 
                     .D(P_RESULT), 
                     .Q(RESULT)
                     );

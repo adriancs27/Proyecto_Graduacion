@@ -28,7 +28,6 @@ module TB_LINEALIZADOR;
          reg [P-1:0] T;
          reg CLK; //system clock
 		 reg RST_LN; //system reset
-		 reg RST_FSM_LN;
 		 reg Begin_FSM_LN;
 		 
 		 //OUTPUT SIGNALS
@@ -45,7 +44,6 @@ module TB_LINEALIZADOR;
         .CLK(CLK), //RELOJ DEL SISTEMA
         .T(T),
         .RST_LN(RST_LN), //system reset
-        .RST_FSM_LN(RST_FSM_LN),
         .Begin_FSM_LN(Begin_FSM_LN), //inicia la maquina de estados 
         .ACK_LN(ACK_LN),
         .O_F(O_F),
@@ -68,9 +66,11 @@ module TB_LINEALIZADOR;
 		// Initialize Inputs
 		CLK = 0;	
         Begin_FSM_LN = 0;
-        RST_LN = 1;
-        RST_FSM_LN=1;
+        
         T = 0;
+        RST_LN = 0;
+        
+        #40 RST_LN = 1;
         //T = 32'b00111110101000000000000000000000;//0.3125//00111100001000111101011100001010; // 0.01
         //T = 32'b00111111000000000000000000000000; //0.5	
         //T = 32'b00111110000110011001100110011010; //0.15
@@ -83,8 +83,7 @@ module TB_LINEALIZADOR;
         Cont_CLK = 0;
         Recept = 1;
         
-        #30 RST_LN=0;
-        RST_FSM_LN=0;
+        #100 RST_LN=0;
         
         
     end 
@@ -100,8 +99,10 @@ always @(posedge CLK)
         begin
         if(RST_LN) 
             begin
-            contador = 0;
-            Cont_CLK = 0; 
+            //contador = 0;
+            Cont_CLK = 0;
+            #50 RST_LN = 0;
+             
             end
         else 
             begin
@@ -117,12 +118,12 @@ always @(posedge CLK)
 					   Begin_FSM_LN = 0;
                        T = Array_IN_I[contador];
                        Cont_CLK = Cont_CLK + 1;
-					   RST_FSM_LN = 0;
+					   RST_LN = 0;
                     end
                 else 
                     if(Cont_CLK ==2) 
                         begin
-					       RST_FSM_LN = 0;
+					       RST_LN = 0;
 					       Begin_FSM_LN = 1;
 					       Cont_CLK = Cont_CLK +1 ;
 				        end 
@@ -130,13 +131,13 @@ always @(posedge CLK)
                     if(Cont_CLK ==2500) 
                         begin
                             contador = contador + 1;
-                            RST_FSM_LN = 1;
+                            RST_LN = 1;
             				Cont_CLK = 0;
                         end
  
                 else 
                     begin
-					    RST_FSM_LN = 0;
+					    RST_LN = 0;
                         Cont_CLK = Cont_CLK + 1;
                         Begin_FSM_LN = 0;
                     end

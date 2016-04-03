@@ -25,7 +25,7 @@ El circuito realizado para la linealización se basa en el formato IEEE 754, sin
   \label{fig:NORM}
 \end{figure} 
 
-Como se observa en la figura \ref{fig:NORM}, la etapa de conversión de formatos contiene un comparador, este se utiliza para saber si el numero contiene un exponente mayor o menor que 127, el numero 127 indica un exponente de 0, si es mayor la bandera de salida del comparador $\ EXP\_Out = 1$ , se debe realizar la operación $\ EXP - 127$, en caso contrario la bandera es 0 y la operación es $\ 127 - exp$, estas operaciones indican la cantidad de desplzamientos que se deben realizar en el Barrel shifter en donde la bandera $\ EXP\_Out $ indica la dirección de los desplazamientos. 
+Como se observa en la figura \ref{fig:NORM}, la etapa de conversión de formatos contiene un comparador, este se utiliza para saber si el numero contiene un exponente mayor o menor que 127, el numero 127 indica un exponente de 0, si es mayor la bandera de salida del comparador $\ EXP\_Out = 1$ , se debe realizar la operación $\ EXP - 127$, en caso contrario la bandera es 0 y la operación es $\ 127 - EXP$, estas operaciones indican la cantidad de desplzamientos que se deben realizar en el Barrel shifter en donde la bandera $\ EXP\_Out $ indica la dirección de los desplazamientos. 
 
 La etapa de normalización posee un multiplicador en punto fijo, las entradas de este contienen el valor convertido y una constante de normalización, esta constante se calcula en la siguiente ecuación: 
       

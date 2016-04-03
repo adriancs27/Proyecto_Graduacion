@@ -34,7 +34,7 @@ parameter P = 32;
     
     
 	// Instantiate the Unit Under Test (UUT)
-	FF_D uut (
+	FF_D #(.P(P)) uut (
 		.CLK(CLK),
 		.RST(RST), 
 		.EN(EN),

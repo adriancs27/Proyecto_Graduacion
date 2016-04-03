@@ -1,10 +1,11 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: ITCR
-// Engineer: ADRIAN CERVANTES S
+// Company: 
+// Engineer: 
 // 
-// 
-// Module Name: FF_D
+// Create Date: 29.03.2016 11:44:04
+// Design Name: 
+// Module Name: FF_D_N
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -19,16 +20,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module FF_D	#(parameter P = 32) //REGISTRO DE 32 BITS
-(
+module FF_D_N(
 input wire CLK, //RELOJ DEL SISTEMA
 input wire RST, //RESET
 input wire EN, //ENABLE
-input wire [P-1:0] D, //ENTRADA
-output reg [P-1:0] Q //SALIDA
+input wire D, //ENTRADA
+output reg Q //SALIDA
 );
 
-always @(posedge CLK, posedge RST)
+always @(negedge CLK)
 begin
     if(RST)
         Q <= 0;

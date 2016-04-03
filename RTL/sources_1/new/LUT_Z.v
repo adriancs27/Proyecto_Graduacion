@@ -66,4 +66,7 @@ always @(posedge CLK)
             default:  O_D <= 32'b00000000000000000000000000000000;
          endcase	 
          
+        else
+            O_D <= 32'b00000000000000000000000000000000;
+         
 endmodule

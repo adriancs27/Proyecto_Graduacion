@@ -36,9 +36,10 @@ output wire [7:0] Exp //CONTIENE EL VALOR INICIAL DEL EXPONENTE
 
 
 parameter P = 32;
+parameter W = 8;
 wire [31:0] float; 
 
-FF_D #(.P(P)) REG_FLOAT ( 
+FF_D #(.P(P)) REG_FLOAT_I ( 
         .CLK(EN_REG1), 
         .RST(1'b0),
         .EN(1'b1), 
@@ -46,7 +47,7 @@ FF_D #(.P(P)) REG_FLOAT (
         .Q(float)
         );
 
-Comparador_Mayor EXP127(
+Comparador_Mayor EXP127_I(
         .CLK(CLK),
         .A(float[30:23]),
         .B(8'b01111111),
@@ -71,7 +72,7 @@ assign IN_BS [2:0] = 3'b000;
 assign Exp = float[30:23];
 
 
-Barrel_Shifter #(.SW(32),.EW(8)) S_REG(
+Barrel_Shifter #(.SW(32),.EW(8)) S_REG_I(
         .clk(CLK),
         .rst(1'b0),
         .ctrl_a_i(LOAD),
@@ -81,19 +82,19 @@ Barrel_Shifter #(.SW(32),.EW(8)) S_REG(
         .N_mant_o(P_RESULT)
         );
         
-S_SUBT #(.P(8),.W(8)) SUBT_EXP_1 ( 
-            .A(Exp), 
+S_SUBT #(.P(W),.W(W)) SUBT_EXP_1_I ( 
+            .A(float[30:23]), 
             .B(8'b01111111), 
             .Y(SUBT_1)
              );
 
-S_SUBT #(.P(8),.W(8)) SUBT_EXP_2 ( 
+S_SUBT #(.P(W),.W(W)) SUBT_EXP_2_I ( 
             .A(8'b01111111), 
-            .B(Exp), 
+            .B(float[30:23]), 
             .Y(SUBT_2)
              );
              
-Mux_2x1_8Bits  MUX2x1_1 ( 
+Mux_2x1_8Bits  MUX2x1_1_I ( 
             .MS(Exp_out), 
             .D_0(SUBT_2), 
             .D_1(SUBT_1), 
@@ -101,7 +102,7 @@ Mux_2x1_8Bits  MUX2x1_1 (
             );
 
 
-Mux_2x1_8Bits  MUX2x1_2 ( 
+Mux_2x1_8Bits  MUX2x1_2_I ( 
             .MS(MS_1), 
             .D_0(8'b00000000), 
             .D_1(MUX1), 
@@ -113,15 +114,15 @@ NORMALIZADOR NORMA_I(
             .Y(NORM)//salida de la normalizacion en coma fija, coma entre el bit 30 y 29
                 );
                 
-SUBT_32Bits  SUBT_RESULT ( 
-            .A(0), 
+SUBT_32Bits  SUBT_RESULT_I ( 
+            .A(32'b00000000000000000000000000000000), 
             .B(NORM), 
             .Y(MUX32)
              );
 
 //assign MUX32 = P_RESULT ^ 32'b11111111111111111111111111111111;
 
-Mux_2x1 #(.P(P)) MUX2x1_32Bits ( 
+Mux_2x1 #(.P(P)) MUX2x1_32Bits_I ( 
     .MS(float[31]), 
     .D_0(NORM), 
     .D_1(MUX32), 

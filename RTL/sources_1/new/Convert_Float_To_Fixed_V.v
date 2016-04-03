@@ -28,6 +28,7 @@ input wire LOAD, // SELECCION CARGA REGISTRO DE DESPLZAMIENTOS
 input wire MS_1, //SELECCIONA EL MUX PARA UN VALOR DIFERENTE O IGUAL A 127 SEGUN SEA EL CASO 
 
 
+
 output wire Exp_out, //INIDICA SI EL EXPONENTE ES MAYOR QUE 127 
 output wire [31:0] FIXED, //CONTIENE EL RESULTADO EN COMA FIJA  
 output wire [7:0] Exp //CONTIENE EL VALOR INICIAL DEL EXPONENTE 
@@ -36,7 +37,24 @@ output wire [7:0] Exp //CONTIENE EL VALOR INICIAL DEL EXPONENTE
 
 
 parameter P = 32;
-wire [31:0] float; 
+wire [31:0] float;
+wire [7:0] exp; 
+
+wire [31:0] IN_BS;
+wire [31:0] P_RESULT;
+wire [31:0] MUX32;
+wire [31:0] NORM;
+//wire [7:0] REG3;
+wire [7:0] MUX1;
+wire [7:0] MUX2;
+wire [7:0] SUBT_1;
+wire [7:0] SUBT_2;
+
+assign IN_BS [31:27] = 5'b00000;
+assign IN_BS [26] = 1'b1;  
+assign IN_BS [25:3] = float[22:0];
+assign IN_BS [2:0] = 3'b000;
+assign Exp = float[30:23];
 
 FF_D #(.P(P)) REG_FLOAT ( 
         .CLK(EN_REG1), 
@@ -53,22 +71,9 @@ Comparador_Mayor EXP127(
         .Out(Exp_out)
         );
 
-wire [31:0] IN_BS;
-wire [31:0] P_RESULT;
-wire [31:0] MUX32;
-wire [31:0] NORM;
-//wire [7:0] REG3;
-wire [7:0] MUX1;
-wire [7:0] MUX2;
-wire [7:0] SUBT_1;
-wire [7:0] SUBT_2;
 
-assign IN_BS [31:27] = 5'b00000;
-assign IN_BS [26] = 1'b1;  
-assign IN_BS [25:3] = float[22:0];
-assign IN_BS [2:0] = 3'b000;
 
-assign Exp = float[30:23];
+
 
 
 Barrel_Shifter #(.SW(32),.EW(8)) S_REG(
@@ -82,14 +87,14 @@ Barrel_Shifter #(.SW(32),.EW(8)) S_REG(
         );
         
 S_SUBT #(.P(8),.W(8)) SUBT_EXP_1 ( 
-            .A(Exp), 
+            .A(float[30:23]), 
             .B(8'b01111111), 
             .Y(SUBT_1)
              );
 
 S_SUBT #(.P(8),.W(8)) SUBT_EXP_2 ( 
             .A(8'b01111111), 
-            .B(Exp), 
+            .B(float[30:23]), 
             .Y(SUBT_2)
              );
              
@@ -114,7 +119,7 @@ NORMALIZADOR_2 NORMA_V(
                 );
                 
 SUBT_32Bits  SUBT_RESULT ( 
-            .A(0), 
+            .A(32'b00000000000000000000000000000000), 
             .B(NORM), 
             .Y(MUX32)
              );

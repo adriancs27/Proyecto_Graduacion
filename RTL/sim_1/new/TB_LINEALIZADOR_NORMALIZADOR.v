@@ -29,7 +29,6 @@ module TB_LINEALIZADOR_NORMALIZADOR;
          reg [P-1:0] V;
          reg CLK; //system clock
          reg RST_LN_FF;
-		 reg RST_FSM_LN_FF;
 		 reg Begin_FSM_I;
 		 reg Begin_FSM_V;
 		 
@@ -49,8 +48,7 @@ module TB_LINEALIZADOR_NORMALIZADOR;
         .CLK(CLK),
         .I(I),
         .V(V),
-        .RST_LN_FF(RST_FSM_LN_FF),
-        .RST_FSM_LN_FF(RST_FSM_LN_FF),
+        .RST_LN_FF(RST_LN_FF),
         .Begin_FSM_I(Begin_FSM_I),
         .Begin_FSM_V(Begin_FSM_V),
         .ACK_I(ACK_I),
@@ -74,10 +72,10 @@ module TB_LINEALIZADOR_NORMALIZADOR;
 		CLK = 0;	
         Begin_FSM_I = 0;
         Begin_FSM_V = 0;
-        RST_LN_FF = 1;
-        RST_FSM_LN_FF=1;
         I = 0;
         V = 0;
+        
+        #30 RST_LN_FF = 1;
         //T = 32'b00111110101000000000000000000000;//0.3125//00111100001000111101011100001010; // 0.01
         //T = 32'b00111111000000000000000000000000; //0.5	
         //T = 32'b00111110000110011001100110011010; //0.15
@@ -91,8 +89,7 @@ module TB_LINEALIZADOR_NORMALIZADOR;
         Cont_CLK = 0;
         Recept = 1;
         
-        #30 RST_LN_FF=0;
-        RST_FSM_LN_FF=0;
+        #100000000 RST_LN_FF=0;
         
         
     end 
@@ -109,8 +106,11 @@ always @(posedge CLK)
         begin
         if(RST_LN_FF) 
             begin
-            contador = 0;
-            Cont_CLK = 0; 
+            //contador = 0;
+            Cont_CLK = 0;
+             
+            #100 RST_LN_FF = 0;
+            
             end
         else 
             begin
@@ -124,17 +124,18 @@ always @(posedge CLK)
                 begin
                 if(Cont_CLK ==1) 
                     begin
+                    
 					   Begin_FSM_I = 0;
 					   Begin_FSM_V = 0;
                        I = Array_IN_I[contador];
                        V = Array_IN_V[contador];
                        Cont_CLK = Cont_CLK + 1;
-					   RST_FSM_LN_FF = 0;
+					   RST_LN_FF = 0;
                     end
                 else 
                     if(Cont_CLK ==2) 
                         begin
-					       RST_FSM_LN_FF = 0;
+					       RST_LN_FF = 0;
 					       Begin_FSM_I = 1;
 					       Begin_FSM_V = 1;
 					       Cont_CLK = Cont_CLK +1 ;
@@ -143,13 +144,13 @@ always @(posedge CLK)
                     if(Cont_CLK ==2500) 
                         begin
                             contador = contador + 1;
-                            RST_FSM_LN_FF = 1;
+                            RST_LN_FF = 1;
             				Cont_CLK = 0;
                         end
  
                 else 
                     begin
-					    RST_FSM_LN_FF = 0;
+					    RST_LN_FF = 0;
                         Cont_CLK = Cont_CLK + 1;
                         Begin_FSM_I = 0;
                         Begin_FSM_V = 0;

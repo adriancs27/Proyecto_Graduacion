@@ -21,7 +21,7 @@
 
 
 module SUBT_32Bits(
-input wire  A, //ENTRADA A
+input wire [31:0] A, //ENTRADA A
 input wire [31:0] B,  //ENTRADA B
 
 output wire [31:0] Y //SALIDA Y
