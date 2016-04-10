@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 29.03.2016 11:44:04
+// Create Date: 03/07/2016 01:28:30 PM
 // Design Name: 
-// Module Name: FF_D_N
+// Module Name: 3_xor
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,22 +20,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module FF_D_N(
-input wire CLK, //RELOJ DEL SISTEMA
-input wire RST, //RESET
-input wire EN, //ENABLE
-input wire D, //ENTRADA
-output reg Q //SALIDA
-);
-
-always @(negedge CLK)
-begin
-    if(RST)
-        Q <= 0;
-    else if(EN)
-        Q <= D;
-    else
-        Q <= Q;
-end
-
+module xor_tri
+	# (parameter W = 0)
+	(
+        input wire A_i,
+        input wire B_i,
+        input wire C_i,
+        output wire Z_o
+    );
+    
+    assign Z_o = A_i ^ B_i ^C_i;
+    
 endmodule

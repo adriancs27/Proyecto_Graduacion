@@ -30,11 +30,17 @@ module TB_LINEALIZADOR;
 		 reg RST_LN; //system reset
 		 reg Begin_FSM_LN;
 		 
+		 
 		 //OUTPUT SIGNALS
 		 wire ACK_LN;
          wire O_F;
          wire U_F;
          wire [P-1:0] RESULT;
+         wire BeginSUM;
+         wire MS_1reg;
+         wire [1:0] MS_2reg;
+         wire [1:0] MS_3reg;
+         wire [1:0] MS_4reg;
                  
 
     
@@ -48,7 +54,12 @@ module TB_LINEALIZADOR;
         .ACK_LN(ACK_LN),
         .O_F(O_F),
         .U_F(U_F),
-        .RESULT(RESULT)
+        .RESULT(RESULT),
+        .BeginSUM(BeginSUM),
+        .MS_1reg(MS_1reg),
+        .MS_2reg(MS_2reg),
+        .MS_3reg(MS_3reg),
+        .MS_4reg(MS_4reg)
         );
 
 

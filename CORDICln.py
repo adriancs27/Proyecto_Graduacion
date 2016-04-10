@@ -17,7 +17,7 @@ def Cordic(T): #algoritmo de calculo para un logaritmo natural
     Dm= -S_ant/(abs(S_ant))
 
     
-    while cont<23:
+    while cont<10:
 
         
         Z_act= Z_ant - Dm*Bm[i]

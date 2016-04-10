@@ -148,12 +148,12 @@ FF_D #(.P(P)) REG1_Z (
         .Q(Z_ant)
         );
 
-Mux_3x1 #(.P(P)) MUX3x1_2 ( 
-    .MS(MS_2), 
-    .D_0(Z_ant), 
-    .D_1(Y_ant),
-    .D_2(X_ant), 
-    .D_out(MUX2)
+Mux_3x1 #(.W(P)) MUX3x1_2 ( 
+    .ctrl(MS_2), 
+    .D0(Z_ant), 
+    .D1(Y_ant),
+    .D2(X_ant), 
+    .S(MUX2)
     );
     
 FF_D #(.P(P)) REG2_XYZ ( 
@@ -247,12 +247,12 @@ FF_D #(.P(P)) REG2_Z (
             );   
 
 
-Mux_3x1 #(.P(P)) MUX3x1_3 ( 
-            .MS(MS_3), 
-            .D_0(REG2Z), 
-            .D_1(REG2Y),
-            .D_2(REG2X), 
-            .D_out(MUX3)
+Mux_3x1 #(.W(P)) MUX3x1_3 ( 
+            .ctrl(MS_3), 
+            .D0(REG2Z), 
+            .D1(REG2Y),
+            .D2(REG2X), 
+            .S(MUX3)
             );  
 
 S_ADD #(.P(S)) ADD_EXP_T ( 
@@ -273,23 +273,23 @@ FF_D #(.P(P)) REG_3 (
             .Q(REG3)
             ); 
             
-Mux_3x1 #(.P(P)) MUX3x1_4_1 ( 
-            .MS(MS_4), 
-            .D_0(Z_ant), //P_RESULT
-            .D_1(REG2XYZ),
-            .D_2(REG3),
-            .D_out(A)
+Mux_3x1 #(.W(P)) MUX3x1_4_1 ( 
+            .ctrl(MS_4), 
+            .D0(Z_ant), //P_RESULT
+            .D1(REG2XYZ),
+            .D2(REG3),
+            .S(A)
             );  
 
-Mux_3x1 #(.P(P)) MUX3x1_4_2 ( 
-            .MS(MS_4), 
-            .D_0(32'b01000000001100010111001000011000), //LN(16)
-            .D_1(MUX3),
-            .D_2(32'b00111111100000000000000000000000),//1
-            .D_out(B)
+Mux_3x1 #(.W(P)) MUX3x1_4_2 ( 
+            .ctrl(MS_4), 
+            .D0(32'b01000000001100010111001000011000), //LN(16)
+            .D1(MUX3),
+            .D2(32'b00111111100000000000000000000000),//1
+            .S(B)
             );                               
 
-FPU_Add_Subtract_Function #(.W(P),.W_Exp(W_Exp),.W_Sgf(W_Sgf),.S_Exp(S_Exp)) SUM_SUBT(
+FPU_Add_Subtract_Function #(.W(32),.EW(8),.SW(23),.SWR(26), .EWR(5)) SUM_SUBT(
         .clk(CLK),
 		.rst(RST),
 		.beg_FSM(Begin_SUM),

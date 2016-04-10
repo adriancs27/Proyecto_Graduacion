@@ -8,11 +8,11 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Algoritmo de CORDIC en Python}}{14}{figure.caption.11}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Algoritmo de CORDIC en hardware}}{15}{figure.caption.12}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Maquina de estados finitos para la arquitectura de CORDIC}}{18}{figure.caption.13}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Datos lineales de corriente ipv}}{19}{figure.caption.14}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Maquina de estados finitos para la arquitectura de CORDIC}}{17}{figure.caption.13}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Datos lineales de corriente ipv}}{18}{figure.caption.14}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces conversi\IeC {\'o}n y normalizaci\IeC {\'o}n}}{21}{figure.caption.15}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Normalizador}}{22}{figure.caption.16}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Control del normalizador}}{23}{figure.caption.17}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Normalizador de corriente}}{24}{figure.caption.18}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Normalizador de tensi\IeC {\'o}n}}{24}{figure.caption.19}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces conversi\IeC {\'o}n y normalizaci\IeC {\'o}n}}{19}{figure.caption.15}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Normalizador}}{20}{figure.caption.16}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Control del normalizador}}{21}{figure.caption.17}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Normalizador de corriente}}{22}{figure.caption.18}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Normalizador de tensi\IeC {\'o}n}}{23}{figure.caption.19}

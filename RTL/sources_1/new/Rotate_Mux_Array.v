@@ -21,27 +21,27 @@
 
 
 module Rotate_Mux_Array
-    #(parameter SW=26)
+    #(parameter SWR=26)
     (
-    input wire [SW-1:0] Data_i,
+    input wire [SWR-1:0] Data_i,
     input wire select_i,
-    output wire [SW-1:0] Data_o
+    output wire [SWR-1:0] Data_o
     );
 
 genvar j;//Create a variable for the loop FOR
-generate for (j=0; j <= SW-1; j=j+1) begin // generate enough Multiplexers modules for each bit
+generate for (j=0; j <= SWR-1; j=j+1) begin // generate enough Multiplexers modules for each bit
 
 	case (j)
 
-		SW-1-j:begin
-			assign Data_o[j]=Data_i[SW-1-j];
+		SWR-1-j:begin
+			assign Data_o[j]=Data_i[SWR-1-j];
 			end
 
 		default:begin
 		Multiplexer_AC #(.W(1)) rotate_mux(
 		    .ctrl(select_i),
 		    .D0 (Data_i[j]),
-		    .D1 (Data_i[SW-1-j]),
+		    .D1 (Data_i[SWR-1-j]),
 		    .S (Data_o[j])
 		    );
 			end

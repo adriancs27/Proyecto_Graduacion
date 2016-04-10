@@ -46,7 +46,8 @@ parameter W = 32;
 	
     
 	// Instantiate the Unit Under Test (UUT)
-	FPU_Add_Subtract_Function uut (
+	FPU_Add_Subtract_Function #(.W(32), .EW(8), .SW(23),
+            .SWR(26), .EWR(5)) uut (
 		.clk(clk),
 		.rst(rst), 
 		.beg_FSM(beg_FSM),
@@ -68,18 +69,22 @@ parameter W = 32;
 	initial begin
 		// Initialize Inputs
 		clk = 0;
-		rst = 1;
-		rst_FSM= 1;
-		beg_FSM = 0;
-		Data_X = 32'b01000000000001100110011001100110;
-		Data_Y = 32'b01000000010001100110011001100110;	
-		
 		add_subt = 0;
+        rst = 0;
+        rst_FSM= 0;      
+        r_mode = 2'b01;
+		beg_FSM = 0;
+                Data_X = 32'b01000000000001100110011001100110;
+                Data_Y = 32'b01000000010001100110011001100110;
+                
+		#30 rst = 1;
 		
-        
-        #10 rst = 0;
-            rst_FSM= 0;
-            r_mode = 2'b01;
+		#100 rst_FSM= 1;
+		rst = 0;
+		#100 rst_FSM= 0;
+			
+		
+		
              
             
          

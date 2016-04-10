@@ -29,15 +29,21 @@ module LINEALIZADOR_NORMALIZADOR(
     input wire Begin_FSM_V,
     output wire ACK_I,
     output wire ACK_V,
+    output wire U_F,
+    output wire O_F,
     output wire [31:0] RESULT_I,
     output wire [31:0] RESULT_V
     );
     
 wire ACK_LN;
-wire O_F;
-wire U_F; 
+//wire O_F;
+//wire U_F; 
 wire ACK_FF;
 wire [31:0] LINEAL;
+//wire [31:0] LINEAL2;
+
+//assign LINEAL = RESULT_I; 
+
     
     LINEALIZADOR #(.P(32)) LINEALIZADOR_FLOAT (
         .CLK(CLK), //system clock
@@ -60,7 +66,7 @@ wire [31:0] LINEAL;
             .RESULT(RESULT_I) // RESULTADO FINAL 
             );
             
-    V_NORM_FLOAT_TO_FIXED V_NORM_FLOAT_FIXED(
+    V_NORM_FLOAT_TO_FIXED NORM_V_FLOAT_FIXED(
                         .CLK(CLK), //system clock
                         .F(V), //VALOR BINARIO EN COMA FLOTANTE 
                         .RST_FF(RST_LN_FF), //system reset

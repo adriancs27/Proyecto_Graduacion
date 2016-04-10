@@ -1,9 +1,10 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: ITCR
-// Engineer: ADRIAN CERVANTES S
+// Company: 
+// Engineer: 
 // 
-// 
+// Create Date: 03/22/2016 07:26:54 PM
+// Design Name: 
 // Module Name: Mux_3x1
 // Project Name: 
 // Target Devices: 
@@ -19,26 +20,23 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Mux_3x1 #(parameter P=32) //MULTIPLEXOR 3X1 DE 32 BITS
-(
-//Input Signals
-input wire [1:0] MS,
-input wire [P-1:0] D_0, //DATO DE EN LA ENTRADA 0
-input wire [P-1:0] D_1, //DATO DE EN LA ENTRADA 1
-input wire [P-1:0] D_2, //DATO DE EN LA ENTRADA 2
+module Mux_3x1
 
-//Output Signals
-output reg [P-1:0] D_out //SALIDA
-);
+  # (parameter W = 8 )
+	(
 
-    always @*
-        begin
-            case(MS)
-                2'b00: D_out = D_0;
-                2'b01: D_out = D_1;
-                2'b10: D_out = D_2;
-                default : D_out = D_0;
-            endcase
-        end
+    input wire [1:0] ctrl,
+    input wire [W-1:0] D0,
+    input wire [W-1:0] D1,
+    input wire [W-1:0] D2,
+    output reg [W-1:0] S
+    );
 
+   always @(ctrl, D0, D1, D2)
+   	case (ctrl)
+   		2'b00: S<=D0;
+   		2'b01: S<=D1;
+   		2'b10: S<=D2;
+   		default: S<=0;
+	endcase
 endmodule

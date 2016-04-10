@@ -31,7 +31,9 @@ module V_NORM_FLOAT_TO_FIXED(
     
 wire Exp_out;  
 wire [7:0] Exp;      
-wire EN_REG1; 
+wire EN_REG1;
+wire EN_REG2;
+wire RST; 
 wire LOAD;
 wire MS_1;
 
@@ -49,13 +51,15 @@ wire MS_1_reg;
         .LOAD(LOAD),
         .MS_1(MS_1),
         .ACK_FF(ACK_FF),
-        .EN_MS_1(EN_MS_1)
+        .EN_MS_1(EN_MS_1),
+        .EN_REG2(EN_REG2),
+        .RST(RST)
 
 	 );
 	 
-	 FF_D_N REG_MS_1V(
+	 FF_D #(.P(1)) REG_MS_1V(
           .CLK(CLK), //RELOJ DEL SISTEMA
-          .RST(1'b0), //RESET
+          .RST(RST), //RESET
           .EN(EN_MS_1), //ENABLE
           .D(MS_1), //ENTRADA
           .Q(MS_1_reg) //SALIDA
@@ -69,7 +73,9 @@ wire MS_1_reg;
         .MS_1(MS_1_reg),
         .Exp_out(Exp_out),
         .FIXED(RESULT), 
-        .Exp(Exp)
+        .Exp(Exp),
+        .EN_REG2(EN_REG2),
+        .RST(RST)
      
       );
 endmodule

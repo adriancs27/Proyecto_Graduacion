@@ -17,11 +17,11 @@
 \contentsline {chapter}{\numberline {3}Sistema de linealizaci\IeC {\'o}n}{13}{chapter.3}
 \contentsline {section}{\numberline {3.1}Algoritmo de CORDIC en software}{13}{section.3.1}
 \contentsline {section}{\numberline {3.2}Arquitectura del algoritmo de CORDIC}{14}{section.3.2}
-\contentsline {section}{\numberline {3.3}Control}{18}{section.3.3}
-\contentsline {section}{\numberline {3.4}algoritmo de CORDIC en Verilog}{19}{section.3.4}
-\contentsline {section}{\numberline {3.5}Simulaci\IeC {\'o}n del algoritmo de CORDIC}{19}{section.3.5}
-\contentsline {chapter}{\numberline {4}Sistema de normalizaci\IeC {\'o}n}{21}{chapter.4}
-\contentsline {section}{\numberline {4.1}Arquitectura}{21}{section.4.1}
-\contentsline {section}{\numberline {4.2}Control}{23}{section.4.2}
-\contentsline {section}{\numberline {4.3}Normalizaci\IeC {\'o}n en verilog}{24}{section.4.3}
-\contentsline {section}{\numberline {4.4}Simulaci\IeC {\'o}n normalizador}{24}{section.4.4}
+\contentsline {section}{\numberline {3.3}Control}{17}{section.3.3}
+\contentsline {section}{\numberline {3.4}algoritmo de CORDIC en Verilog}{18}{section.3.4}
+\contentsline {section}{\numberline {3.5}Simulaci\IeC {\'o}n del algoritmo de CORDIC}{18}{section.3.5}
+\contentsline {chapter}{\numberline {4}Sistema de normalizaci\IeC {\'o}n}{19}{chapter.4}
+\contentsline {section}{\numberline {4.1}Arquitectura}{19}{section.4.1}
+\contentsline {section}{\numberline {4.2}Control}{21}{section.4.2}
+\contentsline {section}{\numberline {4.3}Normalizaci\IeC {\'o}n en verilog}{22}{section.4.3}
+\contentsline {section}{\numberline {4.4}Simulaci\IeC {\'o}n normalizador}{22}{section.4.4}

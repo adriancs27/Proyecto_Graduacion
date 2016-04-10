@@ -308,12 +308,12 @@ case(state_reg)
             t:
             begin
                            
-                if(CONT_ITER == 5'b01111 ) //15 iteraciones
+                if(CONT_ITER == 5'b01000 )//if(CONT_ITER == 5'b01111 ) //15 iteraciones
                     begin 
                     MS_4 = 2'b00;
                     EN_MS4 = 1;
                     ADD_SUBT = 1;
-                    EN_ADDSUBT = 1;  
+                    EN_ADDSUBT = 1; 
                     state_next = u;
                     end
                 else

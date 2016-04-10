@@ -26,7 +26,8 @@ input wire [31:0] FLOAT, //VALOR DEL NUMERO EN PUNTO FLOTANTE
 input wire EN_REG1, // ENABLE PARA EL REGISTRO 1 QUE GUARDA EL NUMERO EN PUNTO FLOTANTE 
 input wire LOAD, // SELECCION CARGA REGISTRO DE DESPLZAMIENTOS  
 input wire MS_1, //SELECCIONA EL MUX PARA UN VALOR DIFERENTE O IGUAL A 127 SEGUN SEA EL CASO 
-
+input wire RST,
+input wire EN_REG2,
 
 
 output wire Exp_out, //INIDICA SI EL EXPONENTE ES MAYOR QUE 127 
@@ -43,6 +44,7 @@ wire [7:0] exp;
 wire [31:0] IN_BS;
 wire [31:0] P_RESULT;
 wire [31:0] MUX32;
+wire [31:0] MUX32_OUT;
 wire [31:0] NORM;
 //wire [7:0] REG3;
 wire [7:0] MUX1;
@@ -57,9 +59,9 @@ assign IN_BS [2:0] = 3'b000;
 assign Exp = float[30:23];
 
 FF_D #(.P(P)) REG_FLOAT ( 
-        .CLK(EN_REG1), 
-        .RST(1'b0),
-        .EN(1'b1), 
+        .CLK(CLK), 
+        .RST(RST),
+        .EN(EN_REG1), 
         .D(FLOAT), 
         .Q(float)
         );
@@ -76,13 +78,14 @@ Comparador_Mayor EXP127(
 
 
 
-Barrel_Shifter #(.SW(32),.EW(8)) S_REG(
+Barrel_Shifter #(.SWR(32),.EWR(8)) S_REG(
         .clk(CLK),
-        .rst(1'b0),
-        .ctrl_a_i(LOAD),
-        .Shift_Value_0_i(MUX2),
-        .Shift_Data_0_i(IN_BS),
-        .FSM_left_right_i(Exp_out),
+        .rst(RST),
+        .load_i(LOAD),
+        .Shift_Value_i(MUX2),
+        .Shift_Data_i(IN_BS),
+        .Left_Right_i(Exp_out),
+        .Bit_Shift_i(1'b0),
         .N_mant_o(P_RESULT)
         );
         
@@ -130,10 +133,16 @@ Mux_2x1 #(.P(P)) MUX2x1_32Bits (
     .MS(float[31]), 
     .D_0(NORM), 
     .D_1(MUX32), 
-    .D_out(FIXED)
+    .D_out(MUX32_OUT)
     );
     
-
+FF_D #(.P(P)) REG_FIXED ( 
+            .CLK(CLK), 
+            .RST(RST),
+            .EN(EN_REG2), 
+            .D(MUX32_OUT), 
+            .Q(FIXED)
+            );
 
 
 

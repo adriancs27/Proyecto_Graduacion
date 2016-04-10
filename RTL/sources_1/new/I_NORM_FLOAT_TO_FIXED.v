@@ -36,11 +36,13 @@ wire LOAD;
 wire MS_1;
 wire EN_MS_1;
 wire MS1_REG;
+wire EN_REG2;
+wire RST;
 
-FF_D_N  REG_MS1_I ( 
-        .CLK(EN_REG1), 
-        .RST(1'b0),
-        .EN(1'b1), 
+FF_D #(.P(1))  REG_MS1_I ( 
+        .CLK(CLK), 
+        .RST(RST),
+        .EN(EN_MS_1), 
         .D(MS_1), 
         .Q(MS1_REG)
         );
@@ -55,7 +57,9 @@ FF_D_N  REG_MS1_I (
         .LOAD(LOAD),
         .MS_1(MS_1),
         .ACK_FF(ACK_FF),
-        .EN_MS_1(EN_MS_1)
+        .EN_MS_1(EN_MS_1),
+        .EN_REG2(EN_REG2),
+        .RST(RST)
 
 	 );
 	 
@@ -67,7 +71,9 @@ FF_D_N  REG_MS1_I (
         .MS_1(MS1_REG),
         .Exp_out(Exp_out),
         .FIXED(RESULT), 
-        .Exp(Exp)
+        .Exp(Exp),
+        .EN_REG2(EN_REG2),
+        .RST(RST)
      
       );
 endmodule
