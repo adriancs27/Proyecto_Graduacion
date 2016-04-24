@@ -1,18 +1,33 @@
 \select@language {english}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Diagrama de soluci\IeC {\'o}n}}{2}{figure.caption.7}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Diagrama de soluci\IeC {\'o}n para el sistema de aumento de eficiencia de paneles fotovoltaicos}}{3}{figure.caption.7}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Diagrama de soluci\IeC {\'o}n para el sistema de Linealizaci\IeC {\'o}n-Normalizaci\IeC {\'o}n.}}{4}{figure.caption.8}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Curva Corriente(A)-Tensi\IeC {\'o}n(V)}}{4}{figure.caption.8}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Modelo simple ideal para un PV}}{5}{figure.caption.9}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Modelo con perdidas para un PV}}{5}{figure.caption.10}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Curva Corriente(A)-Tensi\IeC {\'o}n(V)}}{8}{figure.caption.9}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Modelo simple ideal para un PV}}{9}{figure.caption.10}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Modelo con perdidas para un PV}}{9}{figure.caption.11}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Algoritmo de CORDIC en Python}}{14}{figure.caption.11}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Algoritmo de CORDIC en hardware}}{15}{figure.caption.12}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Maquina de estados finitos para la arquitectura de CORDIC}}{17}{figure.caption.13}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Datos lineales de corriente ipv}}{18}{figure.caption.14}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Algoritmo de CORDIC en Python}}{18}{figure.caption.12}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Bloque principal: algoritmo de CORDIC en hardware}}{19}{figure.caption.13}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Coprocesador CORDIC y Control}}{19}{figure.caption.14}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Algoritmo de CORDIC en hardware}}{21}{figure.caption.15}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Signo para cada iteraci\IeC {\'o}n componente Xi , Yi , Zi}}{22}{figure.caption.16}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Maquina de estados finitos para la arquitectura de CORDIC}}{24}{figure.caption.17}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Simulaci\IeC {\'o}n del linealizador en implementado en Verilog}}{25}{figure.caption.18}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Rango de convergencia circuito CORDIC con 8 iteraciones}}{27}{figure.caption.19}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces \%Error rango de convergencia circuito CORDIC con 8 iteraciones}}{27}{figure.caption.20}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Rango de convergencia circuito CORDIC con 12 iteraciones}}{28}{figure.caption.21}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces \%Error rango de convergencia circuito CORDIC con 12 iteraciones}}{28}{figure.caption.22}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Rango de convergencia circuito CORDIC con 15 iteraciones}}{29}{figure.caption.23}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces \%Error rango de convergencia circuito CORDIC con 15 iteraciones}}{29}{figure.caption.24}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces conversi\IeC {\'o}n y normalizaci\IeC {\'o}n}}{19}{figure.caption.15}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Normalizador}}{20}{figure.caption.16}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Control del normalizador}}{21}{figure.caption.17}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Normalizador de corriente}}{22}{figure.caption.18}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Normalizador de tensi\IeC {\'o}n}}{23}{figure.caption.19}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Bloque general del convertidor puto flotante a punto fijo y normalizador}}{31}{figure.caption.25}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Sistema de convesi\IeC {\'o}n, normalizaci\IeC {\'o}n, se\IeC {\~n}ales de datos y control}}{32}{figure.caption.26}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces conversi\IeC {\'o}n y normalizaci\IeC {\'o}n}}{33}{figure.caption.27}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Normalizador}}{34}{figure.caption.28}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Maquina de estados finita para el convetidor-normalizador}}{36}{figure.caption.29}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Simulaci\IeC {\'o}n del circuito de conversi\IeC {\'o}n y normalizaci\IeC {\'o}n}}{37}{figure.caption.30}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Comparaci\IeC {\'o}n entre la conversi\IeC {\'o}n-normalizaci\IeC {\'o}n de corriente $\ i_{pv}$ te\IeC {\'o}rica y del circuito}}{37}{figure.caption.31}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces \%Error entre la conversi\IeC {\'o}n-normalizaci\IeC {\'o}n de corriente $\ i_{pv}$ te\IeC {\'o}rica y del circuito}}{38}{figure.caption.32}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Comparaci\IeC {\'o}n entre la conversi\IeC {\'o}n-normalizaci\IeC {\'o}n de tensi\IeC {\'o}n $\ V_{pv}$ te\IeC {\'o}rica y del circuito}}{39}{figure.caption.33}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces \%Error entre la conversi\IeC {\'o}n-normalizaci\IeC {\'o}n de tensi\IeC {\'o}n $\ V_{pv}$ te\IeC {\'o}rica y del circuito}}{39}{figure.caption.34}

@@ -36,11 +36,11 @@ module TB_LINEALIZADOR;
          wire O_F;
          wire U_F;
          wire [P-1:0] RESULT;
-         wire BeginSUM;
-         wire MS_1reg;
-         wire [1:0] MS_2reg;
-         wire [1:0] MS_3reg;
-         wire [1:0] MS_4reg;
+         //wire BeginSUM;
+         //wire MS_1reg;
+         //wire [1:0] MS_2reg;
+         //wire [1:0] MS_3reg;
+         //wire [1:0] MS_4reg;
                  
 
     
@@ -54,12 +54,12 @@ module TB_LINEALIZADOR;
         .ACK_LN(ACK_LN),
         .O_F(O_F),
         .U_F(U_F),
-        .RESULT(RESULT),
-        .BeginSUM(BeginSUM),
-        .MS_1reg(MS_1reg),
-        .MS_2reg(MS_2reg),
-        .MS_3reg(MS_3reg),
-        .MS_4reg(MS_4reg)
+        .RESULT(RESULT)//,
+        //.BeginSUM(BeginSUM),
+        //.MS_1reg(MS_1reg),
+        //.MS_2reg(MS_2reg),
+        //.MS_3reg(MS_3reg),
+        //.MS_4reg(MS_4reg)
         );
 
 
@@ -102,7 +102,7 @@ module TB_LINEALIZADOR;
 	   //**************************** Se lee el archivo txt y se almacena en un arrays***************************************************//
      
      initial begin
-         $readmemb("LINEALIZACION_NORMALIZACION_I.txt", Array_IN_I);
+         $readmemb("0.0066777-0.58495.txt", Array_IN_I);
      end
      
      
@@ -139,7 +139,7 @@ always @(posedge CLK)
 					       Cont_CLK = Cont_CLK +1 ;
 				        end 
                 else 
-                    if(Cont_CLK ==2500) 
+                    if(Cont_CLK == 1000) 
                         begin
                             contador = contador + 1;
                             RST_LN = 1;

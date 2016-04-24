@@ -211,9 +211,86 @@ def float_dec():
         x=FX[contador]
         FF= '001'+ str(x[10:40]) +'0000000'; 
         if x[0] == 0:
-            print((2**(int(x[1:9],2)-127))*(fixed_to_dec(FF)+1))
+            if x[1:9] > 127:
+                print((2**(int(x[1:9],2)-127))*(fixed_to_dec(FF)+1))
+            else:
+                print((2**(int(x[1:9],2)+127))*(fixed_to_dec(FF)+1))
         else:
-            print(-1*(2**(int(x[1:9],2)-127))*(fixed_to_dec(FF)+1))
-        contador = contador +1   
+            if x[1:9] > 127: 
+                print(-1*(2**(int(x[1:9],2)-127))*(fixed_to_dec(FF)+1))
+            else:
+                print(-1*(2**(int(x[1:9],2)+127))*(fixed_to_dec(FF)+1))
+        contador = contador +1
 
+def F2D(arg):
+    cont = 0
+    exp = 0
+    dec = 0;
+    while cont < 24:
+        dec = dec + (2**(exp))* int(arg[cont])
+        cont = cont + 1
+        exp = exp - 1
+    return dec
+        
+    
+
+def float_dec2():
+    
+    I_fixed=open('I_LINEAL.txt','r')
+       
+    lineaI=I_fixed.readline()
+    
+    while lineaI!="":
+        #print lineaI
+        F.append(lineaI)
+        lineaI=I_fixed.readline()
+
+    I_fixed.close()
+
+    contador=0
+    y=F[0]
+    contador2=0
+    while contador < 1000:
+        
+        FX.append(y[contador2:contador2+32])
+        contador2 = contador2 + 33;
+        x=FX[contador]
+        FF= '1'+ str(x[9:32] + '00000000'); 
+        if x[0] == 0:
+            if x[1:9] > 127:
+                print((2**(int(x[1:9],2)-127))*(F2D(FF)))
+            else:
+                print((2**(int(x[1:9],2)+127))*(F2D(FF)))
+        else:
+            if x[1:9] > 127: 
+                print(-1*(2**(int(x[1:9],2)-127))*(F2D(FF)))
+            else:
+                print(-1*(2**(int(x[1:9],2)+127))*(F2D(FF)))
+        contador = contador +1
+        
+
+def exp():
+    cont = 0
+    exp = []
+    x = 5.009
+
+    I=open('0.0066777-0.58495.txt','w')
+    I.close()
+
+    j=0;
+    I=open('0.0066777-0.58495.txt','a')
+
+    
+    
+    while cont < 1000:
+        exp.append (binary(math.exp(-x)))
+        x = x - 0.00447277
+        cont = cont + 1
+
+    while j< 1000: 
+            
+            I.write(exp[j])
+            I.write(" ")
+            j = j+1
+    I.close()
     

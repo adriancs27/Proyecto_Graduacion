@@ -8,31 +8,95 @@
 
 \chapter{Introducción}
 \label{chp:intro}
+\section{Entorno del proyecto}
 
 Hoy en día es cada vez más común el tema de las energías limpias, dentro de estas: eólica y solar. La instalación de suministros con paneles fotovoltaicos ha llegado a ser una tendencia en Costa Rica, estos son sistemas de autoconsumo de energía, y a su vez se utilizan para vender energía a otras empresas. 
 
 Un sistema de abastecimiento de energía solar, requiere de paneles solares, acumuladores de energía, inversores (conversión de corriente continua en corriente alterna) y reguladores, sin embargo actualmente las redes de suministros no cuentan con un sistema que les regule la tensión que se necesita para ubicarse en el punto de operación de potencia máxima, esto debido a que la corriente y la tensión del panel están variando constantemente respecto a la temperatura e irradiancia del medio en el que se encuentra, de manera que si la tensión varia, la potencia asociada a esa tensión también varía, lo que se busca es un punto de tensión donde se obtenga la máxima potencia.
  
-Debido a la importancia de la eficiencia energética en el campo de la electrónica, se desarrolló parte de un sistema en donde se puede aprovechar de una mejor manera la energía, este tema es de suma importancia en la producción de energía, principalmente en los paneles fotovoltaicos, se debe aprovechar las mejores condiciones ambientales y poder acoplar el sistema para una máxima producción de energía, el desarrollo de este proyecto se basa en aumentar la eficiencia del sistema completo para un panel previamente escogido, se utilizará un panel modelo KS10T de la empresa KYOCERA SOLAR, para esto se realiza una realimentación con un dispositivo que regula la tensión máxima que debe tener el panel. Anteriormente se realizó un estimador de parámetros por parte de Clevis Lozano estudiante del Instituto Tecnológico de Costa Rica, sin embargo este recibe en la entrada cuantificaciones lineales para calcular los parámetros requeridos, la curva característica de una celda solar no tiene un comportamiento lineal, si se requiere estimar parámetros a partir de la corriente y tensión de este, se deben linealizar-normalizar las entradas y desnormalizar-deslinealizar las salidas, para el modelo del panel se analizaron cuatro tipos de configuraciones desde la más simple a la más compleja, para este proceso se desarrolló un sistema de verificación en un programa de alto nivel (utilizando Python) para poder comparar y tener una referencia para la descripción en hardware de bajo nivel (verilog). 
+Debido a la importancia de la eficiencia energética en el campo de la electrónica, se desarrolló parte de un sistema en donde se puede aprovechar de una mejor manera la energía, este tema es de suma importancia en la producción de energía, principalmente en los paneles fotovoltaicos, se debe aprovechar las mejores condiciones ambientales y poder acoplar el sistema para una máxima producción de energía, el desarrollo de este proyecto se basa en aumentar la eficiencia del sistema completo para un panel previamente escogido, se utilizará un panel modelo KS10T de la empresa KYOCERA SOLAR, para esto se realiza una realimentación con un dispositivo que regula la tensión máxima que debe tener el panel. 
 
 El proyecto Linealizador-Normalizador se realizó en el Instituto Tecnológico de Costa Rica, Escuela de Ingeniería Electrónica, con el coordinador del SESLab Dr. Carlos Meza, y el coordinador del DCILab Dr. Alfonso Chacón estos laboratorios se encargan de presentar propuestas de sistemas electrónicos de gran utilidad para  para el desarrollo tecnológico y sostenibilidad, de manera que los recursos sean aprovechados de la mejor forma, brindan soluciones innovadoras con energías limpias, enfatizándose en el uso de paneles solares, motores eléctricos, circuitos integrados, diseño digital, entre otros. 
 
+\section{Descripción del problema y justificación}
 
-\section{Objetivos y estructura del documento}
+Anteriormente se realizó un estimador de parámetros por parte de Clevis Lozano estudiante del Instituto Tecnológico de Costa Rica, sin embargo este recibe en la entrada cuantificaciones lineales para calcular los parámetros requeridos, la curva característica $\ i_{pv}-V_{pv}$ de una celda solar no tiene un comportamiento lineal, si se requiere estimar parámetros a partir de la corriente y tensión de este, se deben linealizar-normalizar las entradas y desnormalizar-deslinealizar las salidas, para el modelo del panel se tienen cuatro tipos de configuraciones desde la más simple a la más compleja.  
 
-\index{objetivos}
+El coprocesador numérico a desarrollar, debía satisfacer los siguientes requerimientos:
 
-El objetivo general para este proyecto se basa en desarrollar una unidad de linealización y normalización para un estimador de parámetros Corriente-Tensión de un panel fotovoltaico, para esto se creo un circuito que linealice el modelo del panel fotovoltaico por medio de una operación logarítmica con parámetros de entrada Tensión-Corriente, generando parámetros lineales de salida ‘y’ y ’z’, estos parámetros de salida poseen formato IEEE 754 (punto flotante), por lo que se implemento un circuito que convierte estos parámetros de punto flotante a punto fijo. Estos parámetros se requieren en las entradas del estimador por que se debió realizar una unidad de normalización para crear una interface entre ambos circuitos y poder acoplar las salidas del linealizador con las entradas del estimador.
+\begin{compactitem}
+\item Se debe basar en el formato IEEE 754, el cual es un estándar en coma flotante, para realizar operaciones aritméticas.
+\item Utilizar una arquitectura de 32.
+\item Utilizar Verilog como lenguaje de descripción de hardware.
+\item Optimizar las unidades para requerir la menor cantidad de recursos.
+\end{compactitem}
 
- \begin{figure}[H]
+\section{Síntesis del problema}
+
+¿Cómo realizar la linealización y normalización en formato IEEE 754 para el sistema de optimización de paneles fotovoltaicos?
+
+\section{Enfoque de la solución}
+
+Primeramente se realizará un proceso de recopilación de información dentro de temas como: algoritmo de CORDIC, estándar IEEE 754 y operaciones en punto fijo. Posteriormente, se utilizara este estándar para iniciar el diseño del linealizador y el normalizador del sistema general del panel fotovoltaico, este se puede observar en la figura \ref{fig:DSOL}. 
+
+\begin{figure}[H]
   \centering
-    \includegraphics[scale=0.6]{./DiagramaSOL.png}
+    \includegraphics[scale=0.5]{./diagrama_SOLUCION.png}
     \rule{35em}{0.5pt}
-  \caption[Diagrama de solución]{Diagrama de solución}
+  \caption[Diagrama de solución para el sistema de aumento de eficiencia de paneles fotovoltaicos]{ Diagrama de solución para el sistema de aumento de eficiencia de paneles fotovoltaicos}
   \label{fig:DSOL}
 \end{figure}
 
+\begin{figure}[H]
+  \centering
+    \includegraphics[scale=0.5]{./DiagramaSOL.png}
+    \rule{35em}{0.5pt}
+  \caption[Diagrama de solución para el sistema de Linealización-Normalización.]{ Diagrama de solución para el sistema de de Linealización-Normalización.}
+  \label{fig:DiagramaSOL}
+\end{figure}
+
+Para el diseño del los circuitos linealización-normalización de la figura \ref{fig:DiagramaSOL} se deberá utilizar el diseño modular ya que se brinda una mejor perspectiva de los que se debe realizar, si se podrá asignar las entradas y salidas que requiere cada unidad. Una vez ejecutada la primera etapa de diseño se descompone en pequeños bloques funcionales, que se deberán diseñar en etapas e interconectarlas.   
+
+Este diseño modular, se implementará utilizando el lenguaje HDL Verilog, y se verificarán los resultados utilizando un modelo en alto nivel realizado en Python, contra los resultados obtenidos en las simulaciones Post Place \& Route.
+
+Por último, se realizaran las pruebas en una FPGA para comprobar el funcionamiento del hardware. 
+
+\section{Meta}
+
+La meta de este proyecto es poder aprovechar de la mejor forma energía solar, de manera que se aumente la eficiencia del sistema de generación fotovoltaica de los paneles solares, así poder seguir impulsando la utilización de energías limpias que contribuyan a reducir las que son producidas por medio de hidrocarburos, que incluso de ser más caras, son mucho más dañinas para el ambiente, así poder autosatisfacer el consumo en los hogares, empresa u otros. 
+
+\section{Objetivos y estructura}
+
+\subsection{Objetivo general}
+
+Desarrollar una unidad de linealización y normalización para un 	estimador de parámetros Corriente-Tensión de un panel fotovoltaico.
+
+\subsection{Objetivos específicos}
+
+\begin{compactitem}
+\item Crear un circuito en formato IEEE 754, que linealice la corriente del modelo de un panel fotovoltaico, por medio de una operación logarítmica, con una corriente exponencial como parámetro de entrada y una corriente lineal ‘y’ en la salida.
+
+\nt{Indicador}: verificar mediante un programa de alto nivel la precisión del algoritmo implementado en hardware con un error menor al 5\%
+
+\item Crear un circuito que convierta de punto flotante a punto fijo, la corriente lineal ‘y’ en la salida del linealizador.
+
+\nt{Indicador}: verificar mediante un programa de alto nivel la precisión del convertidor implementado en hardware con un error menor al 5\%
+
+\item Crear un circuito que normalice los parámetros de corriente lineal ‘y’ y tensión lineal ‘z’, ambos en punto fijo, para las entradas del estimador. 
+
+\nt{Indicador}: verificar mediante un programa de alto nivel la precisión del normalizador implementado en hardware con un error menor al 5\%
+
+
+\end{compactitem}
+
+\subsection{Estructura}
+El capítulo 2 se describen los conceptos teóricos que se utilizados a través del desarrollo del proyecto. En el capitulo 3 se detalla el diseño del algoritmo y control, implementación y los resultados obtenidos para el circuito de linealización. En el capítulo 4 se presentan el diseño del algoritmo y control, implementación y los resultados obtenidos para el circuito de normalización. El capitulo 5 muestra el sistema completo, junto con sus pruebas y resultados.  Finalmente, en el capítulo 6 se ofrecen
+conclusiones del proyecto, y recomendaciones.
 
 
 
 
+%El objetivo general para este proyecto se basa en desarrollar una unidad de linealización y normalización para un estimador de parámetros Corriente-Tensión de un panel fotovoltaico, para esto se creo un circuito que linealice el modelo del panel fotovoltaico por medio de una operación logarítmica con parámetros de entrada Tensión-Corriente, generando parámetros lineales de salida ‘y’ y ’z’, estos parámetros de salida poseen formato IEEE 754 (punto flotante), por lo que se implemento un circuito que convierte estos parámetros de punto flotante a punto fijo. Estos parámetros se requieren en las entradas del estimador por que se debió realizar una unidad de normalización para crear una interface entre ambos circuitos y poder acoplar las salidas del linealizador con las entradas del estimador.
+
+
+%para este proceso se desarrolló un sistema de verificación en un programa de alto nivel (utilizando Python) para poder comparar y tener una referencia para la descripción en hardware de bajo nivel (verilog).

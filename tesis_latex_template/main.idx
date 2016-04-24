@@ -1,33 +1,67 @@
-\indexentry{objetivos|hyperpage}{2}
-\indexentry{p-n|hyperpage}{3}
-\indexentry{p-n|hyperpage}{3}
-\indexentry{portadores|hyperpage}{3}
-\indexentry{Corriente de corto circuito $\ I_{sc}$ |hyperpage}{4}
-\indexentry{Tensi\IeC {\'o}n de circuito abierto $\ V_{oc}$|hyperpage}{4}
-\indexentry{p-n|hyperpage}{4}
-\indexentry{Punto de m\IeC {\'a}xima potencia|hyperpage}{4}
-\indexentry{Is|hyperpage}{5}
-\indexentry{Ig|hyperpage}{5}
-\indexentry{Rs|hyperpage}{5}
-\indexentry{Rp|hyperpage}{5}
-\indexentry{n|hyperpage}{5}
-\indexentry{Ig|hyperpage}{6}
-\indexentry{id|hyperpage}{6}
-\indexentry{ip|hyperpage}{6}
-\indexentry{Ig|hyperpage}{6}
-\indexentry{Vpv|hyperpage}{6}
-\indexentry{ip|hyperpage}{6}
-\indexentry{id|hyperpage}{6}
-\indexentry{Vpv|hyperpage}{6}
-\indexentry{ip|hyperpage}{6}
-\indexentry{Coordinate Rotational DIgital Computer|hyperpage}{7}
-\indexentry{constantes|hyperpage}{9}
-\indexentry{IEEE 754|hyperpage}{10}
-\indexentry{IEEE 754|hyperpage}{10}
-\indexentry{XOR|hyperpage}{16}
-\indexentry{Registro 2|hyperpage}{16}
-\indexentry{Registro 1|hyperpage}{16}
-\indexentry{Registro 1|hyperpage}{16}
-\indexentry{Registro 1|hyperpage}{16}
-\indexentry{Registro 4|hyperpage}{16}
-\indexentry{Registro 1|hyperpage}{22}
+\indexentry{Indicador|hyperpage}{5}
+\indexentry{Indicador|hyperpage}{5}
+\indexentry{Indicador|hyperpage}{5}
+\indexentry{p-n|hyperpage}{7}
+\indexentry{p-n|hyperpage}{7}
+\indexentry{portadores|hyperpage}{7}
+\indexentry{Corriente de corto circuito $\ I_{sc}$ |hyperpage}{8}
+\indexentry{Tensi\IeC {\'o}n de circuito abierto $\ V_{oc}$|hyperpage}{8}
+\indexentry{p-n|hyperpage}{8}
+\indexentry{Punto de m\IeC {\'a}xima potencia|hyperpage}{8}
+\indexentry{Is|hyperpage}{9}
+\indexentry{Ig|hyperpage}{9}
+\indexentry{Rs|hyperpage}{9}
+\indexentry{Rp|hyperpage}{9}
+\indexentry{n|hyperpage}{9}
+\indexentry{Ig|hyperpage}{10}
+\indexentry{id|hyperpage}{10}
+\indexentry{ip|hyperpage}{10}
+\indexentry{Ig|hyperpage}{10}
+\indexentry{Vpv|hyperpage}{10}
+\indexentry{ip|hyperpage}{10}
+\indexentry{id|hyperpage}{10}
+\indexentry{Vpv|hyperpage}{10}
+\indexentry{ip|hyperpage}{10}
+\indexentry{Coordinate Rotational DIgital Computer|hyperpage}{11}
+\indexentry{constantes|hyperpage}{13}
+\indexentry{IEEE 754|hyperpage}{14}
+\indexentry{IEEE 754|hyperpage}{14}
+\indexentry{Coprocesador Cordic|hyperpage}{19}
+\indexentry{Control|hyperpage}{19}
+\indexentry{T|hyperpage}{19}
+\indexentry{RESULT|hyperpage}{20}
+\indexentry{CLK|hyperpage}{20}
+\indexentry{Begin\_LN|hyperpage}{20}
+\indexentry{RST\_LN|hyperpage}{20}
+\indexentry{ACK\_LN|hyperpage}{20}
+\indexentry{Begin\_SUM|hyperpage}{20}
+\indexentry{ACK\_SUM|hyperpage}{20}
+\indexentry{O\_F|hyperpage}{20}
+\indexentry{U\_F|hyperpage}{20}
+\indexentry{CLK\_DIR|hyperpage}{20}
+\indexentry{CONT\_ITER|hyperpage}{20}
+\indexentry{RST|hyperpage}{20}
+\indexentry{MS\_1 , MS\_2 , MS\_3 , MS\_4|hyperpage}{20}
+\indexentry{EN\_REG1X , EN\_REG1Y , EN\_REG1Z|hyperpage}{20}
+\indexentry{EN\_REG2XYZ|hyperpage}{20}
+\indexentry{EN\_REG2|hyperpage}{20}
+\indexentry{EN\_REG3|hyperpage}{20}
+\indexentry{EN\_REG4|hyperpage}{20}
+\indexentry{XOR|hyperpage}{22}
+\indexentry{LUT\_Z|hyperpage}{23}
+\indexentry{LUT\_ITER|hyperpage}{23}
+\indexentry{Registro 2|hyperpage}{23}
+\indexentry{Registro 1|hyperpage}{23}
+\indexentry{Registro 1|hyperpage}{23}
+\indexentry{Registro 1|hyperpage}{23}
+\indexentry{Registro 4|hyperpage}{23}
+\indexentry{Convertidor-Normalizador|hyperpage}{32}
+\indexentry{Control|hyperpage}{32}
+\indexentry{F|hyperpage}{32}
+\indexentry{RESULT|hyperpage}{32}
+\indexentry{CLK|hyperpage}{32}
+\indexentry{Begin\_FF|hyperpage}{32}
+\indexentry{RST\_FF|hyperpage}{32}
+\indexentry{ACK\_FF|hyperpage}{32}
+\indexentry{Registro 1|hyperpage}{36}
+\indexentry{Registro 2|hyperpage}{36}
