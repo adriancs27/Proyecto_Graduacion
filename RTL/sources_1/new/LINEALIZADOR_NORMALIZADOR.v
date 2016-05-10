@@ -29,8 +29,8 @@ module LINEALIZADOR_NORMALIZADOR(
     input wire Begin_FSM_V,
     output wire ACK_I,
     output wire ACK_V,
-    output wire U_F,
-    output wire O_F,
+ //   output wire U_F,
+ //   output wire O_F,
     output wire [31:0] RESULT_I,
     output wire [31:0] RESULT_V
     );
@@ -51,8 +51,8 @@ wire [31:0] LINEAL;
         .RST_LN(RST_LN_FF), //system reset
         .Begin_FSM_LN(Begin_FSM_I), // INICIAL EL CALCULO 
         .ACK_LN(ACK_LN),// INDICA QUE EL CALCULO FUE REALIZADO 
-        .O_F(O_F), //BANDERA DE OVER FLOW
-        .U_F(U_F),// BANDERA DE UNDER FLOW 
+        .O_F(), //BANDERA DE OVER FLOW
+        .U_F(),// BANDERA DE UNDER FLOW 
         .RESULT(LINEAL) //RESULTADO FINAL 
         );
         

@@ -7,7 +7,7 @@ En un sistema de paneles fotovoltaicos es de suma importancia la eficiencia ener
 
 \section{Panel Fotovoltaico}
 
-Las celdas solares se pueden describir como una junta \nt{p-n}, por medio de la radiación electromagnética proveniente del sol que incide sobre la capa de semiconductor, esta se transforma en el electricidad por un efecto fotovoltaico, en donde los fotones al tener mayor energía que la banda prohibida del semiconductor crean un par electrón-hueco, el campo eléctrico que se ejerce en la junta \nt{p-n} mueve los electrones (\nt{portadores}) lo que produce una fotocorriente, esta es directamente proporcional a la radiación del sol. Debido al proceso de fabricación del panel, posee un comportamiento exponencial y no lineal muy similar al de un diodo [1]. 
+Existes muchos tipos de celdas solares [11], el mas común se pueden describir como una junta \nt{p-n}, por medio de la radiación electromagnética proveniente del sol que incide sobre la capa de semiconductor, esta se transforma en el electricidad por un efecto fotovoltaico, en donde los fotones al tener mayor energía que la banda prohibida del semiconductor crean un par electrón-hueco, el campo eléctrico que se ejerce en la junta \nt{p-n} mueve los electrones (\nt{portadores}) lo que produce una fotocorriente, esta es directamente proporcional a la radiación del sol [1]. Debido al proceso de fabricación del panel, posee un comportamiento exponencial y no lineal muy similar al de un diodo [9]. 
 
 \subsection{Curvas Corriente-Tensión(I-V) para un PV }
 
@@ -43,7 +43,7 @@ Un panel fotovoltaico se puede modelar de manera simple (ideal), utilizando una 
 
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.5]{./M1PV.jpg}
+    \includegraphics[scale=0.07]{./M1PV.png}
     \rule{35em}{0.5pt}
   \caption[Modelo simple ideal para un PV]{ Modelo simple ideal para un PV}
   \label{fig:Modelo1_PV}
@@ -64,7 +64,7 @@ La figura \ref{fig:Modelo1_PV} muestra el modelo básico, sin embargo este se pu
 
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.5]{./M2PV.jpg}
+    \includegraphics[scale=0.07]{./M2PV.png}
     \rule{35em}{0.5pt}
   \caption[Modelo con perdidas para un PV]{ Modelo con perdidas para un PV}
   \label{fig:Modelo2_PV}
@@ -196,7 +196,7 @@ posteriormente a un proceso de calculo de parámetros se tiene:
 
 \section{Algoritmo de CORDIC}
 
-El algoritmo \nt{Coordinate Rotational DIgital Computer} (CORDIC) es un método numérico en donde se realiza cierto numero de iteraciones para encontrar el valor deseado según sea la función en calculo, este algoritmo es utilizado para implementar funciones trigonométricas, logarítmicas y  exponenciales. La facilidad de implementación, hace que sea uno de los algoritmos mas utilizados en el ámbito de la electrónica digital, CORDIC utiliza desplazamientos, sumas, restas y tablas look-up con valores previamente precargados en una memoria ROM, estos valores dependerán de la operación en calculo, se puede utilizar el método circular, lineal e hiperbólico.   
+El algoritmo \nt{Coordinate Rotational Digital Computer} (CORDIC) es un método numérico en donde se realiza cierto numero de iteraciones para encontrar el valor deseado según sea la función en calculo, este algoritmo es utilizado para implementar funciones trigonométricas, logarítmicas y  exponenciales. La facilidad de implementación, hace que sea uno de los algoritmos mas utilizados en el ámbito de la electrónica digital, CORDIC utiliza desplazamientos, sumas, restas y tablas look-up con valores previamente precargados en una memoria ROM, estos valores dependerán de la operación en calculo, se puede utilizar el método circular, lineal e hiperbólico.   
 
 Las ecuaciones generales para el algoritmo de CORDIC se definen como: 
 
@@ -266,7 +266,7 @@ donde:
 \end{equation}
 
 \subsection{Logaritmo natural utilizando el algoritmo hiperbólico de CORDIC}
-Para un $\ Ln \left(\omega\right) $  con el algoritmo de CORDIC, se debe calcular primeramente la $\ \tanh^{-1} \left( \frac{y}{x} \right)$ con las siguientes ecuaciones:
+Para un $\ Ln \left(\omega\right) $  con el algoritmo de CORDIC, se utiliza el modo hiperbolico [12] para esto se debe calcular primeramente la $\ \tanh^{-1} \left( \frac{y}{x} \right)$ con las siguientes ecuaciones:
 
  
 \begin{equation} \label{eq:ej23}
@@ -311,7 +311,8 @@ Cabe destacar que el rango de convergencia para este algoritmo se puede definir 
 El valor final del calculo se obtiene mediante una suma con la identidad de la ecuación \ref{eq:ej19}. 
 
 \section{Punto flotante}
-La codificación para el formato punto flotante se realiza mediante el estándar \nt{IEEE 754}, este requiere de tres campos en la palabra: 
+
+La codificación para el formato punto flotante se realiza mediante el estándar \nt{IEEE 754}, este requiere de tres campos en la palabra [10]: 
 
 \begin{compactitem}
 \item Signo 
@@ -319,7 +320,15 @@ La codificación para el formato punto flotante se realiza mediante el estándar
 \item Mantisa 
 \end{compactitem}
 
-para el formato \nt{IEEE 754} de 32-bits [8] se asigna: 
+\begin{figure}[H]
+  \centering
+    \includegraphics[scale=0.08]{./FLOAT.png}
+    \rule{35em}{0.5pt}
+  \caption[Formato IEEE 754 punto flotante]{Formato IEEE 754 punto flotante}
+  \label{fig:FLOAT}
+\end{figure}
+
+para el formato \nt{IEEE 754} figura \ref{fig:FLOAT} de 32-bits [8] se asigna: 
 
 \begin{compactitem}
 \item 1 Bit para signo 
@@ -337,6 +346,7 @@ El exponente puede representar 256 (8-bits) valores sin embargo se tiene:
 \end{compactitem}
 
 De esta manera para convertir el un exponente positivo en el valor correspondiente en punto flotante se debe sumar el valor del exponente como sigue $\ exp_{float}=127+exp $ , por otro lado si se desea pasar de un valor decimal a punto flotante se deben realizar los siguientes pasos: 
+
 \begin{compactitem}
 \item Representar el signo con su debido bit
 \item Conversión decimal a binario punto fijo   
@@ -345,25 +355,29 @@ De esta manera para convertir el un exponente positivo en el valor correspondien
 \end{compactitem}
 
 
-
+\section{Punto fijo}
  
-\section{Referencias bibliográficas}
+La representación de un numero en punto fijo cuenta con tres partes fundamentales:
+\begin{compactitem}
+\item Signo
+\item Parte entera   
+\item Parte fraccionaria 
+\end{compactitem}
 
-[1] Suskis, Pavels, and Ilya Galkin. "Enhanced photovoltaic panel model for MATLAB-simulink environment considering solar cell junction capacitance." Industrial Electronics Society, IECON 2013-39th Annual Conference of the IEEE. IEEE, 2013.
+\begin{figure}[H]
+  \centering
+    \includegraphics[scale=0.08]{./FIXED.png}
+    \rule{35em}{0.5pt}
+  \caption[Formato para un numero en punto fijo]{Formato para un numero en punto fijo}
+  \label{fig:FIXED}
+\end{figure}
 
-[2] González-Longatt, Francisco M. "Model of photovoltaic module in Matlab." II CIBELEC 2005 (2005): 1-5.
+En la aritmética simple se utiliza se utilizan los signo +/- para saber si un numero es positivo o negativo, sin embargo por las limitaciones de una computadora esto no se puede hacer, debido a que esta procesan todos los datos representados por palabras compuestas por ceros '0' y unos '1', en consecuencia para representar el signo se utiliza un bit de signo, si el numero es positivo el bit de signo sera un 0 y si el numero es negativo sera un 1 [13]. 
 
-[3] C. Meza, R. Ortega, "Control and estimation scheme for PV central inventers", in 24th International Conference on information, Comunication and Automation Technologies, Nov, 2013 
+La parte entera es un conjunto de bits que puede representar un numero en un rango entre 0 y $ 2^n $, donde n es el numero de bits asignado. 
 
-[4] Chiang, Ching-Tsan, Tung-Sheng Chiang, and Hou-Sheng Huang. "Modeling a photovoltaic power system by CMAC-GBF." Photovoltaic Energy Conversion, 2003. Proceedings of 3rd World Conference on. Vol. 3. IEEE, 2003.
+La parte fraccionaria se compone de una serie de bits, $ 2^{-n} $, en esta el numero de bits aumenta si se requiere de mucha precisión. 
 
-[5] Ibrahim, Muhammad Nasir, et al. "Hardware Implementation of Math Module Based on CORDIC Algorithm Using FPGA." Parallel and Distributed Systems (ICPADS), 2013 International Conference on. IEEE, 2013.
-
-[6] Walther, John S. "A unified algorithm for elementary functions." Proceedings of the May 18-20, 1971, spring joint computer conference. ACM, 1971.
-
-[7] Llamocca-Obregón, Daniel R., and Carla P. Agurto-Ríos. "A fixed-point implementation of the expanded hyperbolic CORDIC algorithm." Latin American applied research 37.1 (2007): 83-91.
-
-[8] Whitehead, Nathan, and Alex Fit-Florea. "Precision and performance: Floating point and IEEE 754 compliance for NVIDIA GPUs." rn (A+ B) 21 (2011): 1-1874919424.
-
-
-
+Si se requiere de una representación de un numero negativo en punto fijo, se debe utilizar el complemento a 2 [14], este toma el numero positivo y le aplica un inversión a todos los bits, finalmente se le suma 1 a la inversión, para obtener el numero negativo, así utilizando el bit de signo descrito anteriormente. 
+ 
+  

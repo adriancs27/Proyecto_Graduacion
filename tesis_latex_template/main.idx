@@ -1,6 +1,6 @@
-\indexentry{Indicador|hyperpage}{5}
-\indexentry{Indicador|hyperpage}{5}
-\indexentry{Indicador|hyperpage}{5}
+\indexentry{Indicador|hyperpage}{4}
+\indexentry{Indicador|hyperpage}{4}
+\indexentry{Indicador|hyperpage}{4}
 \indexentry{p-n|hyperpage}{7}
 \indexentry{p-n|hyperpage}{7}
 \indexentry{portadores|hyperpage}{7}
@@ -22,13 +22,13 @@
 \indexentry{id|hyperpage}{10}
 \indexentry{Vpv|hyperpage}{10}
 \indexentry{ip|hyperpage}{10}
-\indexentry{Coordinate Rotational DIgital Computer|hyperpage}{11}
+\indexentry{Coordinate Rotational Digital Computer|hyperpage}{11}
 \indexentry{constantes|hyperpage}{13}
-\indexentry{IEEE 754|hyperpage}{14}
+\indexentry{IEEE 754|hyperpage}{13}
 \indexentry{IEEE 754|hyperpage}{14}
 \indexentry{Coprocesador Cordic|hyperpage}{19}
-\indexentry{Control|hyperpage}{19}
-\indexentry{T|hyperpage}{19}
+\indexentry{Control|hyperpage}{20}
+\indexentry{T|hyperpage}{20}
 \indexentry{RESULT|hyperpage}{20}
 \indexentry{CLK|hyperpage}{20}
 \indexentry{Begin\_LN|hyperpage}{20}
@@ -64,4 +64,16 @@
 \indexentry{RST\_FF|hyperpage}{32}
 \indexentry{ACK\_FF|hyperpage}{32}
 \indexentry{Registro 1|hyperpage}{36}
-\indexentry{Registro 2|hyperpage}{36}
+\indexentry{Registro 2|hyperpage}{37}
+\indexentry{Corriente $i_{pv}$|hyperpage}{41}
+\indexentry{Tensi\IeC {\'o}n $V_{pv}$|hyperpage}{41}
+\indexentry{CLK|hyperpage}{42}
+\indexentry{I|hyperpage}{42}
+\indexentry{V|hyperpage}{42}
+\indexentry{RST\_LN\_FF|hyperpage}{42}
+\indexentry{Begin\_FSM\_I|hyperpage}{42}
+\indexentry{Begin\_FSM\_V|hyperpage}{42}
+\indexentry{ACK\_I|hyperpage}{42}
+\indexentry{ACK\_V|hyperpage}{42}
+\indexentry{RESULT\_I|hyperpage}{42}
+\indexentry{RESULT\_V|hyperpage}{42}

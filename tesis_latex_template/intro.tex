@@ -16,17 +16,18 @@ Un sistema de abastecimiento de energía solar, requiere de paneles solares, acu
  
 Debido a la importancia de la eficiencia energética en el campo de la electrónica, se desarrolló parte de un sistema en donde se puede aprovechar de una mejor manera la energía, este tema es de suma importancia en la producción de energía, principalmente en los paneles fotovoltaicos, se debe aprovechar las mejores condiciones ambientales y poder acoplar el sistema para una máxima producción de energía, el desarrollo de este proyecto se basa en aumentar la eficiencia del sistema completo para un panel previamente escogido, se utilizará un panel modelo KS10T de la empresa KYOCERA SOLAR, para esto se realiza una realimentación con un dispositivo que regula la tensión máxima que debe tener el panel. 
 
-El proyecto Linealizador-Normalizador se realizó en el Instituto Tecnológico de Costa Rica, Escuela de Ingeniería Electrónica, con el coordinador del SESLab Dr. Carlos Meza, y el coordinador del DCILab Dr. Alfonso Chacón estos laboratorios se encargan de presentar propuestas de sistemas electrónicos de gran utilidad para  para el desarrollo tecnológico y sostenibilidad, de manera que los recursos sean aprovechados de la mejor forma, brindan soluciones innovadoras con energías limpias, enfatizándose en el uso de paneles solares, motores eléctricos, circuitos integrados, diseño digital, entre otros. 
+El proyecto linealizador-normalizador se realizó en el Instituto Tecnológico de Costa Rica, Escuela de Ingeniería Electrónica, con el coordinador del SESLab Dr. Carlos Meza, y el coordinador del DCILab Dr. Alfonso Chacón estos laboratorios se encargan de presentar propuestas de sistemas electrónicos de gran utilidad para  para el desarrollo tecnológico y sostenibilidad, de manera que los recursos sean aprovechados de la mejor forma, brindan soluciones innovadoras con energías limpias, enfatizándose en el uso de paneles solares, motores eléctricos, circuitos integrados, diseño digital, entre otros. 
 
 \section{Descripción del problema y justificación}
 
-Anteriormente se realizó un estimador de parámetros por parte de Clevis Lozano estudiante del Instituto Tecnológico de Costa Rica, sin embargo este recibe en la entrada cuantificaciones lineales para calcular los parámetros requeridos, la curva característica $\ i_{pv}-V_{pv}$ de una celda solar no tiene un comportamiento lineal, si se requiere estimar parámetros a partir de la corriente y tensión de este, se deben linealizar-normalizar las entradas y desnormalizar-deslinealizar las salidas, para el modelo del panel se tienen cuatro tipos de configuraciones desde la más simple a la más compleja.  
+Anteriormente se realizó un estimador de parámetros por parte de Clevis Lozano estudiante del Instituto Tecnológico de Costa Rica, sin embargo este recibe en la entrada cuantificaciones lineales para calcular los parámetros requeridos, la curva característica $\ i_{pv}-V_{pv}$ de una celda solar no tiene un comportamiento lineal,de manera que si se requiere estimar parámetros a partir de la corriente y tensión de este, se deben linealizar-normalizar las entradas y desnormalizar-deslinealizar las salidas. 
+Para el modelo del panel se tienen cuatro tipos de configuraciones desde la más simple a la más compleja tomando en cuenta las perdidas resistivas de las celdas, paralelas y serie.  
 
 El coprocesador numérico a desarrollar, debía satisfacer los siguientes requerimientos:
 
 \begin{compactitem}
 \item Se debe basar en el formato IEEE 754, el cual es un estándar en coma flotante, para realizar operaciones aritméticas.
-\item Utilizar una arquitectura de 32.
+\item Utilizar una arquitectura de 32 bits.
 \item Utilizar Verilog como lenguaje de descripción de hardware.
 \item Optimizar las unidades para requerir la menor cantidad de recursos.
 \end{compactitem}
@@ -37,11 +38,11 @@ El coprocesador numérico a desarrollar, debía satisfacer los siguientes requer
 
 \section{Enfoque de la solución}
 
-Primeramente se realizará un proceso de recopilación de información dentro de temas como: algoritmo de CORDIC, estándar IEEE 754 y operaciones en punto fijo. Posteriormente, se utilizara este estándar para iniciar el diseño del linealizador y el normalizador del sistema general del panel fotovoltaico, este se puede observar en la figura \ref{fig:DSOL}. 
+Primeramente se realizará un proceso de recopilación de información dentro de temas como: curvas y modelo de un PV, ecuaciones características de los PV, algoritmo de CORDIC, estándar IEEE 754 y operaciones en punto fijo. Posteriormente, se utilizara este estándar para iniciar el diseño del linealizador y el normalizador del sistema general del panel fotovoltaico, este se puede observar en la figura \ref{fig:DSOL}. 
 
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.5]{./diagrama_SOLUCION.png}
+    \includegraphics[scale=0.04]{./diagrama_SOLUCION.png}
     \rule{35em}{0.5pt}
   \caption[Diagrama de solución para el sistema de aumento de eficiencia de paneles fotovoltaicos]{ Diagrama de solución para el sistema de aumento de eficiencia de paneles fotovoltaicos}
   \label{fig:DSOL}
@@ -49,9 +50,9 @@ Primeramente se realizará un proceso de recopilación de información dentro de
 
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.5]{./DiagramaSOL.png}
+    \includegraphics[scale=0.04]{./DiagramaSOL.png}
     \rule{35em}{0.5pt}
-  \caption[Diagrama de solución para el sistema de Linealización-Normalización.]{ Diagrama de solución para el sistema de de Linealización-Normalización.}
+  \caption[Diagrama de solución para el sistema de linealización-normalización.]{ Diagrama de solución para el sistema de de linealización-normalización.}
   \label{fig:DiagramaSOL}
 \end{figure}
 
@@ -59,7 +60,7 @@ Para el diseño del los circuitos linealización-normalización de la figura \re
 
 Este diseño modular, se implementará utilizando el lenguaje HDL Verilog, y se verificarán los resultados utilizando un modelo en alto nivel realizado en Python, contra los resultados obtenidos en las simulaciones Post Place \& Route.
 
-Por último, se realizaran las pruebas en una FPGA para comprobar el funcionamiento del hardware. 
+Por último, se realizarán las pruebas en una FPGA artix-7 para comprobar el funcionamiento del hardware y comparar con las simulaciones. 
 
 \section{Meta}
 
@@ -69,7 +70,7 @@ La meta de este proyecto es poder aprovechar de la mejor forma energía solar, d
 
 \subsection{Objetivo general}
 
-Desarrollar una unidad de linealización y normalización para un 	estimador de parámetros Corriente-Tensión de un panel fotovoltaico.
+Desarrollar una unidad de linealización y normalización para un estimador de parámetros Corriente-Tensión de un panel fotovoltaico.
 
 \subsection{Objetivos específicos}
 
@@ -90,8 +91,7 @@ Desarrollar una unidad de linealización y normalización para un 	estimador de 
 \end{compactitem}
 
 \subsection{Estructura}
-El capítulo 2 se describen los conceptos teóricos que se utilizados a través del desarrollo del proyecto. En el capitulo 3 se detalla el diseño del algoritmo y control, implementación y los resultados obtenidos para el circuito de linealización. En el capítulo 4 se presentan el diseño del algoritmo y control, implementación y los resultados obtenidos para el circuito de normalización. El capitulo 5 muestra el sistema completo, junto con sus pruebas y resultados.  Finalmente, en el capítulo 6 se ofrecen
-conclusiones del proyecto, y recomendaciones.
+El capítulo 2 se describen los conceptos teóricos que se utilizados a través del desarrollo del proyecto. En el capitulo 3 se detalla el diseño del algoritmo y control, implementación y los resultados obtenidos para el circuito de linealización. En el capítulo 4 se presentan el diseño del algoritmo y control, implementación y los resultados obtenidos para el circuito de normalización. El capitulo 5 muestra el sistema completo, junto con sus pruebas y resultados.  El capítulo 6 se ofrecen conclusiones del proyecto, y recomendaciones. Finalmente, en el capitulo 7 se puede observar la bibliografía utilizada. 
 
 
 

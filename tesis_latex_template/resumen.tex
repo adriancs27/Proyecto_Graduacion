@@ -1,28 +1,27 @@
 \chapter*{Resumen}
 \thispagestyle{empty}
 
-El resumen es la síntesis de lo que aparecerá en el tesis. Tiene que ser lo
-suficientemente consiso y claro para que alguien que lo lea sepa qué esperar
-del resto de la tesis si la leyera completamente. Puede concluir con palabras
-clave, que son los temas principales tratados en el documento. El resumen queda
-fuera de la numeración del resto de secciones.
-
-No se acostumbra utilizar referencias bibliográficas, tablas, o figuras
-en el resumen.
+En esta tesis se presenta el diseño de un linealizador de corriente descrito en lenguaje VHDL, basado en el estándar para aritmética de punto flotante de IEEE 754 para microprocesadores, para el cual se utiliza el formato binario de precisión simple de 32 bits, utilizando el algoritmo de CORDIC para realizar la operación logaritmo natural. Por otro lado se realiza un convertidor de formato IEEE 754 punto flotante a punto fijo, ambos en 32 bits, por último se normaliza el dato en punto fijo, esta normalización se aplica tanto en corriente como en tensión. Estos circuitos serán utilizados en un sistema de aumento de eficiencia para suministros de paneles fotovoltaicos. Este linealizador cuenta con la capacidad para realizar operaciones aritméticas de punto flotante, lo cual es fundamental para una mejor precisión y desempeño del sistema en el procesamiento de los datos, ha sido diseñado considerando los parámetros de velocidad, área utilizada dentro de la FPGA y consumo de potencia estimada, además el circuito ha sido sintetizado y simulado sobre la FPGA Virtex® 7 de la familia Xilinx®. El circuito se interconectó en un diagrama esquemático principal para mayor facilidad de incorporación de los bloques de control, entradas y salidas.
+ 
 
 \bigskip
 
-\textbf{Palabras clave:} \scriptKeywords
+\textbf{Palabras clave:} Aritmética Binaria, Formato IEEE 754, Punto fijo, FPGA, VHDL.
+
+
+
+
 
 \clearpage
 \chapter*{Abstract}
 \thispagestyle{empty}
 
-The same as before, but in English.
+This thesis presents the design of a current linearizer described in VHDL language based on the standard for Arithmetic floating Point IEEE-754 for microprocessors and the binary format used is single-precision 32-bit, using CORDIC algorithm to perform the operation. On the other hand a converter IEEE 754 floating point to fixed point, both in 32 bits, finally the data is normalized in fixed point, this normalization is applied to both current and voltage. These circuits will be used in a system for  increased efficiency of supplies photovoltaic panels. This linearizer has the ability to perform arithmetic floating point operations, which is critical for better accuracy and performance of the system in data processing, it has been designed considering the parameters of speed, area used within the FPGA and consumption estimated power addition the circuit has been synthesized and simulated on FPGA Xilinx® Virtex® 7 family. The circuit has been interconnected in a main schematic diagram for easy incorporation of control blocks, inputs, outputs.
+
 
 \bigskip
 
-\textbf{Keywords:} word 1, word 2, 
+\textbf{Keywords:} Binary arithmetic, IEEE 754 Format, Fixed point, FPGA, VHDL. 
 
 %\cleardoublepage
 

@@ -36,8 +36,8 @@ module TB_LINEALIZADOR_NORMALIZADOR;
 		 //OUTPUT SIGNALS
 		 wire ACK_I;
 		 wire ACK_V;
-		 wire U_F;
-		 wire O_F;
+//		 wire U_F;
+//		 wire O_F;
 		 
          wire [31:0] RESULT_I;
          wire [31:0] RESULT_V;
@@ -55,8 +55,8 @@ module TB_LINEALIZADOR_NORMALIZADOR;
         .Begin_FSM_V(Begin_FSM_V),
         .ACK_I(ACK_I),
         .ACK_V(ACK_V),
-        .U_F(U_F),
-        .O_F(O_F),
+  //      .U_F(U_F),
+  //      .O_F(O_F),
         .RESULT_I(RESULT_I),
         .RESULT_V(RESULT_V)
         );

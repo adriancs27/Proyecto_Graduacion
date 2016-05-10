@@ -1,9 +1,9 @@
 \chapter{Sistema de linealización}
 \label{ch:linealizacion}
 
-Para realizar la linealización de la expresión exponencial de la corriente $\ i_{pv} $ del modelo del panel se implementa una función logarítmica, dentro de los algoritmos de calculo se tiene el de CORDIC, este permite realizar una aproximación de la función de manera recursiva mediante cierta cantidad de iteraciones, para el caso del linealizador se utiliza el método hiperbólico para realizar el calculo de la operación logaritmo natural, este algoritmo requiere de una tabla (Look-up table) con valores pre-cargados. 
+Para realizar la linealización de la expresión exponencial de la corriente $\ i_{pv} $ del modelo del panel, se implementa una función logarítmica, dentro de los algoritmos de cálculo se tiene el de CORDIC, este permite realizar una aproximación de la función de manera recursiva mediante cierta cantidad de iteraciones, para el caso del linealizador se utiliza el método hiperbólico para realizar el cálculo de la operación logaritmo natural, este algoritmo requiere de una tabla (Look-up table) con valores pre-cargados. 
 
-El rango de convergencia para este algoritmo es de $\ 0.106843 < T < 9.35947 $ donde $\ T $ es el argumento del logaritmo natural, el valor máximo de $\ T $ para el panel previamente escogido de 0.58A esta es la corriente en condiciones máximas para el panel, debido a esto se puede desplazar el intervalo que se tiene para los argumentos, este se divide entre una constante $\ C = 16$ y se desplaza $\ 0.00667769 < T < 0.58496687 $, esto se realizó debido a que se pueden dar valores de corriente mas bajos que 0.106843A. Esta constante C se debe compensar en el logaritmo, y se logra con la siguiente igualdad: 
+El rango de convergencia para este algoritmo es de $\ 0.106843 < T < 9.35947 $ donde $\ T $ es el argumento del logaritmo natural, el valor máximo de $\ T $ para el panel previamente escogido de 0.58A, esta es la corriente en condiciones máximas para el panel, debido a esto se puede desplazar el intervalo que se tiene para los argumentos de la función, este se divide entre una constante $\ C = 16$ y se desplaza $\ 0.00667769 < T < 0.58496687 $, esto se realizó debido a que se pueden dar valores de corriente mas bajos que 0.106843A. Esta constante C se debe compensar en el logaritmo, y se logra con la siguiente igualdad: 
 
 \begin{equation} \label{eq:ej1}
   Ln \left( T \right)
@@ -26,16 +26,16 @@ Para comprobar el debido funcionamiento del este algoritmo se crea un programa d
 \end{figure}
 
 
-En la figura \ref{fig:Python} se observa el programa realizado para la verificación del algoritmo, para este se utilizan las ecuaciones del marco teórico descritas con anterioridad, también se comprueba el cambio en el rango de calculo con el escalado del argumento por 16. 
+En la figura \ref{fig:Python} se observa el programa realizado para la verificación del algoritmo, para este se utilizan las ecuaciones del marco teórico descritas con anterioridad, también se comprueba el cambio en el rango de cálculo con el escalado del argumento por 16. 
 
 Para simplificar el diseño del hardware se realizan cambios en las ecuaciones originales, se cambia la resta del valor actual de Z por una suma, y se incluye el signo en la LUT de Z, el resultado final del algoritmo se debe multiplicar por 2, sin embargo este escalado se puede realizar en la LUT, esto para evitar la multiplicación, esto se comprueba en el programa de la figura \ref{fig:Python}.  
 
 
-\section{Linealizador con el algoritmo de CORDIC}
+\section{Sistema linealizador con el algoritmo de CORDIC}
 
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.6]{./Linealizador_general.png}
+    \includegraphics[scale=0.06]{./Linealizador_general.png}
     \rule{35em}{0.5pt}
   \caption[Bloque principal: algoritmo de CORDIC en hardware]{Bloque principal: Algoritmo de CORDIC en hardware  }
   \label{fig:CORDIC1}
@@ -45,7 +45,7 @@ La figura \ref{fig:CORDIC1} contiene el bloque general del algoritmo de CORDIC, 
 
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.4]{./Linealizador_CORDIC_FSM.png}
+    \includegraphics[scale=0.05]{./Linealizador_CORDIC_FSM.png}
     \rule{35em}{0.5pt}
   \caption[Coprocesador CORDIC y Control]{Coprocesador CORDIC y Control  }
   \label{fig:CORDIC2}
@@ -55,14 +55,14 @@ El sistema de linealización de la figura \ref{fig:CORDIC2} cuenta con dos módu
 
 \begin{compactitem}
 
-\item \nt{Coprocesador Cordic}: En este realizan todas las operaciones requeridas por el algoritmo, se encarga del manejo de los datos en el calculo. 
+\item \nt{Coprocesador Cordic}: En este realizan todas las operaciones requeridas por el algoritmo, se encarga del manejo de los datos en el cálculo. 
 
 
 \item \nt{Control}: Este se encarga de proveer las señales de control requeridas por el coprocesador, según las condiciones que se tenga en cada estado.
 
 \end{compactitem}
 
-señales de datos: 
+Señales de datos: 
 
 \begin{compactitem}
 
@@ -71,17 +71,17 @@ señales de datos:
 
 \end{compactitem}
 
-señales de control: 
+Señales de control: 
 
 \begin{compactitem}
 \item \nt{CLK}: Reloj del sistema. 
 
 \item \nt{Begin\_LN}: Esta se encarga de dar inicio a la operación logaritmo natural. 
 
-\item \nt{RST\_LN}: Realiza un reset a la unidad CORDIC tanto para el coprocesador como para la maquina de estados.
+\item \nt{RST\_LN}: Realiza un reset a la unidad CORDIC tanto para el coprocesador como para la máquina de estados.
  
 
-\item \nt{ACK\_LN}: Indica que el calculo ya fue realizado.
+\item \nt{ACK\_LN}: Indica que el cálculo ya fue realizado.
 
 \item \nt{Begin\_SUM}: Esta se encarga de dar inicio a la unidad de suma-resta punto flotante.
 
@@ -93,11 +93,11 @@ señales de control:
 
 \item \nt{CLK\_DIR}: Activa el enable del contador de iteraciones. 
 
-\item \nt{CONT\_ITER}: Indica el numero de iteracion, para que la maquina de estados pueda detenerse en el numero que se le asigne.
+\item \nt{CONT\_ITER}: Indica el numero de iteración, para que la máquina de estados pueda detenerse en el número que se le asigne.
  
 \item \nt{RST}: Realiza el reset de todos los registros de la unidad.
 
-\item \nt{MS\_1 , MS\_2 , MS\_3 , MS\_4}: Realizan la selelccion de cada multiplexor, Mux1, Mux2, Mux3, Mux's4 respectivamente.
+\item \nt{MS\_1 , MS\_2 , MS\_3 , MS\_4}: Realizan la selección de cada multiplexor, Mux1, Mux2, Mux3, Mux's4 respectivamente.
 
 \item \nt{EN\_REG1X , EN\_REG1Y , EN\_REG1Z}: Activa los enable de los registros de la primera etapa REG1X, REG1Y, REG1Z respectivamente, para almacenar datos. 
 
@@ -112,26 +112,26 @@ señales de control:
 \end{compactitem}
 
 \section{Coprocesador CORDIC}
-El diseño de este algoritmo se basa en una arquitectura segmentada, de manera que se almacenan varios datos a la vez, sin embargo se debe tener buena sincronización para evitar datos erróneos a través del proceso de calculo. Por otro lado se utiliza el formato IEEE 754 con 32Bits, esto debido a que se requiere una adecuada precision en el calculo y un menor numero de iteraciones, repercutiendo en la velocidad del sistema. 
+El diseño de este algoritmo se basa en una arquitectura segmentada, de manera que se almacenan y procesan varios datos a la vez, sin embargo se debe tener buena sincronización para evitar datos erróneos a través del proceso de cálculo. Por otro lado se utiliza el formato IEEE 754 con 32Bits, esto debido a que se requiere una adecuada precisión en el calculo y un menor número de iteraciones, repercutiendo en la velocidad del sistema. 
 
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.6]{./CORDICLN.png}
+    \includegraphics[scale=0.04]{./CORDICLN.png}
     \rule{35em}{0.5pt}
-  \caption[Algoritmo de CORDIC en hardware]{Algoritmo de CORDIC en hardware  }
+  \caption[Coprocesador segmentado para el cálculo de una función logarítmica con el algoritmo de CORDIC en hardware]{Coprocesador segmentado para el cálculo de una función logarítmica con el algoritmo de CORDIC en hardware  }
   \label{fig:CORDICLN}
 \end{figure}
 
-En la figura \ref{fig:CORDICLN} se puede observar la arquitectura diseñada para el algoritmo de CORDIC, con el formato IEEE 754 en 32-Bits, se trabaja en punto flotante, este reduce el numero de ieraciones, y produce una mejor precisión tanto en las operaciones como el resultado final. 
+En la figura \ref{fig:CORDICLN} se puede observar la arquitectura diseñada para el algoritmo de CORDIC, con el formato IEEE 754 en 32-Bits, se trabaja en punto flotante, este reduce el numero de iteraciones, y produce una mejor precisión tanto en las operaciones como el resultado final. 
 
 Esta etapa inicia con la carga de las condiciones iniciales, donde $\ Z_0 $ contiene un valor inicial cero, para el valor inicial de $\ X_0 $ y $\ Y_0 $ primeramente se aplica el escalado  16*T,
-este escalado se puede representar como un desplazamiento $\ 2^{-4} $, por lo tanto este movimiento en punto flotante se traduce como una suma de 4 en el exponente de $\ T$, posteriormente se realizan las siguientes operaciones en punto flotante,  $\ X_0 = T + 1 $ y $\ Y_0 = T - 1 $, estas tres constantes dan inicio al proceso de calculo de manera iterativa, por lo que se requiere almacenarlas en un registro en la primera etapa de segmentación $\ \left(Registro 1 \right) $, los nuevos estados se deben calcular uno por uno, esto debido a que el circuito para el sumador-restador en punto flotante requiere de mucha área, este método (CORDIC) es un calculo cruzado es decir, para el próximo valor de $\ X_i$ se requiere un valor de $\ Y_0 $ con un desplazamiento y un cambio de signo, y para $\ Y_i $ se aplica un concepto similar con valores de $\ X_0$,  por lo tanto para el calculo de $\ X_i $ se requiere un restador en punto fijo para desplazar el valor del exponente de $\ Y_0 $ , para el nuevo valor de $\ Y_i $ se utiliza un restador punto fijo para el valor del exponente de $\ X_0 $ y para $\ Z_i $ se requiere una ROM con valores previamente cargados $\ \left(LUT \right) $. Estas operaciones "$\ X_i , Y_i $"  involucran el signo de "$\ Y_0 $" invertido.
+este escalado se puede representar como un desplazamiento $\ 2^{-4} $, por lo tanto este movimiento en punto flotante se traduce como una suma de 4 en el exponente de $\ T$, posteriormente se realizan las siguientes operaciones en punto flotante,  $\ X_0 = T + 1 $ y $\ Y_0 = T - 1 $, estas tres constantes dan inicio al proceso de cálculo de manera iterativa, por lo que se requiere almacenarlas en un registro en la primera etapa de segmentación $\ \left(Registro 1 \right) $, los nuevos estados se deben calcular uno por uno, esto debido a que el circuito para el sumador-restador en punto flotante requiere de mucha área, este método (CORDIC) es un calculo cruzado es decir, para el próximo valor de $\ X_i$ se requiere un valor de $\ Y_0 $ con un desplazamiento y un cambio de signo, y para $\ Y_i $ se aplica un concepto similar con valores de $\ X_0$,  por lo tanto para el cálculo de $\ X_i $ se requiere un restador en punto fijo para desplazar el valor del exponente de $\ Y_0 $ , para el nuevo valor de $\ Y_i $ se utiliza un restador punto fijo para el valor del exponente de $\ X_0 $ y para $\ Z_i $ se requiere una ROM con valores previamente cargados $\ \left(LUT \right) $. Estas operaciones "$\ X_i , Y_i $"  involucran el signo de "$\ Y_0 $" invertido.
 
 Para el signo de las operaciones CORDIC se utiliza un circuito de comparación como se observa en la siguiente tabla: 
 
 \begin{table}[H]
 \centering
-\caption{Tabla de signo para cada iteracion componente Xi , Yi , Zi}
+\caption{Tabla de signo $\ \delta $ para cada iteración componente Xi , Yi , Zi}
 \label{Table:Signo}
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
@@ -166,9 +166,9 @@ Sign $\ X_0 $ & Sign $\ Z_0 $  & Sign $\ Y_0 $ & Sign $\ \sim Y_0 $  & Sign $\ X
 
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.48]{./signo.png}
+    \includegraphics[scale=0.06]{./signo.png}
     \rule{35em}{0.5pt}
-  \caption[Signo para cada iteración componente Xi , Yi , Zi]{Signo para cada iteración componente Xi , Yi , Zi   }
+  \caption[Signo $\ \delta$ para cada iteración componente Xi , Yi , Zi]{Signo $\ \delta$ para cada iteración componente Xi , Yi , Zi   }
   \label{fig:SGN}
 \end{figure}
 
@@ -176,7 +176,7 @@ Sign $\ X_0 $ & Sign $\ Z_0 $  & Sign $\ Y_0 $ & Sign $\ \sim Y_0 $  & Sign $\ X
 A partir de la tabla \ref{Table:Signo} se extrae el circuito de comparación de signo de la figura \ref{fig:SGN}, este es diseñado con compuerta \nt{XOR} que poseen el mismo comportamiento de la tabla. 
 
 
-Se requiere de dos Look-up tables "LUT", los datos de cada tabla se almacenan en memorias ROM's, de manera que puedan ser accesados en cualquier momento que sean requeridos, dentro de las ROM's se dispone:   
+Se requiere de dos Look-up tables "LUT", los datos de cada tabla se almacenan en memorias ROM's, de manera que puedan ser accesados en cualquier momento que sean requeridos por medio de la dirección, dentro de las ROM's se dispone:   
 
 \begin{compactitem}
 
@@ -187,19 +187,19 @@ Se requiere de dos Look-up tables "LUT", los datos de cada tabla se almacenan en
 
 El acceso a cada valor de la tablas se realiza mediante un contador de iteraciones, este indica a cada tabla la dirección que debe desplegar según el numero de iteración.  
 
-El proceso para el calculo de las variables no se puede realizar de manera simultanea, ya que solo se cuenta con un sumador punto flotante, para esto se cuenta con las variables iniciales del registro 1 y se almacenan las variables modificadas en el \nt{Registro 2}, la secuencia de calculo toma primeramente los valores que se necesitan para el calculo de  $\ X_i $, posteriormente se realiza el calculo y se almacena el resultado en el \nt{Registro 1}, seguidamente se procede con el calculo de $\ Y_i $ y se almacena en el \nt{Registro 1}, por ultimo se calcula el valor de $\ Z_i $, concluida la suma se almacena en el \nt{Registro 1}, este proceso se hace de manera iterativa, una vez finalizada la cuenta de N iteraciones (Según se defina N=numero entero), se realiza la resta $\ Z_i - Ln\left(16\right) $ para contrarrestar el efecto del escalado aplicado al argumento$\ \left(T\right) $ al inicio del calculo del logaritmo natural, por ultimo el resultado final de $\ Z_i $ contiene el valor de $Ln \left(T \right)$ , este se almacena en el \nt{Registro 4}.
+El proceso para el cálculo de las variables no se puede realizar de manera simultanea, ya que solo se cuenta con un sumador punto flotante, para esto se cuenta con las variables iniciales del registro 1 y se almacenan las variables modificadas en el \nt{Registro 2}, la secuencia de cálculo toma primeramente los valores que se necesitan para  $\ X_i $, posteriormente se realiza el cálculo y se almacena el resultado en el \nt{Registro 1}, seguidamente se procede con el cálculo de $\ Y_i $ y se almacena en el \nt{Registro 1}, por ultimo se calcula el valor de $\ Z_i $, concluida la suma se almacena en el \nt{Registro 1}, este proceso se hace de manera iterativa, una vez finalizada la cuenta de N iteraciones según se defina (N=numero entero), se realiza la resta $\ Z_i - Ln\left(16\right) $ para contrarrestar el efecto del escalado aplicado al argumento $\ \left(T\right) $ al inicio del cálculo del logaritmo natural, por último el resultado final de $\ Z_i $ contiene el valor de $Ln \left(T \right)$ , este se almacena en el \nt{Registro 4}.
 
-\section{Sistema de control para el coprocesador CORDIC}
+\section{Sistema de control para el coprocesador CORDIC (FSM)}
 
 \begin{figure}[H]
   \centering
-    \includegraphics[scale=0.48]{./MaquinaL.png}
+    \includegraphics[scale=0.045]{./MaquinaL.png}
     \rule{35em}{0.5pt}
   \caption[Maquina de estados finitos para la arquitectura de CORDIC]{Maquina de estados finitos para la arquitectura de CORDIC   }
   \label{fig:FSML}
 \end{figure}
 
-EL sistema de control requiere de mucha sincronía, ya que los datos debe ser almacenados de manera correcta y estar listos cuando se requiere por otro segmento del coprocesador CORDIC, para esto se diseñó una maquina de estados finitos, donde inicialmente se calculan los valores iniciales de $ X_0 $, $ Y_0 $ y $ Z_0 $, posteriormente la maquina brinda las señales de control requeridas con la secuencia de calculo de $ X_i $,$ Y_i $ y $ Z_i $ respectivamente realizando una cuenta de iteración, se cuenta con una variable de entrada para que este control pueda saber el numero de iteración en el que se encuentra, de manera que cuando se llega a la iteración N definida con anterioridad, se finaliza el calculo.
+El sistema de control requiere de mucha sincronía, ya que los datos debe ser almacenados de manera correcta y estar listos cuando se requiere por otro segmento del coprocesador CORDIC, para esto se diseñó una maquina de estados finitos, donde inicialmente se calculan los valores iniciales de $ X_0 $, $ Y_0 $ y $ Z_0 $, posteriormente la maquina brinda las señales de control requeridas con la secuencia de cálculo de $ X_i $,$ Y_i $ y $ Z_i $ respectivamente realizando una cuenta de iteración, se cuenta con una variable de entrada para que este control pueda saber el número de iteración en el que se encuentra, de manera que cuando se llega a la iteración N definida con anterioridad, se finaliza el cálculo.
 
 \section{Algoritmo de CORDIC en Verilog}
 
@@ -213,7 +213,7 @@ Este algoritmo se implementó por medio de el lenguaje de descripción de hardwa
   \label{fig:SIMLINEAL}
 \end{figure}   
 
-\section{Simulación del algoritmo de CORDIC}
+\section{Simulación del circuito linealizador con algoritmo de CORDIC}
 
 Las simulaciones de la implementación del algoritmo, se realizaron mediante mil valores de entrada, obteniendo así mil valores de salida, los cuales se comparan con los valores reales, para dicha comparación se realizaron aproximaciones con 8, 12 y 15 iteraciones. 
 
@@ -247,16 +247,16 @@ Seguidamente se realiza una prueba con mil valores simulando el comportamiento q
 
 
 
-\subsection{Simulacion del rango de convergencia del Linealizador CORDIC}
+\subsection{Resultados de la simulación del rango de convergencia del circuito linealizador CORDIC}
 
-En la implementación de un algoritmo en hardware, es de suma importancia verificar que este funcione de manera adecuada en el rango de convergencia definido. Para la comprobación del algoritmo de la unidad del linealizador CORDIC, se realizaron una serie de pruebas, simulando con cierta cantidad de iteraciones y así poder observar cual es la mas adecuada para el calculo requerido y su debido resultado, para esto se programó un simulación("testbench") en donde se corre una prueba con mil valores de entrada, ingresados por medio de un archivo de texto previamente editado con los datos de entrada con la función exponencial anteriormente descrita en la ecuación \ref{eq:ej3}. 
+En la implementación de un algoritmo en hardware, es de suma importancia verificar que este funcione de manera adecuada en el rango de convergencia definido. Para la comprobación del algoritmo de la unidad del linealizador CORDIC, se realizaron una serie de pruebas, simulando con cierta cantidad de iteraciones y así poder observar cual es la mas adecuada para el cálculo requerido y su debido resultado, para esto se programó un simulación("testbench") en donde se corre una prueba con mil valores de entrada, ingresados por medio de un archivo de texto previamente editado con los datos de entrada con la función exponencial anteriormente descrita en la ecuación \ref{eq:ej3}. 
 
 
 \begin{figure}[H]
   \centering
     \includegraphics[scale=0.7]{./RANGO_8iter.png}
     \rule{35em}{0.5pt}
-  \caption[Rango de convergencia circuito CORDIC con 8 iteraciones]{Rango de convergencia circuito CORDIC con 8 iteraciones   }
+  \caption[Datos de la simulación post-sintesis del linealizador para un rango de convergencia CORDIC con 8 iteraciones]{Datos de la simulación post-sintesis del linealizador para un rango de convergencia CORDIC con 8 iteraciones  }
   \label{fig:RG8}
 \end{figure}
 
@@ -264,7 +264,7 @@ En la implementación de un algoritmo en hardware, es de suma importancia verifi
   \centering
     \includegraphics[scale=0.7]{./RANGO_8iter_ERROR.png}
     \rule{35em}{0.5pt}
-  \caption[\%Error rango de convergencia circuito CORDIC con 8 iteraciones]{\%Error rango de convergencia circuito CORDIC con 8 iteraciones }
+  \caption[Porcentaje de error rango de convergencia circuito CORDIC con 8 iteraciones simulación post-síntesis]{Porcentaje de error rango de convergencia circuito CORDIC con 8 iteraciones simulación post-síntesis}
   \label{fig:RGE8}
 \end{figure}
 
@@ -279,7 +279,7 @@ Primeramente se realizó una simulación con 8 iteraciones, como se muestra en l
   \centering
     \includegraphics[scale=0.7]{./RANGO_12iter.png}
     \rule{35em}{0.5pt}
-  \caption[Rango de convergencia circuito CORDIC con 12 iteraciones]{Rango de convergencia circuito CORDIC con 12 iteraciones   }
+  \caption[Datos de la simulacion post-síntesis del linealizador para un rango de convergencia CORDIC con 12 iteraciones]{Datos de la simulación post-síntesis del linealizador para un rango de convergencia CORDIC con 12 iteraciones}
   \label{fig:RG12}
 \end{figure}
 
@@ -287,17 +287,17 @@ Primeramente se realizó una simulación con 8 iteraciones, como se muestra en l
   \centering
     \includegraphics[scale=0.7]{./RANGO_12iter_ERROR.png}
     \rule{35em}{0.5pt}
-  \caption[\%Error rango de convergencia circuito CORDIC con 12 iteraciones]{\%Error rango de convergencia circuito CORDIC con 12 iteraciones }
+  \caption[Porcentaje de error rango de convergencia circuito CORDIC con 12 iteraciones simulación post-síntesis]{Porcentaje de error rango de convergencia circuito CORDIC con 12 iteraciones simulación post-síntesis}
   \label{fig:RGE12}
 \end{figure}
 
-Una mejor aproximación se puede lograr utilizando 12 iteraciones en el calculo del logaritmo natural, en la figura \ref{fig:RG12} se pueden observar los resultados obtenidos, se requieren 675 ciclos de reloj para ejecutar el cálculo completo. La figura \ref{fig:RGE12} muestra el error en cada cálculo, donde el porcentaje de error máximo es de  0,259\% y el porcentaje de error promedio es de 0,0351\%. 
+Una mejor aproximación se puede lograr utilizando 12 iteraciones en el calculo del logaritmo natural, en la figura \ref{fig:RG12} se pueden observar los resultados obtenidos, se requieren 660 ciclos de reloj para ejecutar el cálculo completo. La figura \ref{fig:RGE12} muestra el error en cada cálculo, donde el porcentaje de error máximo es de  0,259\% y el porcentaje de error promedio es de 0,0351\%. 
 
 \begin{figure}[H]
   \centering
     \includegraphics[scale=0.7]{./RANGO_15iter.png}
     \rule{35em}{0.5pt}
-  \caption[Rango de convergencia circuito CORDIC con 15 iteraciones]{Rango de convergencia circuito CORDIC con 15 iteraciones   }
+  \caption[Datos de la simulación post-síntesis del linealizador para un rango de convergencia CORDIC con 15 iteraciones]{Datos de la simulación post-síntesis del linealizador para un rango de convergencia CORDIC con 15 iteraciones}
   \label{fig:RG15}
 \end{figure}
 
@@ -305,13 +305,12 @@ Una mejor aproximación se puede lograr utilizando 12 iteraciones en el calculo 
   \centering
     \includegraphics[scale=0.7]{./RANGO_15iter_ERROR.png}
     \rule{35em}{0.5pt}
-  \caption[\%Error rango de convergencia circuito CORDIC con 15 iteraciones]{\%Error rango de convergencia circuito CORDIC con 15 iteraciones }
+  \caption[Porcentaje de error rango de convergencia circuito CORDIC con 15 iteraciones simulación post-síntesis]{Porcentaje de error rango de convergencia circuito CORDIC con 15 iteraciones simulación post-síntesis}
   \label{fig:RGE15}
 \end{figure}
 
 
-Utilizando 12 iteraciones en el cálculo del logaritmo natural se logra la mayor aproximación, sin embargo se requieren 818 ciclos de reloj y se vuelve mas lento el proceso, en la figura \ref{fig:RG15} se pueden observar los resultados obtenidos. La figura \ref{fig:RGE15} muestra el error en cada cálculo, donde el porcentaje de error máximo es de  0,129\% y el porcentaje de error promedio es de 0,0257\%. 
+Utilizando 15 iteraciones en el cálculo del logaritmo natural se logra la mayor aproximación, sin embargo se requieren 818 ciclos de reloj y se vuelve mas lento el proceso, en la figura \ref{fig:RG15} se pueden observar los resultados obtenidos. La figura \ref{fig:RGE15} muestra el error en cada cálculo, donde el porcentaje de error máximo es de  0,129\% y el porcentaje de error promedio es de 0,0257\%. 
 
 
-
-    
+En las figuras de error \ref{fig:RGE8}, \ref{fig:RGE12} y \ref{fig:RGE15} se puede observar que el comportamiento del algoritmo es mas exacto cuando los valores de corriente de entrada del argumento de linealizador "T" son pequeños, a medida que este argumento se vuelve mayor el porcentaje de error también incrementa. 

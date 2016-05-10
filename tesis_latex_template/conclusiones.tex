@@ -1,13 +1,30 @@
-\chapter{Conclusiones}
+\chapter{Conclusiones y recomendaciones}
 
-Las conclusiones no son un resumen de lo realizado sino a lo que ha llevado el
-desarrollo del proyecto, no perdiendo de vista los objetivos planteados desde
-el principio y los resultados obtenidos.  En otras palabras, qué se concluye o
-a qué se ha llegado después de realizado el proyecto de graduación.  Un error
-común es ``concluir'' aspectos que no se desarrollaron en la tesis, como
-observaciones o afirmaciones derivadas de la teoría directamente.  Esto último
-debe evitarse.
+\section{Conclusiones}
 
-Es usual concluir con lo que queda por hacer, o sugerencias para mejorar los
-resultados.
+\begin{compactitem}
 
+\item Se demostró que es posible sintetizar la unidad de linealización-normalización con precisión aceptable utilizando versiones reducidas del estándar IEEE 754 (32bits).
+
+\item Se logró demostrar en el circuito linealizador que a mayor numero de iteraciones mayor exactitud presenta el resultado, sin embargo requiere un mayor tiempo de ejecución.  
+
+\item Se demostró que para el circuito linealizador, el porcentaje de error máximo  fue de 2.74\% con 8 iteraciones en el rango de convergencia del algoritmo de CORDIC. 
+
+\item Se demostró que para el circuito convertidor-normalizador tanto de corriente como de tensión, el porcentaje de error máximo fue de 0,0024\%.
+
+\item Se concluyó que se debe utilizar 8 iteraciones para cumplir con el tiempo de ejecución del linealizador-normalizador en el sistema de optimización para paneles solares. 
+
+\item Se determinó que el módulo de la corriente consume más recursos que el módulo de tensión, dado que la corriente requiere de un modulo de linealización y a su vez mayor cantidad de hardware. 
+
+
+\end{compactitem}
+
+\section{Recomendaciones}
+
+\begin{compactitem}
+
+\item Se utilizó un único sumador punto flotante para reducir el área del circuito sin embargo el espacio utilizado en la FPGA es muy poco, por lo tanto se podría realizar modificaciones para reducir el número de ciclos de cada iteración de la máquina de estados, implementando una arquitectura con cálculo de $ X_i $ , $ Y_i$ y $ Z_i$ de manera paralela, es decir utilizar un sumador de punto flotante para cada variable de manera que se realicen los cálculos simultáneos, esta variación implica un aumento en el área sin embargo le aumentaría al alrededor de 3 veces más la velocidad de ejecución.
+
+\item Si se utiliza algún otro tipo de panel con el sistema y se requiere un rango de linealización más amplio se puede utilizar un algoritmo de CORDIC hiperbólico con una extensión de las iteraciones, agregando dos iteraciones negativas se puede extender, de manera que no sea tan limitado, sin embargo se requiere de mayor cantidad de recursospara la implementación de estas dos iteraciones y puede ser mas lento en ejecución.  
+
+\end{compactitem}
