@@ -1,15 +1,17 @@
 \select@language {english}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Modelos para un PV\relax }}{10}{table.2.1}
-\contentsline {table}{\numberline {2.2}{\ignorespaces Sistema de coordenadas unificado (CORDIC)\relax }}{12}{table.2.2}
+\contentsline {table}{\numberline {2.1}{\ignorespaces Modelos para un PV: ideal, con p\IeC {\'e}rdidas en serie $\ R_s$ y con p\IeC {\'e}rdidas en paralelo $\ R_p$ \relax }}{10}{table.2.1}
+\contentsline {table}{\numberline {2.2}{\ignorespaces Sistema de coordenadas unificado (CORDIC): circular, linear e hiperb\IeC {\'o}lico. Tomado de [5]\relax }}{12}{table.2.2}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Tabla de signo $\ \delta $ para cada iteraci\IeC {\'o}n componente Xi , Yi , Zi\relax }}{22}{table.3.1}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Signo $\ \delta $ de la iteraci\IeC {\'o}n siguiente para las variables $ X_{i+1} $ , $ Y_{i+1} $ y $ Z_{i+1} $, comparando el signo de las variables Xi , Yi y Zi contra el signo de Yi invertido\relax }}{22}{table.3.1}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Comparaci\IeC {\'o}n de resultados experimentales obtenidos por medio de una simulaci\IeC {\'o}n post-s\IeC {\'\i }ntesis, a partir de los valores de entrada del rango de convergencia, utilizando 8, 12 y 15 iteraciones en el algoritmo de CORDIC. CLK=100MHz. \relax }}{28}{table.3.2}
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Comparaci\IeC {\'o}n de resultados experimentales obtenidos por medio de una simulaci\IeC {\'o}n post-s\IeC {\'\i }ntesis, a partir de los valores de entrada de corriente y tensi\IeC {\'o}n para el circuito de conversi\IeC {\'o}n-normalizaci\IeC {\'o}n. CLK=100MHz \relax }}{40}{table.4.1}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Resumen del reporte post implementaci\IeC {\'o}n del uso de dispositivos generado por la herramienta Vivado.\relax }}{50}{table.5.1}
-\contentsline {table}{\numberline {5.2}{\ignorespaces Resumen del reporte post implementaci\IeC {\'o}n de tiempos del circuito completo, a partir de la herramienta Vivado.\relax }}{51}{table.5.2}
-\contentsline {table}{\numberline {5.3}{\ignorespaces Resumen del reporte post implementaci\IeC {\'o}n de la potencia est\IeC {\'a}tica, din\IeC {\'a}mica y total, de la herramienta Vivado.\relax }}{51}{table.5.3}
-\contentsline {table}{\numberline {5.4}{\ignorespaces Resumen del reporte generado por la herramienta Vivado que indica el consumo de potencia de diversos elementos. \relax }}{51}{table.5.4}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Comparaci\IeC {\'o}n de resultados experimentales obtenidos por del sistema de verificaci\IeC {\'o}n implementado en una placa de desarrollo nexys-4, a partir de los valores de entrada del del modelo del panel y utilizando 8, 12 y 15 iteraciones en el algoritmo de CORDIC. CLK=100MHz. \relax }}{51}{table.5.1}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Resumen del reporte post implementaci\IeC {\'o}n del uso de dispositivos generado por la herramienta Vivado.\relax }}{56}{table.5.2}
+\contentsline {table}{\numberline {5.3}{\ignorespaces Resumen del reporte post implementaci\IeC {\'o}n de la potencia est\IeC {\'a}tica, din\IeC {\'a}mica y total, de la herramienta Vivado, para el sistema de linealizaci\IeC {\'o}n-normalizaci\IeC {\'o}n.\relax }}{56}{table.5.3}
+\contentsline {table}{\numberline {5.4}{\ignorespaces Resumen del reporte generado por la herramienta Vivado que indica el consumo de potencia de diversos elementos. \relax }}{57}{table.5.4}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

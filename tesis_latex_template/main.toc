@@ -1,15 +1,15 @@
 \select@language {english}
 \contentsline {chapter}{\'{I}ndice de figuras}{iii}{chapter*.5}
-\contentsline {chapter}{\'Indice de tablas}{v}{chapter*.6}
+\contentsline {chapter}{\'Indice de tablas}{vii}{chapter*.6}
 \contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Entorno del proyecto}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Descripci\IeC {\'o}n del problema y justificaci\IeC {\'o}n}{2}{section.1.2}
 \contentsline {section}{\numberline {1.3}S\IeC {\'\i }ntesis del problema}{2}{section.1.3}
 \contentsline {section}{\numberline {1.4}Enfoque de la soluci\IeC {\'o}n}{2}{section.1.4}
 \contentsline {section}{\numberline {1.5}Meta}{4}{section.1.5}
-\contentsline {section}{\numberline {1.6}Objetivos y estructura}{4}{section.1.6}
-\contentsline {subsection}{\numberline {1.6.1}Objetivo general}{4}{subsection.1.6.1}
-\contentsline {subsection}{\numberline {1.6.2}Objetivos espec\IeC {\'\i }ficos}{4}{subsection.1.6.2}
+\contentsline {section}{\numberline {1.6}Objetivos y estructura}{5}{section.1.6}
+\contentsline {subsection}{\numberline {1.6.1}Objetivo general}{5}{subsection.1.6.1}
+\contentsline {subsection}{\numberline {1.6.2}Objetivos espec\IeC {\'\i }ficos}{5}{subsection.1.6.2}
 \contentsline {subsection}{\numberline {1.6.3}Estructura}{5}{subsection.1.6.3}
 \contentsline {chapter}{\numberline {2}Marco te\IeC {\'o}rico}{7}{chapter.2}
 \contentsline {section}{\numberline {2.1}Descripci\IeC {\'o}n}{7}{section.2.1}
@@ -20,33 +20,30 @@
 \contentsline {subsection}{\numberline {2.3.1}Sistema de coordenadas hiperb\IeC {\'o}lico}{12}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Logaritmo natural utilizando el algoritmo hiperb\IeC {\'o}lico de CORDIC}{12}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}Exponencial utilizando el algoritmo hiperb\IeC {\'o}lico de CORDIC }{13}{subsection.2.3.3}
-\contentsline {section}{\numberline {2.4}Punto flotante}{13}{section.2.4}
-\contentsline {section}{\numberline {2.5}Punto fijo}{14}{section.2.5}
+\contentsline {section}{\numberline {2.4}Coma flotante}{14}{section.2.4}
+\contentsline {section}{\numberline {2.5}Coma fija}{14}{section.2.5}
 \contentsline {chapter}{\numberline {3}Sistema de linealizaci\IeC {\'o}n}{17}{chapter.3}
-\contentsline {section}{\numberline {3.1}Algoritmo de CORDIC en software}{17}{section.3.1}
-\contentsline {section}{\numberline {3.2}Sistema linealizador con el algoritmo de CORDIC}{19}{section.3.2}
-\contentsline {section}{\numberline {3.3}Coprocesador CORDIC}{20}{section.3.3}
-\contentsline {section}{\numberline {3.4}Sistema de control para el coprocesador CORDIC (FSM)}{24}{section.3.4}
-\contentsline {section}{\numberline {3.5}Algoritmo de CORDIC en Verilog}{25}{section.3.5}
-\contentsline {section}{\numberline {3.6}Simulaci\IeC {\'o}n del circuito linealizador con algoritmo de CORDIC}{25}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Resultados de la simulaci\IeC {\'o}n del rango de convergencia del circuito linealizador CORDIC}{26}{subsection.3.6.1}
-\contentsline {chapter}{\numberline {4}Sistema de conversi\IeC {\'o}n punto flotante a punto fijo y normalizaci\IeC {\'o}n }{31}{chapter.4}
-\contentsline {section}{\numberline {4.1}Sistema de conversi\IeC {\'o}n y normalizaci\IeC {\'o}n }{31}{section.4.1}
-\contentsline {section}{\numberline {4.2}Convertidor punto flotante - punto fijo y normalizador }{33}{section.4.2}
-\contentsline {section}{\numberline {4.3}Control para el convertidor punto flotante - punto fijo y normalizador}{36}{section.4.3}
-\contentsline {section}{\numberline {4.4}Sistema de conversi\IeC {\'o}n-normalizaci\IeC {\'o}n en verilog}{37}{section.4.4}
-\contentsline {section}{\numberline {4.5}Resultados de la simulaci\IeC {\'o}n del circuito convertidor-normalizador}{37}{section.4.5}
-\contentsline {chapter}{\numberline {5}Sistema de linealizaci\IeC {\'o}n, conversi\IeC {\'o}n punto flotante a punto fijo y normalizaci\IeC {\'o}n}{41}{chapter.5}
-\contentsline {section}{\numberline {5.1}Circuito para realizar las pruebas en Nexys-4}{43}{section.5.1}
-\contentsline {section}{\numberline {5.2}Simulaci\IeC {\'o}n del sistema de linealizaci\IeC {\'o}n, conversi\IeC {\'o}n punto flotante a punto fijo y normalizaci\IeC {\'o}n implementado en hardware}{44}{section.5.2}
-\contentsline {section}{\numberline {5.3}Resultados del sistema de linealizaci\IeC {\'o}n, conversi\IeC {\'o}n punto flotante a punto fijo y normalizaci\IeC {\'o}n implementado y verificado en hardware por medio de una FPGA nexys-4}{45}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Sistema de linealizaci\IeC {\'o}n, conversi\IeC {\'o}n y normalizaci\IeC {\'o}n para la corriente $\ i_{pv}$ con 8 iteraciones implementado en una FPGA nexys-4}{45}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Sistema de linealizaci\IeC {\'o}n, conversi\IeC {\'o}n y normalizaci\IeC {\'o}n para la corriente $\ i_{pv}$ con 12 iteraciones implementado en una FPGA nexys-4}{47}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}Sistema de linealizaci\IeC {\'o}n, conversi\IeC {\'o}n y normalizaci\IeC {\'o}n para la corriente $\ i_{pv}$ con 15 iteraciones implementado en una FPGA nexys-4}{48}{subsection.5.3.3}
-\contentsline {section}{\numberline {5.4}Recursos utilizados}{50}{section.5.4}
-\contentsline {section}{\numberline {5.5}Reporte de tiempos}{50}{section.5.5}
-\contentsline {section}{\numberline {5.6}Consumo de potencia}{51}{section.5.6}
-\contentsline {chapter}{\numberline {6}Conclusiones y recomendaciones}{53}{chapter.6}
-\contentsline {section}{\numberline {6.1}Conclusiones}{53}{section.6.1}
-\contentsline {section}{\numberline {6.2}Recomendaciones}{53}{section.6.2}
-\contentsline {chapter}{\numberline {7}bibliogr\IeC {\'a}ficas}{55}{chapter.7}
+\contentsline {section}{\numberline {3.1}Algoritmo de CORDIC hiperb\IeC {\'o}lico implementado en software}{17}{section.3.1}
+\contentsline {section}{\numberline {3.2}Sistema de linealizaci\IeC {\'o}n implementado en hardware (CORDIC)}{19}{section.3.2}
+\contentsline {section}{\numberline {3.3}Dise\IeC {\~n}o e implementaci\IeC {\'o}n del coprocesador de linealizaci\IeC {\'o}n por medio del algoritmo de CORDIC}{20}{section.3.3}
+\contentsline {section}{\numberline {3.4}Sistema de control para la unidad de coprocesamiento CORDIC por medio de un m\IeC {\'a}quina de estados finita (FSM)}{25}{section.3.4}
+\contentsline {section}{\numberline {3.5}Algoritmo de CORDIC implementado en verilog para una placa de desarrollo nexys-4}{26}{section.3.5}
+\contentsline {section}{\numberline {3.6}Simulaci\IeC {\'o}n del circuito linealizador con algoritmo de CORDIC}{27}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Resultados de la simulaci\IeC {\'o}n del rango de convergencia del circuito linealizador CORDIC}{27}{subsection.3.6.1}
+\contentsline {chapter}{\numberline {4}Sistema de conversi\IeC {\'o}n coma flotante a coma fija y normalizaci\IeC {\'o}n }{33}{chapter.4}
+\contentsline {section}{\numberline {4.1}Dise\IeC {\~n}o del sistema de conversi\IeC {\'o}n, normalizaci\IeC {\'o}n y control}{33}{section.4.1}
+\contentsline {section}{\numberline {4.2}Convertidor coma flotante - coma fija y normalizador }{35}{section.4.2}
+\contentsline {section}{\numberline {4.3}Control para el convertidor coma flotante - coma fija y normalizador}{38}{section.4.3}
+\contentsline {section}{\numberline {4.4}Sistema de conversi\IeC {\'o}n-normalizaci\IeC {\'o}n implementado en verilog para una placa de desarrollo nexys-4}{39}{section.4.4}
+\contentsline {section}{\numberline {4.5}Resultados de la simulaci\IeC {\'o}n post-s\IeC {\'\i }ntesis del sistema de conversi\IeC {\'o}n-normalizaci\IeC {\'o}n}{39}{section.4.5}
+\contentsline {chapter}{\numberline {5}Sistema de linealizaci\IeC {\'o}n, conversi\IeC {\'o}n coma flotante a coma fija y normalizaci\IeC {\'o}n}{45}{chapter.5}
+\contentsline {section}{\numberline {5.1}Sistema para realizar las pruebas en una placa de desarrollo Nexys-4}{47}{section.5.1}
+\contentsline {section}{\numberline {5.2}Simulaci\IeC {\'o}n del sistema de linealizaci\IeC {\'o}n, conversi\IeC {\'o}n coma flotante a coma fija y normalizaci\IeC {\'o}n, implementado en hardware mediante verilog}{49}{section.5.2}
+\contentsline {section}{\numberline {5.3}Resultados del sistema de linealizaci\IeC {\'o}n, conversi\IeC {\'o}n coma flotante a coma fija y normalizaci\IeC {\'o}n implementado en una placa de desarrollo nexys-4}{50}{section.5.3}
+\contentsline {section}{\numberline {5.4}Recursos utilizados}{56}{section.5.4}
+\contentsline {section}{\numberline {5.5}Reporte de tiempos}{56}{section.5.5}
+\contentsline {section}{\numberline {5.6}Consumo de potencia}{56}{section.5.6}
+\contentsline {chapter}{\numberline {6}Conclusiones y recomendaciones}{59}{chapter.6}
+\contentsline {section}{\numberline {6.1}Conclusiones}{59}{section.6.1}
+\contentsline {section}{\numberline {6.2}Recomendaciones}{59}{section.6.2}
+\contentsline {chapter}{\numberline {7}bibliogr\IeC {\'a}ficas}{61}{chapter.7}

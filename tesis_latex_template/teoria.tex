@@ -3,11 +3,11 @@
 
 \section{Descripción}
 
-En un sistema de paneles fotovoltaicos es de suma importancia la eficiencia energética, para esto se debe estudiar el funcionamiento, curvas características, parámetros para poder caracterizar un panel, el modelo matemático tanto el ideal como la aproximación real, ecuaciones características obtenidas a partir de cada modelo, características del sistema que se requiere optimizar, algoritmos de calculo para realizar operaciones que se requieren en la solución, entre otros.
+Actualmente en los sistemas de paneles fotovoltaicos, es de suma importancia la eficiencia energética, para esto se debe estudiar el funcionamiento del sistema, curvas características y sus parámetros, modelo matemático ideal y una aproximación real con perdidas, ecuaciones características obtenidas a partir de cada modelo, características del sistema que se requiere optimizar, algoritmos de cálculo, entre otros.
 
 \section{Panel Fotovoltaico}
 
-Existes muchos tipos de celdas solares [11], el mas común se pueden describir como una junta \nt{p-n}, por medio de la radiación electromagnética proveniente del sol que incide sobre la capa de semiconductor, esta se transforma en el electricidad por un efecto fotovoltaico, en donde los fotones al tener mayor energía que la banda prohibida del semiconductor crean un par electrón-hueco, el campo eléctrico que se ejerce en la junta \nt{p-n} mueve los electrones (\nt{portadores}) lo que produce una fotocorriente, esta es directamente proporcional a la radiación del sol [1]. Debido al proceso de fabricación del panel, posee un comportamiento exponencial y no lineal muy similar al de un diodo [9]. 
+Existen muchos tipos de celdas solares [11]. El más común se compone de una junta \nt{p-n}, la energía se genera por medio del efecto fotovoltaico y de la radiación electromagnética proveniente del sol, que incide sobre la capa del semiconductor. Los fotones al tener mayor energía que la banda prohibida del semiconductor crean un par electrón-hueco, y el campo eléctrico ejercido en la junta \nt{p-n} mueve los electrones (\nt{portadores}), produciendo una fotocorriente que es directamente proporcional a la radiación del sol [1]. Los semiconductores que componen el panel, poseen un comportamiento exponencial y no lineal muy similar al de un diodo [9]. 
 
 \subsection{Curvas Corriente-Tensión(I-V) para un PV }
 
@@ -15,22 +15,22 @@ Existes muchos tipos de celdas solares [11], el mas común se pueden describir c
   \centering
     \includegraphics[scale=0.6]{./IV.jpg}
     \rule{35em}{0.5pt}
-  \caption[Curva Corriente(A)-Tensión(V)]{Curva Corriente(A)-Tensión(V) }
+  \caption[Curva característica de corriente(A)-tensión(V) para un un panel fotovoltaico ]{Curva característica de corriente(A)-tensión(V) para un un panel fotovoltaico, (Tomado de $\left[2\right]$)}
   \label{fig:Curva_PV}
 \end{figure}
 
-La curva característica de un PV  se puede obtener manteniendo fijos los parámetros de irradiancia(S) y temperatura(T) esto bajo condiciones controladas, si se tiene una carga en las terminales de salida, la potencia entregada solo dependerá del valor de la carga, de manera que si la carga es pequeña (puntos M-N) el panel se comportará como una fuente de corriente, pero si la carga es grande(puntos PS) se comportará como una fuente de tension[2]. 
+La curva característica de un PV  se puede obtener manteniendo fijos los parámetros de irradiancia(S) y temperatura(T), en condiciones controladas. Si se tiene una carga en las terminales de salida, la potencia entregada solo dependerá del valor de la carga, de manera que si la carga es pequeña (puntos M-N de la figura \ref{fig:Curva_PV}) el panel se comportará como una fuente de corriente, pero si la carga es grande (puntos PS de la figura \ref{fig:Curva_PV}) se comportará como una fuente de tensión [2]. 
 
-Dentro de la caracterización de la celda se realizan varias pruebas: 
+Para realizar la caracterización de una celda se deben realizar las siguientes pruebas: 
 
 \begin{compactitem}
 
 \item \nt{Corriente de corto circuito $\ I_{sc}$ }: Se define como el valor máximo de la corriente generada por el panel, en condiciones de cortocircuito $\ V=0$.
 
 
-\item \nt{Tensión de circuito abierto $\ V_{oc}$}: Se define como el valor que se tiene en la junta \nt{p-n} cuando se tiene una corriente generada $\ I=0$.
+\item \nt{Tensión de circuito abierto $\ V_{oc}$}: Se define como el valor de tensión en la junta \nt{p-n}, cuando se tiene una corriente generada $\ I=0$.
 
-\item  \nt{Punto de máxima potencia}: se puede observar en el punto A$\left(V_{max},I_{max} \right)$ de la figura \ref{fig:Curva_PV} donde la potencia máxima de la carga resistiva es $\ P_{max} = V_{max}I_{max}$
+\item  \nt{Punto de máxima potencia}: El punto A de la figura \ref{fig:Curva_PV} representa la potencia máxima de la carga resistiva,  $\ P_{max} = V_{max}I_{max}$.
 
 
 \end{compactitem}
@@ -39,26 +39,26 @@ Dentro de la caracterización de la celda se realizan varias pruebas:
 
 \subsection{Modelos del panel fotovoltaico}
 
-Un panel fotovoltaico se puede modelar de manera simple (ideal), utilizando una fuente de corriente en paralelo con un diodo, la corriente de salida sera proporcional al radiación sobre la celda (foto-corriente)
+Un panel fotovoltaico se puede modelar de manera simple (ideal), utilizando una fuente de corriente en paralelo con un diodo, la corriente de salida será proporcional a la radiación solar sobre la celda (foto-corriente). 
 
 \begin{figure}[H]
   \centering
     \includegraphics[scale=0.07]{./M1PV.png}
     \rule{35em}{0.5pt}
-  \caption[Modelo simple ideal para un PV]{ Modelo simple ideal para un PV}
+  \caption[Modelo simple ideal para un panel fotovoltaico, compuesto por un diodo y una fuente de corriente]{ Modelo simple ideal para un panel fotovoltaico, compuesto por un diodo y una fuente de corriente}
   \label{fig:Modelo1_PV}
 \end{figure}
 
-La figura \ref{fig:Modelo1_PV} muestra el modelo básico, sin embargo este se puede realizar de una manera mas compleja, agregando variables para las características del panel: 
+La figura \ref{fig:Modelo1_PV} muestra el modelo básico, sin embargo este se puede realizar de una manera mas compleja, incluyendo variables para las características del panel: 
 
 \begin{compactitem}
 
-\item Dependencia de la Temperatura, la corriente de saturación del diodo (\nt{Is}) y la foto corriente (\nt{Ig})
+\item Dependencia de la temperatura, corriente de saturación del diodo (\nt{Is}) y foto corriente (\nt{Ig})
 
 
-\item Perdidas debidas al flujo de corriente (\nt{Rs}) y perdidas con referencia a tierra (\nt{Rp}).
+\item Pérdidas debidas al flujo de corriente (\nt{Rs}) y pérdidas con referencia a tierra (\nt{Rp}).
 
-\item  Un parámetro \nt{n} que será el numero de celdas en análisis. 
+\item  número de celdas en análisis \nt{n}.
 
 \end{compactitem}
 
@@ -66,11 +66,11 @@ La figura \ref{fig:Modelo1_PV} muestra el modelo básico, sin embargo este se pu
   \centering
     \includegraphics[scale=0.07]{./M2PV.png}
     \rule{35em}{0.5pt}
-  \caption[Modelo con perdidas para un PV]{ Modelo con perdidas para un PV}
+  \caption[Modelo para un panel fotovoltaico, compuesto por un diodo, una fuente de corriente, perdidas resistivas por cada celda]{ Modelo para un panel fotovoltaico, compuesto por un diodo, una fuente de corriente, perdidas resistivas por cada celda}
   \label{fig:Modelo2_PV}
 \end{figure}
 
-A partir del modelo con perdidas se puede deducir la ecuación que describe las corrientes, como sigue a continuación[4]:
+A partir del modelo con pérdidas se puede deducir la ecuación que describe las corrientes $ i_{pv}$ e $ I_{g}$ , como sigue a continuación [4]:
 
 \begin{equation} \label{eq:ej1}
   i_{pv}
@@ -92,15 +92,15 @@ A partir del modelo con perdidas se puede deducir la ecuación que describe las 
 \end{equation}
   
   
-En general, la corriente que fluye por las terminales de un generador fotovoltaico está determinado por tres funciones de corriente:
+En general, la corriente que fluye por las terminales de un generador fotovoltaico está determinada por tres funciones de corriente:
 \begin{compactitem}
-\item \nt{Ig}: Corriente generada debido al efecto fotoeléctrico
-\item \nt{id}: Corriente de pérdida debido a la juntura p-n
-\item \nt{ip}: Corriente de pérdida de naturaleza resistiva
+\item \nt{Ig}: Corriente generada debido al efecto fotoeléctrico.
+\item \nt{id}: Corriente de pérdida debido a la juntura p-n.
+\item \nt{ip}: Corriente de pérdida de naturaleza resistiva.
 \end{compactitem}
 
 
- Para obtener un modelo del comportamiento estático del generador fotovoltaico se supondrá lo siguiente:
+ Para obtener un modelo del comportamiento estático del generador fotovoltaico se supone lo siguiente:
 
 \begin{compactitem} 
 \item \nt{Ig}: depende de la Irradiancia (S), pero no depende de la tensión en las terminales del generador fotovoltaico (\nt{Vpv})
@@ -108,7 +108,7 @@ En general, la corriente que fluye por las terminales de un generador fotovoltai
 \item \nt{ip}: Depende de la temperatura (T)
 \end{compactitem}
 
-\textsl{De esta forma, la expresión que define $\ i_{pv}$}
+De esta forma, la expresión que define $\ i_{pv}$:
 
 \begin{equation} \label{eq:ej4}
   i_{pv} \left(V_{pv},T,S \right) 
@@ -116,12 +116,12 @@ En general, la corriente que fluye por las terminales de un generador fotovoltai
   i_g \left(V_{pv}\right)-i_d \left(V_{pv},T\right)
 \end{equation}
 
-\textsl{Según se definan las funciones $\ i_{pv}$ e $\ i_{d}$ se obtendrán modelos con complejidad y precisiones distintas, como los siguientes casos:  }
+Según se definan las funciones $\ i_{pv}$ e $\ i_{d}$, se obtendrán modelos con complejidad y precisiones distintas, a partir de los siguientes casos: 
 
 
 \begin{table}[H]
 \centering
-\caption{Modelos para un PV}
+\caption{Modelos para un PV: ideal, con pérdidas en serie $\ R_s$  y con pérdidas en paralelo $\ R_p$ }
 \label{Table:Modelos}
 \begin{tabular}{|l|c|c|c|}
 \hline
@@ -154,7 +154,7 @@ De manera general se tiene:
   I_s \left(T \right) e^\frac{V_{pv}}{v_t} e^\frac{ i_{pv}R_{s}}{v_t} -I_s \left(T \right)
 \end{equation}
 
-De esta forma el modelo general del comportamiento estático de un generador FV también se puede representar de la siguiente manera: 
+El modelo general del comportamiento estático de un generador PV, también se puede representar de la siguiente manera: 
 
 \begin{equation} \label{eq:ej7}
   i_{pv}  
@@ -184,7 +184,7 @@ si $ I_g = KS >> I_s $
   z = V_{pv} + i_{pv}R_s  
 \end{equation}
 
-posteriormente a un proceso de calculo de parámetros se tiene: 
+Posteriormente al proceso de cálculo de parámetros se tiene: 
 
 \begin{equation} \label{eq:ej12}
   \theta_1  = ln\left( I_s \left(T \right) \right)
@@ -196,7 +196,7 @@ posteriormente a un proceso de calculo de parámetros se tiene:
 
 \section{Algoritmo de CORDIC}
 
-El algoritmo \nt{Coordinate Rotational Digital Computer} (CORDIC) es un método numérico en donde se realiza cierto numero de iteraciones para encontrar el valor deseado según sea la función en calculo, este algoritmo es utilizado para implementar funciones trigonométricas, logarítmicas y  exponenciales. La facilidad de implementación, hace que sea uno de los algoritmos mas utilizados en el ámbito de la electrónica digital, CORDIC utiliza desplazamientos, sumas, restas y tablas look-up con valores previamente precargados en una memoria ROM, estos valores dependerán de la operación en calculo, se puede utilizar el método circular, lineal e hiperbólico.   
+El algoritmo \nt{Coordinate Rotational Digital Computer} (CORDIC) es un método numérico, en donde se realiza cierto número de iteraciones para encontrar el valor deseado, según sea la función que se desea calcular. Este algoritmo es utilizado para implementar funciones trigonométricas, logarítmicas y  exponenciales. La facilidad de implementación, hace que sea uno de los algoritmos más utilizados en el ámbito de la electrónica digital. CORDIC implementado digitalmente utiliza desplazamientos, sumas, restas y tablas look-up con valores previamente precargados en una memoria ROM, que dependerán de la operación en cálculo. Para este algoritmo existe: el método circular, lineal e hiperbólico.   
 
 Las ecuaciones generales para el algoritmo de CORDIC se definen como: 
 
@@ -212,11 +212,11 @@ Las ecuaciones generales para el algoritmo de CORDIC se definen como:
   Z_{i+1} = Z_{i}- d_{i} e\left(i\right)
 \end{equation}
 
-donde $\ e\left(i\right) $ se muestra en la tabla \ref{Table:ei} [5] según sea el caso:
+Donde $\ e\left(i\right) $ se muestra en la tabla \ref{Table:ei} según corresponde cada caso:
 
 \begin{table}[H]
 \centering
-\caption{Sistema de coordenadas unificado (CORDIC)}
+\caption{Sistema de coordenadas unificado (CORDIC): circular, linear e hiperbólico. Tomado de [5]}
 \label{Table:ei}
 \begin{tabular}{|l|c|c|c|}
 \hline
@@ -237,7 +237,7 @@ m & Sistema de coordenadas                                                      
 
 \subsection{Sistema de coordenadas hiperbólico}
 
-Para el calculo de algunas funciones que no son tan directas con el algoritmo, se utilizan identidades [6] para el calculo como sigue:
+Para el cálculo de algunas funciones con el algoritmo aumenta la complejidad, de manera que se deben utilizar las siguientes identidades [6]:
 
 \begin{equation} \label{eq:ej17}
   \tan z = \frac{\sin z}{\cos z}
@@ -255,7 +255,7 @@ Para el calculo de algunas funciones que no son tan directas con el algoritmo, s
   \ln \omega = 2 \tanh^{-1} \left( \frac{y}{x} \right)
 \end{equation}
 
-donde: 
+Donde: 
 
 \begin{equation} \label{eq:ej21}
   x = \omega + 1
@@ -266,7 +266,7 @@ donde:
 \end{equation}
 
 \subsection{Logaritmo natural utilizando el algoritmo hiperbólico de CORDIC}
-Para un $\ Ln \left(\omega\right) $  con el algoritmo de CORDIC, se utiliza el modo hiperbolico [12] para esto se debe calcular primeramente la $\ \tanh^{-1} \left( \frac{y}{x} \right)$ con las siguientes ecuaciones:
+Para la función $\ Ln \left(\omega\right) $, utilizado el algoritmo de CORDIC en modo hiperbólico [12], se debe calcular primeramente la función $\ \tanh^{-1} \left( \frac{y}{x} \right)$ a partir de las siguientes ecuaciones:
 
  
 \begin{equation} \label{eq:ej23}
@@ -281,26 +281,26 @@ Para un $\ Ln \left(\omega\right) $  con el algoritmo de CORDIC, se utiliza el m
   Z_{i+1} = Z_{i} - d_{i} tanh^{-1}\left(2^{-i}\right)
 \end{equation}
 
-donde $\ i $ es el indice de cada iteración, las iteraciones 4, 13, 40,… k, 3k+1 se deberán repetir para garantizar la convergencia. $\ d_i $ es el signo de $\ Y_i $ invertido, es decir el cuando el signo de $\ Y_i $ es negativo, $\ d_i $ será positivo y viceversa.
+Donde $\ i $ es el indice de cada iteración. Las iteraciones 4, 13, 40,… k, 3k+1 se deberán repetir para garantizar la convergencia. $\ d_i $ es el signo de $\ Y_i $ invertido, es decir el cuando el signo de $\ Y_i $ es negativo, $\ d_i $ será positivo y viceversa.
 
-Utilizando la ecuación \ref{eq:ej20} se definen los valores de entrada para las ecuaciones anteriores  $\ X_0 = \omega + 1$ , $\ Y_0 = \omega - 1$ y $\ Z_0 = 0 $.
+Utilizando la ecuación \ref{eq:ej20}, se definen los valores iniciales   $\ X_0 = \omega + 1$ , $\ Y_0 = \omega - 1$ y $\ Z_0 = 0 $, cuando $\ i = 0 $.
 
-Cabe destacar que el rango de convergencia para este algoritmo [7] se puede definir como: 
+Cabe destacar que el rango de convergencia para este algoritmo [7] esta definido como: 
 
 \begin{equation} \label{eq:ej26}
-   0.106843 \leq \omega \leq 9.35947
+   0,106843 \leq \omega \leq 9,35947
 \end{equation}
 
-donde $\ \omega $ es el valor del argumento del logaritmo natural.
+Donde $\ \omega $ es el valor del argumento del logaritmo natural.
 
-El resultado final de $\ Z_i $ contiene el valor de $\ \tanh^{-1} \left( \frac{y}{x} \right)$, sin embargo se debe multiplicar por un factor de 2 para completar el calculo del logaritmo natural, segun la identidad de la ecuación \ref{eq:ej20} 
+El resultado final de $\ Z_i $, contiene el valor de $\ \tanh^{-1} \left( \frac{y}{x} \right)$, sin embargo se debe multiplicar por un factor de 2 para completar el cálculo del logaritmo natural, según la identidad de la ecuación \ref{eq:ej20} 
 
 \subsection{Exponencial utilizando el algoritmo hiperbólico de CORDIC }
 
 
-Para una función  $\ e^{\left(\omega\right)} $  con el algoritmo de CORDIC, se debe utilizar las ecuaciones \ref{eq:ej23}, \ref{eq:ej24} y \ref{eq:ej25} de manera iterativa, donde el valor final de $\ X $ y $\ Y$, son el resultado para  $\\cosh\left(\omega\right)$ y $\ \sinh\left(\omega\right)$ respectivamente. se debe tomar en cuenta la repeticion de las iteraciones $\ \left(i\right) $ 4, 13, 40,… k, 3k+1 para garantizar la convergencia dando una mejor precision en el calculo.
+Para una función  $\ e^{\left(\omega\right)} $, con el algoritmo de CORDIC, se debe utilizar las ecuaciones \ref{eq:ej23}, \ref{eq:ej24} y \ref{eq:ej25} de manera iterativa, donde el valor final de $\ X $ y $\ Y$, son el resultado de $\\cosh\left(\omega\right)$ y $\ \sinh\left(\omega\right)$ respectivamente. Se debe tomar en cuenta la repetición de las iteraciones $\ \left(i\right) $ 4, 13, 40,… k, 3k+1 para garantizar la convergencia dando una mejor precisión en el cálculo.
 
-Los valores iniciales se definen como \nt{constantes} $\ X_0 = 1.20753406 $ , $\ Y_0 = 0$ y $\ Z_0 = \omega $ donde $\ \omega$  es el valor del argumento que se desea calcular y $\ d_i $ es el signo de $\ Z_i $.
+Los valores iniciales se definen como \nt{constantes} $\ X_0 = 1,20753406 $ , $\ Y_0 = 0$ y $\ Z_0 = \omega $, donde $\ \omega$,  es el valor del argumento que se desea calcular, y $\ d_i $ es el signo de $\ Z_i $.
 
 Cabe destacar que el rango de convergencia para este algoritmo se puede definir como: 
 
@@ -308,11 +308,11 @@ Cabe destacar que el rango de convergencia para este algoritmo se puede definir 
    0 \leq \omega \leq 1
 \end{equation}
 
-El valor final del calculo se obtiene mediante una suma con la identidad de la ecuación \ref{eq:ej19}. 
+El valor final del cálculo, se obtiene por medio de una suma de dos funciones, dadas en la identidad de la ecuación \ref{eq:ej19}. 
 
-\section{Punto flotante}
+\section{Coma flotante}
 
-La codificación para el formato punto flotante se realiza mediante el estándar \nt{IEEE 754}, este requiere de tres campos en la palabra [10]: 
+La codificación para el formato coma flotante se realiza mediante el estándar \nt{IEEE 754}, este requiere de tres campos en la palabra [10]: 
 
 \begin{compactitem}
 \item Signo 
@@ -324,11 +324,11 @@ La codificación para el formato punto flotante se realiza mediante el estándar
   \centering
     \includegraphics[scale=0.08]{./FLOAT.png}
     \rule{35em}{0.5pt}
-  \caption[Formato IEEE 754 punto flotante]{Formato IEEE 754 punto flotante}
+  \caption[Formato IEEE 754 coma flotante para 32 bits]{Formato IEEE 754 coma flotante para 32 bits}
   \label{fig:FLOAT}
 \end{figure}
 
-para el formato \nt{IEEE 754} figura \ref{fig:FLOAT} de 32-bits [8] se asigna: 
+Para el formato \nt{IEEE 754} de la figura \ref{fig:FLOAT} en 32-bits [8] se asigna: 
 
 \begin{compactitem}
 \item 1 Bit para signo 
@@ -336,28 +336,28 @@ para el formato \nt{IEEE 754} figura \ref{fig:FLOAT} de 32-bits [8] se asigna:
 \item 23 Bits para mantisa 
 \end{compactitem}
 
-Donde el bit de signo representa un numero positivo si este es 0, de manera contraria si es 1 representa un numero negativo. 
+Donde el bit de signo representa un numero positivo si este es 0, de manera contraria representa un número negativo. 
 
-El exponente puede representar 256 (8-bits) valores sin embargo se tiene:
+El exponente (8-bits) puede representar un rango desde 0 hasta 255, sin embargo se tiene:
 
 \begin{compactitem}
 \item $\ \left[0-127\right]$ exponentes negativos  
 \item $\ \left[128-255\right]$ exponentes positivos
 \end{compactitem}
 
-De esta manera para convertir el un exponente positivo en el valor correspondiente en punto flotante se debe sumar el valor del exponente como sigue $\ exp_{float}=127+exp $ , por otro lado si se desea pasar de un valor decimal a punto flotante se deben realizar los siguientes pasos: 
+De esta manera para convertir un exponente positivo, en el valor correspondiente del formato coma flotante se debe realizar la siguiente suma: $\ exp_{float}=127+exp_numero $. Por otro lado si se desea pasar de un valor decimal a coma flotante se deben realizar los siguientes pasos: 
 
 \begin{compactitem}
 \item Representar el signo con su debido bit
-\item Conversión decimal a binario punto fijo   
+\item Conversión decimal a binario coma fija   
 \item Conversión binario a notación científica
 \item Agrupar en signo, exponente y mantisa 
 \end{compactitem}
 
 
-\section{Punto fijo}
+\section{Coma fija}
  
-La representación de un numero en punto fijo cuenta con tres partes fundamentales:
+La representación de un número en coma fija cuenta con tres partes fundamentales:
 \begin{compactitem}
 \item Signo
 \item Parte entera   
@@ -368,16 +368,10 @@ La representación de un numero en punto fijo cuenta con tres partes fundamental
   \centering
     \includegraphics[scale=0.08]{./FIXED.png}
     \rule{35em}{0.5pt}
-  \caption[Formato para un numero en punto fijo]{Formato para un numero en punto fijo}
+  \caption[Formato para un número en coma fija]{Formato para un número en coma fija}
   \label{fig:FIXED}
 \end{figure}
 
-En la aritmética simple se utiliza se utilizan los signo +/- para saber si un numero es positivo o negativo, sin embargo por las limitaciones de una computadora esto no se puede hacer, debido a que esta procesan todos los datos representados por palabras compuestas por ceros '0' y unos '1', en consecuencia para representar el signo se utiliza un bit de signo, si el numero es positivo el bit de signo sera un 0 y si el numero es negativo sera un 1 [13]. 
-
-La parte entera es un conjunto de bits que puede representar un numero en un rango entre 0 y $ 2^n $, donde n es el numero de bits asignado. 
-
-La parte fraccionaria se compone de una serie de bits, $ 2^{-n} $, en esta el numero de bits aumenta si se requiere de mucha precisión. 
-
-Si se requiere de una representación de un numero negativo en punto fijo, se debe utilizar el complemento a 2 [14], este toma el numero positivo y le aplica un inversión a todos los bits, finalmente se le suma 1 a la inversión, para obtener el numero negativo, así utilizando el bit de signo descrito anteriormente. 
+En la aritmética simple se utilizan los signos +/-, para saber si un número es positivo o negativo, para representar el signo en coma fija se utiliza el bit mas significativo. Si el número es positivo, el bit de signo será un 0 y si el número es negativo, será un 1 [13]. Si se requiere de una representación de un numero negativo en coma fija, se debe utilizar el complemento a 2 [14]. La coma se asigna de manera arbitraria según se requiera.  
  
   
